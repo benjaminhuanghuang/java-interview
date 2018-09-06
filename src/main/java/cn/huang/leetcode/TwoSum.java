@@ -1,7 +1,9 @@
 package cn.huang.leetcode;
 
+//Map<K,V> is an interface, HashMap<K,V> is a class that implements Map
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TwoSum {
     public static int[] solve(int[] nums, int target) {
@@ -9,7 +11,7 @@ public class TwoSum {
             return new int[]{0, 0};
 
         // map<value, index>
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
                 return new int[]{map.get(nums[i]), i};
@@ -27,7 +29,7 @@ public class TwoSum {
             return new int[]{0, 0};
 
         // map<value, index>
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
                 return new int[]{map.get(target - nums[i]), i};
