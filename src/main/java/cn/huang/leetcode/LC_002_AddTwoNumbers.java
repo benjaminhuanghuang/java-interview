@@ -2,7 +2,7 @@ package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.ListNode;
 
-public class AddTwoNumbers {
+public class LC_002_AddTwoNumbers {
     public ListNode solve(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0), currNode = dummy;
 

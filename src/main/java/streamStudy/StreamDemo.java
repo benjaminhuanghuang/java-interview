@@ -3,6 +3,10 @@ package streamStudy;
 * https://stackify.com/streams-guide-java-8/
 * */
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
 public class StreamDemo {
     private static Employee[] arrayOfEmps = {
             new Employee(1, "Jeff Bezos", 100000.0),
