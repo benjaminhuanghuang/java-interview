@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class LC_771_JewelsAndStonesTest {
     @Test
-    public void noChange() throws Exception {
+    public void case1() throws Exception {
         LC_771_JewelsAndStones s = new LC_771_JewelsAndStones();
         int n = s.numJewelsInStones("aA", "aAABBB");
         Assert.assertEquals(n, 3);
