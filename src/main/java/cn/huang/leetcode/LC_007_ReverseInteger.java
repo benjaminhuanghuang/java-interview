@@ -1,7 +1,7 @@
 package cn.huang.leetcode;
 
 public class LC_007_ReverseInteger {
-    public static int solve(int x) {
+    public static int reverse(int x) {
         long k = x;
         boolean isNegtive = false;
         if (k < 0) {
@@ -18,6 +18,6 @@ public class LC_007_ReverseInteger {
 
         if (result > Integer.MAX_VALUE)
             return 0;
-        return isNegtive ? 0 - ((int) result) : (int) result;
+        return isNegtive ? - ((int) result) : (int) result;
     }
 }
