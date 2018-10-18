@@ -1,7 +1,12 @@
-package coding.problems;
+package algorithm;
 /*
 https://www.youtube.com/watch?v=SLauY6PpjW4
 https://www.youtube.com/watch?v=Fiot5yuwPAg
+
+
+Step 1: Pick a pivot value
+Step 2: Split array to 2 sections
+Step 3: sort two sections
 
  */
 
@@ -14,10 +19,13 @@ public class QuickSort {
         if (left >= right) {
             return;
         }
-
+        // step 1: pick a pivot value
         int pivotValue = array[(left + right) / 2];
+
+        // Step 2: Split array to 2 sections
         int index = partition(array, left, right, pivotValue);
 
+        // Step 3: recursion
         quicksort(array, left, index - 1);
         quicksort(array, index, right);
     }
