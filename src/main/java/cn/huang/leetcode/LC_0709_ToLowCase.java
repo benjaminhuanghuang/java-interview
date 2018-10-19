@@ -17,6 +17,5 @@ public class LC_0709_ToLowCase {
                 chars[i] = c;
         }
         return String.valueOf(chars);
-
     }
 }
