@@ -2,7 +2,7 @@ package cn.huang.leetcode;
 
 import java.util.HashMap;
 
-public class LC_914_XofKindInDeckofCards {
+public class LC_0914_XofKindInDeckofCards {
 
     // Input   [1,1,2,2,2,2]
     // Output  false

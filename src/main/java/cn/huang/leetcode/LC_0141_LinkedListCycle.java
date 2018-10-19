@@ -2,7 +2,7 @@ package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.ListNode;
 
-public class LC_141_LinkedListCycle {
+public class LC_0141_LinkedListCycle {
     public boolean hasCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;

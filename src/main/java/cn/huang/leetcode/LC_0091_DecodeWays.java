@@ -26,7 +26,7 @@ package cn.huang.leetcode;
     case 3: num_ways("011") = 0
 
  */
-public class LC_091_DecodeWays {
+public class LC_0091_DecodeWays {
     // To case "111111", h(6) = h(5) + h(4), h(5) = h(4) + h(3)... h(4) were calculated twice
     public int num_ways_recursive(String data) {
         return this.helper(data, data.length());

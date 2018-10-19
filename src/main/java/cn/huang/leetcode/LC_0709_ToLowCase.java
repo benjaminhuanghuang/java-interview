@@ -1,6 +1,6 @@
 package cn.huang.leetcode;
 
-public class LC_709_ToLowCase {
+public class LC_0709_ToLowCase {
     public String toLowerCase(String str) {
         if (str == null)
             return null;

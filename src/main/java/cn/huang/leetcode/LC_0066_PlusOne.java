@@ -1,6 +1,6 @@
 package cn.huang.leetcode;
 
-public class LC_066_PlusOne {
+public class LC_0066_PlusOne {
     public int[] plusOne(int[] digits) {
         int n = digits.length;
         for (int i = digits.length - 1; i >= 0; --i) {

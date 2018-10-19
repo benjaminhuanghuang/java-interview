@@ -4,7 +4,7 @@ import cn.huang.leetcode.common.TreeNode;
 
 import java.util.*;
 
-public class LC_144_BinaryTreePreorderTraversal {
+public class LC_0144_BinaryTreePreorderTraversal {
     public List<Integer> recursion(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         result.add(root.val);

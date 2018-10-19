@@ -6,7 +6,7 @@ package cn.huang.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LC_001_TwoSum {
+public class LC_0001_TwoSum {
     public static int[] solve(int[] nums, int target) {
         if (nums == null || nums.length < 2)
             return new int[]{0, 0};

@@ -1,6 +1,6 @@
 package cn.huang.leetcode;
 
-public class LC_058_LengthLastWord {
+public class LC_0058_LengthLastWord {
     public int lengthOfLastWord(String s) {
         if (s == null || s.length() == 0)
             return 0;

@@ -1,6 +1,6 @@
 package cn.huang.leetcode;
 
-public class LC_009_PalindromeNumber {
+public class LC_0009_PalindromeNumber {
     public boolean isPalindrome(int x) {
         if (x < 0)
             return false;

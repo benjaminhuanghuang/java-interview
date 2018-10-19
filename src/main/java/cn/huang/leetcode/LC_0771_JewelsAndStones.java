@@ -2,7 +2,7 @@ package cn.huang.leetcode;
 
 import java.util.HashMap;
 
-public class LC_771_JewelsAndStones {
+public class LC_0771_JewelsAndStones {
     public int numJewelsInStones_Slow(String J, String S) {
         if (J == null || S == null)
             return 0;

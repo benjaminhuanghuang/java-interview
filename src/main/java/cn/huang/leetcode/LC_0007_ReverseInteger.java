@@ -1,6 +1,6 @@
 package cn.huang.leetcode;
 
-public class LC_007_ReverseInteger {
+public class LC_0007_ReverseInteger {
     public static int reverse(int x) {
         long k = x;
         boolean isNegtive = false;
