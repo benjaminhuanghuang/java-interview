@@ -1,6 +1,7 @@
 package basic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ArrayDemo {
 
 
     public void forEach_Demo(){
-        int[] A = new int[]{1,2};
+        int[] A = {1,2};
         for (int a : A) {
 
         }
@@ -45,5 +46,13 @@ public class ArrayDemo {
 
         String[] s = l.toArray(new String[l.size()]);
     }
+
+
+    public void SumArray()
+    {
+        int[] array = {1,2};
+        Arrays.stream(array).sum();     // slow
+    }
+
 
 }
