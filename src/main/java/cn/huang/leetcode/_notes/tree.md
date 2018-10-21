@@ -1,9 +1,9 @@
 
 
+- 872 Leaf-Similar Trees
+    inorder traversal
 
-
-
-- 0897_Increasing Order Search Tree 
+- 897 Increasing Order Search Tree 
     inorder traversal
     recursion 
     
