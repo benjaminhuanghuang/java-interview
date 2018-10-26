@@ -38,6 +38,7 @@ public class LC_0101_SymmetricTree {
         q2.add(root.right);
 
         while (!q1.isEmpty() && !q2.isEmpty()) {
+            //retrieves and removes the head (first element) of this list
             TreeNode n1 = q1.poll();
             TreeNode n2 = q2.poll();
 
