@@ -1,5 +1,6 @@
 package basic;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +19,11 @@ public class SetDemo {
         for (int b : B) {
             setB.add(b);
         }
+    }
+
+    public void putDataIntoSet(){
+        String[] banned = new String[10];
+        HashSet<String> set = new HashSet<>(Arrays.asList(banned));
     }
 
 }
