@@ -12,7 +12,7 @@ import cn.huang.leetcode.common.TreeNode;
 
 
  */
-public class LC_0687LongestUnivaluePath {
+public class LC_0687_LongestUnivaluePath {
     int length = 0;
 
     public int longestUnivaluePath(TreeNode root) {
