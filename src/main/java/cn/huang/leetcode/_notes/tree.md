@@ -1,5 +1,9 @@
 - 101 Symmetric Tree
 
+- 669. Trim a Binary Search Tree
+
+- 671. Second Minimum Node In a Binary Tree
+
 - 687 Longest Univalue Path
 
 - 872 Leaf-Similar Trees
