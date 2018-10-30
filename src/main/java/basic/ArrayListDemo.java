@@ -1,6 +1,7 @@
 package basic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ArrayListDemo {
     public boolean ArrayListDemo(){
@@ -10,4 +11,10 @@ public class ArrayListDemo {
         return leaves1.equals(leaves2);
     }
 
+
+    public void reverse()
+    {
+        ArrayList<Integer> res  = new ArrayList<>();
+        Collections.reverse(res);
+    }
 }
