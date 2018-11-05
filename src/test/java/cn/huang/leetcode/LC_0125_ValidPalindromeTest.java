@@ -10,7 +10,7 @@ public class LC_0125_ValidPalindromeTest {
     @Test
     public void isPalindrome() {
         LC_0125_ValidPalindrome s = new LC_0125_ValidPalindrome();
-        boolean res = s.isPalindrome("race a car");
+        boolean res = s.isPalindrome_Better("race a car");
 
         Assert.assertEquals(res, false);
     }
@@ -18,7 +18,7 @@ public class LC_0125_ValidPalindromeTest {
     @Test
     public void isPalindrome2() {
         LC_0125_ValidPalindrome s = new LC_0125_ValidPalindrome();
-        boolean res = s.isPalindrome("A man, a plan, a canal: Panama");
+        boolean res = s.isPalindrome_Better("A man, a plan, a canal: Panama");
 
         Assert.assertEquals(res, true);
     }
