@@ -1,4 +1,4 @@
-package cn.huang.leetcode.LIC_0665;
+package cn.huang.leetcode;
 
 /*
     665. Non-decreasing Array
@@ -7,7 +7,7 @@ package cn.huang.leetcode.LIC_0665;
 
     We define an array is non-decreasing if array[i] <= array[i + 1] holds for every i (1 <= i < n).
  */
-public class NondecreasingArray {
+public class LC_0665_NondecreasingArray {
     public boolean checkPossibility(int[] nums) {
         if (nums == null || nums.length <= 1) return true;
         boolean found = false;
