@@ -8,7 +8,7 @@ represented by two bits (10 or 11).
 Now given a string represented by several bits. Return whether the last character must be a one-bit character or not.
 The given string will always end with a zero.
  */
-public class LC_717_1bitand2bitCharacters {
+public class LC_0717_1bitand2bitCharacters {
     /*
     题目的意思是要判断最后一个0元素是属于0还是输入10；
     遍历数组，给定指针，若当前位为1则指针+2；若当前位为0，则指针+1；
