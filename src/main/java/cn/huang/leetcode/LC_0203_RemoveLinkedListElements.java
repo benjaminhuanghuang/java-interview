@@ -6,7 +6,7 @@ package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.ListNode;
 
-public class LC_203_RemoveLinkedListElements {
+public class LC_0203_RemoveLinkedListElements {
     public ListNode removeElements(ListNode head, int val) {
         ListNode dummy = new ListNode(0);
 
