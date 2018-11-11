@@ -1,3 +1,5 @@
+- 190	Reverse Bits
+- 191. Number of 1 Bits
 - 832	 Flipping an Image
     0 -> 1, 1 -> 0 using  v ^ 1
 
@@ -28,3 +30,15 @@ a - A = 32
 
 a = A ^ (1<<5)
 A = a ^ (1<<5)
+
+
+##
+exclusive or  ^
+~ (bitwise compliment)
+>>> (zero fill right shift)
+>> (right shift)
+The operator ‘>>’ uses the sign bit (left most bit) to fill the trailing positions after shift. 
+If the number is negative, then 1 is used as a filler and if the number is positive, 
+then 0 is used as a filler. 
+For example, if binary representation of number is 10….100, then right shifting it by 2 using >> will 
+make it 11…….1.
