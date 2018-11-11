@@ -44,7 +44,7 @@ public class LC_0937_ReorderLogFiles {
             public int compare(String m1, String m2) {
                 String[] parts1 = m1.split(" ");
                 String[] parts2 = m2.split(" ");
-
+                // ignoring identifier
                 for (int i = 1; i < Math.max(parts1.length, parts2.length); i++) {
                     String s1 = " ";
                     String s2 = " ";
@@ -67,9 +67,3 @@ public class LC_0937_ReorderLogFiles {
         return ans;
     }
 }
-["0 fkbikbts","i gf mwdoa","qi ir oo i","4 j trouka","gn j q al","cp vnzw i","5r w wgqc","m8 x haje","fg 28694 6","ao 0850716"]
-        ["0 fkbikbts","i gf mwdoa","qi ir oo i","gn j q al","4 j trouka","cp vnzw i","5r w wgqc","m8 x haje","fg 28694 6","ao 0850716"]
-
-        ["j mo","5 m w","g 07","o 2 0","t q h"]
-        ["j mo","5 m w","t q h","g 07","o 2 0"]
-        ["5 m w","j mo","t q h","g 07","o 2 0"]
