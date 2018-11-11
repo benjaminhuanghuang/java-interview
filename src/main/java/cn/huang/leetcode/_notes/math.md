@@ -1,0 +1,3 @@
+- 69. Sqrt(x)
+- 172. Factorial Trailing Zeroes
+- 204. Count Primes
