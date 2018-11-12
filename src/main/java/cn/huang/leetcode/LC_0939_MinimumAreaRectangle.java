@@ -21,7 +21,7 @@ public class LC_0939_MinimumAreaRectangle {
         if(points == null || points.length == 0)
             return 0;
 
-        int
+
         for(int i =0; i < points.length; i++)
         {
             for(int i =0; i < points.length; i++)
