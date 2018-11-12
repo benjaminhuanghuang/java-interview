@@ -66,4 +66,35 @@ public class LC_0937_ReorderLogFiles {
 
         return ans;
     }
+
+    //Better understanding
+    public String[] reorderLogFiles_v2(String[] logs) {
+        List<String> digitLogs = new ArrayList<>();
+        List<String> letterLogs = new ArrayList<>();
+
+        for (int i = 0; i < logs.length; i++) {
+            String log = logs[i];
+            String[] parts = log.split(" ");
+            if (Character.isDigit(parts[1].charAt(0))) {
+                digitLogs.add(log);
+            } else {
+                letterLogs.add(log);
+            }
+        }
+        letterLogs.sort(new Comparator<String>() {
+            @Override
+            public int compare(String m1, String m2) {
+                int index1 = m1.indexOf(" ");
+                int index2 = m2.indexOf(" ");
+                // ignoring identifier
+                return m1.substring(index1 + 1).compareTo(m2.substring(index2 + 1));
+            }
+        });
+
+        letterLogs.addAll(digitLogs);
+
+        String[] ans = letterLogs.toArray(new String[letterLogs.size()]);
+
+        return ans;
+    }
 }
