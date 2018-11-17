@@ -4,7 +4,7 @@ package cn.huang.leetcode;
     657. Robot Return to Origin
 
  */
-public class LC_657_RobotReturntoOrigin {
+public class LC_0657_RobotReturntoOrigin {
     public boolean judgeCircle(String moves) {
         int vert = 0;
         int horz = 0;

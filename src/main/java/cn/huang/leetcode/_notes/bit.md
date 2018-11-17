@@ -43,3 +43,7 @@ If the number is negative, then 1 is used as a filler and if the number is posit
 then 0 is used as a filler. 
 For example, if binary representation of number is 10….100, then right shifting it by 2 using >> will 
 make it 11…….1.
+
+The value of n>>s is n right-shifted s bit positions with sign-extension.
+
+The value of n>>>s is n right-shifted s bit positions with zero-extension.
