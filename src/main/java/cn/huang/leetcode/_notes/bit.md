@@ -47,3 +47,5 @@ make it 11…….1.
 The value of n>>s is n right-shifted s bit positions with sign-extension.
 
 The value of n>>>s is n right-shifted s bit positions with zero-extension.
+
+MAX = (1 << 31) - 1

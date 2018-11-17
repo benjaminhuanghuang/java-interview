@@ -3,7 +3,7 @@ package cn.huang.leetcode;
 /*
 443. String Compression
  */
-public class LC_443_StringCompression {
+public class LC_0443_StringCompression {
     //两个指针即可完成，一个指针做遍历，另一个做结果的遍历
     public int compress(char[] chars) {
 
