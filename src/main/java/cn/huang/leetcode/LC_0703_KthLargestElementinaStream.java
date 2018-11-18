@@ -16,6 +16,7 @@ public class LC_0703_KthLargestElementinaStream {
         private PriorityQueue<Integer> q;
         private int size;
         public KthLargest(int k, int[] nums) {
+            //优先队列的作用是能保证每次取出的元素都是队列中权值最小的
             q = new PriorityQueue<>();
             size = k;
 
@@ -29,6 +30,7 @@ public class LC_0703_KthLargestElementinaStream {
             if (q.size() < size) {
                 q.add(val);
             } else if (q.peek() < val) {
+                //获取并删除队首元素
                 q.poll();
                 q.add(val);
             }
