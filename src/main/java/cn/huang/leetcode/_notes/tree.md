@@ -13,6 +13,8 @@
 
 - 687 Longest Univalue Path
 
+- 783. Minimum Distance Between BST Nodes
+
 - 872 Leaf-Similar Trees
     inorder traversal
 

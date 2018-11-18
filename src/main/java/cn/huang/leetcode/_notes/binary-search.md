@@ -1,3 +1,8 @@
- - 69. Sqrt(x)
- - 278. First Bad Version
- - 852	Peak Index in a Mountain Array
+- 69. Sqrt(x)
+- 278. First Bad Version
+- 744. Find Smallest Letter Greater Than Target
+    r = letters.length 而不是letters.length - 1
+    
+- 704. Binary Search
+
+- 852	Peak Index in a Mountain Array
