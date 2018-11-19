@@ -6,7 +6,7 @@ import java.util.Map;
 /*
     389. Find the Difference
  */
-public class LC_389_FindtheDifference {
+public class LC_0389_FindtheDifference {
     public char findTheDifference(String s, String t) {
         int ret = 0;
         for (int i = 0; i < s.length(); i++) {

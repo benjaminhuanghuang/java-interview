@@ -3,7 +3,7 @@ package cn.huang.leetcode;
 /*
 	832	 Flipping an Image
  */
-public class LC_0832FlippingAnImage {
+public class LC_0832_FlippingAnImage {
     public int[][] flipAndInvertImage(int[][] A) {
         for(int r=0; r<A.length; r++ )
         {

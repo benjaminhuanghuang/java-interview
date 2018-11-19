@@ -1,5 +1,6 @@
 - 190	Reverse Bits
 - 191. Number of 1 Bits
+- 231. Power of Two
 - 371. Sum of Two Integers
 - 832	 Flipping an Image
     0 -> 1, 1 -> 0 using  v ^ 1

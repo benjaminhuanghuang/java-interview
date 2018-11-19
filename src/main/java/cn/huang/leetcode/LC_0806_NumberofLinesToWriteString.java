@@ -5,7 +5,7 @@ package cn.huang.leetcode;
     how many lines have at least one character from S, and what is the width used by the last such line?
     Return your answer as an integer list of length 2.
  */
-public class LC_806_NumberofLinesToWriteString {
+public class LC_0806_NumberofLinesToWriteString {
 
     public int[] numberOfLines(int[] widths, String S) {
         int[] result = {0, 0};

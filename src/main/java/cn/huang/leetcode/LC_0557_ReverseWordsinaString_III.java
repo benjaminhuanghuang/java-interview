@@ -4,7 +4,7 @@ package cn.huang.leetcode;
     557. Reverse Words in a String III
 
  */
-public class LC_557_ReverseWordsinaString_III {
+public class LC_0557_ReverseWordsinaString_III {
     public String reverseWords(String s) {
         String[] strs = s.split(" ");
         String result = "";

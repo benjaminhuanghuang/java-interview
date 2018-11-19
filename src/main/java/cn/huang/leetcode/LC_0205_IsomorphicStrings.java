@@ -5,7 +5,7 @@ import java.util.HashMap;
 /*
     205. Isomorphic Strings
  */
-public class LC_205_IsomorphicStrings {
+public class LC_0205_IsomorphicStrings {
     public boolean isIsomorphic(String s, String t) {
         if (s == null || t == null)
             return false;
