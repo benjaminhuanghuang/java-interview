@@ -4,6 +4,6 @@ package cn.huang.leetcode;
  */
 public class LC_0743_NetworkDelayTime {
     public int networkDelayTime(int[][] times, int N, int K) {
-
+        return 0;
     }
 }
