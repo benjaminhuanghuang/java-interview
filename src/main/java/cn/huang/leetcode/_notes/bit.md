@@ -2,6 +2,8 @@
 - 191. Number of 1 Bits
 - 231. Power of Two
 - 371. Sum of Two Integers
+- 476. Number Complement
+    
 - 832	 Flipping an Image
     0 -> 1, 1 -> 0 using  v ^ 1
 
@@ -50,3 +52,10 @@ The value of n>>s is n right-shifted s bit positions with sign-extension.
 The value of n>>>s is n right-shifted s bit positions with zero-extension.
 
 MAX = (1 << 31) - 1
+
+
+##
+Integer.bitCount(h)
+
+## 按位取反
+num ^ (mask)

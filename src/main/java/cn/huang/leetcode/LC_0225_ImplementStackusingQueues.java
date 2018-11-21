@@ -10,55 +10,45 @@ public class LC_0225_ImplementStackusingQueues {
     //https://www.youtube.com/watch?v=grAYBHmn4Cs
     class MyStack {
 
-        LinkedList<Integer> queue1 = new LinkedList<Integer>();
-        LinkedList<Integer> queue2 = new LinkedList<Integer>();
+        LinkedList<Integer> data = new LinkedList<Integer>();
+        LinkedList<Integer> helper = new LinkedList<Integer>();
+
 
         // Push element x onto stack.
         public void push(int x) {
-            if(empty()){
-                //Adds the specified element as the tail (last element) of this list.
-                queue1.offer(x);
-            }else{
-                if(queue1.size()>0){
-                    queue2.offer(x);
-                    int size = queue1.size();
-                    while(size>0){
-                        queue2.offer(queue1.poll());
-                        size--;
-                    }
-                }else if(queue2.size()>0){
-                    queue1.offer(x);
-                    int size = queue2.size();
-                    while(size>0){
-                        queue1.offer(queue2.poll());
-                        size--;
-                    }
-                }
-            }
+            data.offer(x);
         }
 
         // Removes the element on top of the stack.
-        public void pop() {
-            if(queue1.size()>0){
-                queue1.poll();
-            }else if(queue2.size()>0){
-                queue2.poll();
+        public int pop() {
+            while(data.size() > 1)
+            {
+                helper.offer(data.poll());
             }
+            int element = data.poll();
+            LinkedList<Integer> tmp = data;
+            data = helper;
+            helper = tmp;
+            return element;
         }
 
         // Get the top element.
         public int top() {
-            if(queue1.size()>0){
-                return queue1.peek();
-            }else if(queue2.size()>0){
-                return queue2.peek();
+            while(data.size() > 1)
+            {
+                helper.offer(data.poll());
             }
-            return 0;
+            int element = data.peek();
+            helper.offer(data.poll());
+            LinkedList<Integer> tmp = data;
+            data = helper;
+            helper = tmp;
+            return element;
         }
 
         // Return whether the stack is empty.
         public boolean empty() {
-            return queue1.isEmpty() & queue2.isEmpty();
+            return data.isEmpty();
         }
     }
 }
