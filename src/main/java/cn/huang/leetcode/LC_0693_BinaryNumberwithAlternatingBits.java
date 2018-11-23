@@ -19,6 +19,7 @@ public class LC_0693_BinaryNumberwithAlternatingBits {
         }
         return true;
     }
+
     public boolean hasAlternatingBits(int n) {
         int last = n & 1;
         while (n != 0 && (n & 1) == last) {
