@@ -52,7 +52,7 @@ public class LC_0210_CourseSchedule_II {
 
         int[] resArray = new int[numCourses];
         if (res.size() != numCourses)
-            return new int[];
+            return new int[0];
         for(int i =0; i<numCourses;i++)
         {
             resArray[i]= res.get(i);
