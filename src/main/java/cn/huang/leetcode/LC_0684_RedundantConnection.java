@@ -1,43 +1,121 @@
 package cn.huang.leetcode;
 
+import java.util.*;
+
 /*
 684. Redundant Connection
 
  */
 public class LC_0684_RedundantConnection {
+    public int[] findRedundantConnection_DFS(int[][] edges) {
+        HashMap<Integer, List<Integer>> graph  = new HashMap<>();
+
+        for(int[] edge : edges)
+        {
+            int start = edge[0];
+            int end = edge[1];
+
+            HashSet<Integer> visited = new HashSet<>();
+            if(hasPath(start, end, graph, visited))
+            {
+                return edge;
+            }
+            if(!graph.containsKey(start))
+                graph.put(start, new ArrayList<Integer>());
+            graph.get(start).add(end);
+
+            if(!graph.containsKey(end))
+                graph.put(end, new ArrayList<Integer>());
+            graph.get(end).add(start);
+        }
+        return null;
+    }
+
+    private boolean hasPath(int start, int end, HashMap<Integer, List<Integer>> graph, HashSet<Integer> visited)
+    {
+        if(start == end)
+            return true;
+
+        visited.add(start);
+        if(!graph.containsKey(start) || !graph.containsKey(end))
+            return false;
+        for(int next: graph.get(start)) {
+            if (visited.contains(next))
+                continue;
+
+            if (hasPath(next, end, graph, visited))
+                return true;
+        }
+        return false;
+    }
+    //http://www.noteanddata.com/leetcode-684-Redundant-Connection-java-union-find-solution.html
+
     public int[] findRedundantConnection(int[][] edges) {
-        //root of every node, if the root is the same, then the edge is redundant
-        int size = edges.size() + 1;
-        vector<int> root (size);
-        //ans
-        vector<int> ans;
-        //in the begining, every node's root is itself
-        for (int i = 1; i <= edges.size(); i++) {
-            root[i] = i;
+        UnionFind uf = new UnionFind(edges.length);
+        for (int i = 0; i < edges.length; ++i) {
+            int from = edges[i][0] - 1;
+            int to = edges[i][1] - 1;
+            if (uf.root(from) == uf.root(to)) {
+                return new int[]{from + 1, to + 1};
+            }
+            uf.union(from, to);
         }
-        //find the root of every node
-        for (int i = 0; i < edges.size(); i++) {
-            Union(edges[i][0], edges[i][1], root, ans);
-        }
-        return ans;
+        return null;
     }
 
-    void Union(int first, int second, int[] root, int[] ans) {
-        int root1 = findroot(first, root);
-        int root2 = findroot(second, root);
-        if (root1 != root2) {
-            root[root2] = root1;
-        } else {
-            ans.clear();
-            ans.push_back(first);
-            ans.push_back(second);
+
+    static class UnionFind {
+        private int[] ids;
+
+        public UnionFind(int n) {
+            this.ids = new int[n];
+            for (int i = 0; i < ids.length; ++i) {
+                ids[i] = i;
+            }
+        }
+
+        public int root(int i) {
+            while (ids[i] != i) {
+                i = ids[i];
+            }
+            return i;
+        }
+
+        public void union(int i, int j) {
+            int rooti = root(i);
+            int rootj = root(j);
+            ids[rootj] = rooti;
+        }
+
+        public boolean find(int i, int j) {
+            return root(i) == root(j);
         }
     }
 
-    int findroot(int node, int[] root) {
-        while (node != root[node]) {
-            node = findroot(root[node], root);
+    public int[] findRedundantConnection_2(int[][] edges) {
+        //        unionfind
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < edges.length; i++) {
+            int[] edge = edges[i];
+            int i1 = unionFind(map, edge[0]);
+            int i2 = unionFind(map, edge[1]);
+            if (i1 == i2) {
+                return edge;
+            }
+            map.put(i1, i2);
         }
-        return node;
+        return null;
+    }
+
+    private int unionFind(Map<Integer, Integer> map, int i) {
+        while (true) {
+            Integer va = map.get(i);
+            if (va == null) {
+                return i;
+            } else {
+                i = va;
+            }
+        }
     }
 }
