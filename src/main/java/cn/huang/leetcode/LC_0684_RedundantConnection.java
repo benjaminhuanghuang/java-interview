@@ -108,6 +108,7 @@ public class LC_0684_RedundantConnection {
         return null;
     }
 
+    // find root
     private int unionFind(Map<Integer, Integer> map, int i) {
         while (true) {
             Integer va = map.get(i);
