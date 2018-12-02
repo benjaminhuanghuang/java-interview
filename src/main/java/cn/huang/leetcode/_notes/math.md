@@ -5,3 +5,6 @@
 - 258. Add Digits
 - 263. Ugly Number
 - 479. Largest Palindrome Product
+
+- 866. Prime Palindrome
+
