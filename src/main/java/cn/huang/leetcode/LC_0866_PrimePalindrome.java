@@ -16,6 +16,6 @@ For example, 12321 is a palindrome.
  */
 public class LC_0866_PrimePalindrome {
     public int primePalindrome(int N) {
-
+        return 0;
     }
 }
