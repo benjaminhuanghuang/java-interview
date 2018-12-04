@@ -9,3 +9,5 @@
     染色法
     
 - 802. Find Eventual Safe States
+
+- 934. Shortest Bridge

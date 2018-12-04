@@ -20,4 +20,11 @@ public class LC_0949_LargestTimeforGivenDigitsTest {
         String res = s.largestTimeFromDigits(new int[]{1,2,3,4});
         Assert.assertEquals("23:41", res);
     }
+
+    @Test
+    public void largestTimeFromDigits_bruteforce() {
+        LC_0949_LargestTimeforGivenDigits s= new LC_0949_LargestTimeforGivenDigits();
+        String res = s.largestTimeFromDigits_bruteforce(new int[]{1,2,3,4});
+        Assert.assertEquals("23:41", res);
+    }
 }
