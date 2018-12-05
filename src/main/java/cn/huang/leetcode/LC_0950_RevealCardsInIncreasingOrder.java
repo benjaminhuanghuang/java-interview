@@ -1,6 +1,6 @@
 package cn.huang.leetcode;
 
-import java.util.Arrays;
+import java.util.*;
 
 /*
 950. Reveal Cards In Increasing Order
@@ -18,13 +18,13 @@ Return an ordering of the deck that would reveal the cards in increasing order.
 The first entry in the answer is considered to be the top of the deck.
 
 
-
 Example 1:
 
 Input: [17,13,11,2,3,5,7]
 Output: [2,13,3,11,5,17,7]
 Explanation:
 We get the deck in the order [17,13,11,2,3,5,7] (this order doesn't matter), and reorder it.
+
 After reordering, the deck starts as [2,13,3,11,5,17,7], where 2 is the top of the deck.
 We reveal 2, and move 13 to the bottom.  The deck is now [3,11,5,17,7,13].
 We reveal 3, and move 11 to the bottom.  The deck is now [5,17,7,13,11].
@@ -44,10 +44,38 @@ A[i] != A[j] for all i != j
 
  */
 public class LC_0950_RevealCardsInIncreasingOrder {
+    //https://redtongue.coding.me/2018/12/02/950-Reveal-Cards-In-Increasing-Order/
+    /*
+    可以用输出来反推输入，输出可以看成是一个队列,记为queue，最后入队的是最大值，最先入队的是最小值。
+    从输入到输出的逻辑是先把deck的第一个元素放入queue，然后第二个元素放入deck的最后；
+
+    那么从输出反推的输入的逻辑就是先把deck的最后一个元素放入到deck的第一个位置，然后再把queue的最后一个元素放入deck。
+     */
     public int[] deckRevealedIncreasing(int[] deck) {
-        int[] copiedArray = Arrays.copyOf(deck, deck.length);
 
+        List<Integer> res = new ArrayList<>();
+        Arrays.sort(deck);
+        LinkedList<Integer> queue = new LinkedList<>();  // ordered cards
+        for(int card: deck)
+            queue.offer(card);
 
-        return null;
+        while(!queue.isEmpty())
+        {
+            int card = queue.pollLast();
+            if(res.size() == 0)
+                res.add(card);
+            else
+            {
+                res.add(0,  res.get(res.size()-1));
+                res.remove(res.size()-1);
+                res.add(0, card);
+            }
+
+        }
+        int[] ret = new int[res.size()];
+        int i = 0;
+        for (Integer e : res)
+            ret[i++] = e;
+        return ret;
     }
 }
