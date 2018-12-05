@@ -18,6 +18,8 @@
 
 - 687 Longest Univalue Path
 
+- 701. Insert into a Binary Search Tree
+
 - 783. Minimum Distance Between BST Nodes
 
 - 872 Leaf-Similar Trees
