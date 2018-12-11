@@ -14,7 +14,15 @@ If you reach any square (including the target) at the same time as a ghost, it d
 Return True if and only if it is possible to escape.
  */
 public class LC_0789_EscapeTheGhosts {
+    /*
+    如果所有的幽灵都无法在你之前到达target，那么你可以逃脱。只要比较曼哈顿距离即可。
+    曼哈顿距离——两点在南北方向上的距离加上在东西方向上的距离，即d（i，j）=|xi-xj|+|yi-yj|。
+     */
     public boolean escapeGhosts(int[][] ghosts, int[] target) {
-
+        int steps = Math.abs(target[0]) + Math.abs(target[1]);
+        for (int[] g : ghosts)
+            if (Math.abs(g[0] - target[0]) + Math.abs(g[1] - target[1]) <= steps)
+                return false;
+        return true;
     }
 }
