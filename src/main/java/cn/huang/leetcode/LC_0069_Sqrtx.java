@@ -10,9 +10,8 @@ public class LC_0069_Sqrtx {
 
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
-            // 不要写成middle*middle==x，会溢出
+            // 不要写成middle*middle==x，when x is very big 会溢出
             if (mid == x / mid) {
-
                 return mid;
             } else if (mid < x / mid) {
                 start = mid;

@@ -2,6 +2,11 @@ package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.TreeNode;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 /*
 508. Most Frequent Subtree Sum
  Given the root of a tree, you are asked to find the most frequent subtree sum.
@@ -29,8 +34,50 @@ return [2], since 2 happens twice, however -5 only occur once.
 
 Note: You may assume the sum of values in any subtree is in the range of 32-bit signed integer.
  */
-public class LC_0508_MostFrequentSubtreeSum {
-    public int[] findFrequentTreeSum(TreeNode root) {
 
+/*
+    https://www.youtube.com/watch?v=mqFIWYBjrkw
+ */
+public class LC_0508_MostFrequentSubtreeSum {
+    private int maxSum = 0;
+
+    public int[] findFrequentTreeSum(TreeNode root) {
+        Map<Integer, Integer> sumToCount = new HashMap<>();
+
+
+        if (root != null)
+            countSum(root, sumToCount);
+
+        List<Integer> maxSums = new LinkedList<>();
+
+        for (Map.Entry<Integer, Integer> pair : sumToCount.entrySet()) {
+            int count = pair.getValue();
+            if (count == maxSum)
+                maxSums.add(pair.getKey());
+        }
+
+        int[] result = new int[maxSums.size()];
+        int i = 0;
+        for (int sum : maxSums) {
+            result[i++] = sum;
+        }
+        return result;
+    }
+
+    private int countSum(TreeNode root, Map<Integer, Integer> sumToCount)
+    {
+        int sum = root.val;
+        if(root.left != null)
+        {
+            sum += countSum(root.left, sumToCount);
+        }
+        if(root.right != null)
+        {
+            sum += countSum(root.right, sumToCount);
+        }
+        int count = sumToCount.containsKey(sum) ? sumToCount.get(sum) + 1:1;
+        sumToCount.put(sum, count);
+        maxSum = Math.max(maxSum, count);
+        return sum;
     }
 }
