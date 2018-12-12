@@ -57,7 +57,6 @@ public class LC_0234_PalindromeLinkedList {
 
             p = p.next;
             q = q.next;
-
         }
 
         return true;
