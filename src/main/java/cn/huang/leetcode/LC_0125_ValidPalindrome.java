@@ -43,12 +43,10 @@ public class LC_0125_ValidPalindrome {
         while (l < r) {
             while (!isAlpha(s.charAt(l)) && !isNum(s.charAt(l))) {
                 l++;
-                continue;
             }
 
             if (!isAlpha(s.charAt(r)) && !isNum(s.charAt(r))) {
                 r--;
-                continue;
             }
 
             char left = s.charAt(l);
