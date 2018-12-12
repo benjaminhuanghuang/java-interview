@@ -29,7 +29,7 @@ public class LC_0695_MaxAreaofIsland {
             return 0;
         }
         int count = 1;
-        grid[x][y] = 0;
+        grid[x][y] = 0;  // important!
         for (int[] step : steps) {
             count += dfs(grid, x + step[0], y + step[1], m, n);
         }
