@@ -47,8 +47,9 @@ public class LC_0061_RotateList {
         {
             p = p.next;
         }
+        // p is the new tail
         head = p.next;
-        p.next = null;
+        p.next = null;  // cut the cycle
         return head;
     }
 }
