@@ -34,9 +34,7 @@ public class LC_0078_Subsets {
     }
 
     private void helper(int[] nums, List<List<Integer>> res, int start, List<Integer> combination) {
-        //if (start <= nums.length) {
         res.add(new ArrayList<>(combination));
-        //}
 
         for (int i = start; i < nums.length; i++) {
             combination.add(nums[i]);
