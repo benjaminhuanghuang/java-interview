@@ -22,7 +22,7 @@ Given word = "ABCB", return false.
 
 
  */
-public class LC_079_WordSearch {
+public class LC_0079_WordSearch {
     public boolean exist(char[][] board, String word) {
         int rows = board.length;
         int cols = board[0].length;

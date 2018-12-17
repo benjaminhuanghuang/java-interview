@@ -1,6 +1,32 @@
 package cn.huang.leetcode;
 
 /*
+    91. Decode Ways
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+
+Given a non-empty string containing only digits, determine the total number of ways to decode it.
+
+Example 1:
+
+Input: "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+
+Example 2:
+
+Input: "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+
+*/
+
+
+/*
     https://leetcode.com/problems/decode-ways/
 
     Facebook Coding Interview Question - How Many Ways to Decode This Message?
@@ -28,7 +54,7 @@ package cn.huang.leetcode;
  */
 public class LC_0091_DecodeWays {
     // To case "111111", h(6) = h(5) + h(4), h(5) = h(4) + h(3)... h(4) were calculated twice
-    public int num_ways_recursive(String data) {
+    public int numDecodings_recursive(String data) {
         return this.helper(data, data.length());
 
     }
@@ -50,7 +76,7 @@ public class LC_0091_DecodeWays {
         return result;
     }
 
-    public int num_ways_dp(String data) {
+    public int numDecodings_dp(String data) {
         if (data == null || data.length() == 0 || data.charAt(0) == '0')
             return 0;
         if (data.length() == 1)
