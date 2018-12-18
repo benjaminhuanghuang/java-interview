@@ -47,6 +47,6 @@ public class LC_0127_WordLadder {
     https://www.youtube.com/watch?v=Sove6q_f-8I
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-
+        return 0;
     }
 }

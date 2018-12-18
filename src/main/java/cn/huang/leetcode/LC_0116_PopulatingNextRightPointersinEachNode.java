@@ -17,7 +17,10 @@ import java.util.Queue;
  */
 public class LC_0116_PopulatingNextRightPointersinEachNode {
 
-
+    /*
+    BFS, easy but not constant space
+    Complexity: time O(N) space O(N) - queue
+     */
     public void connect(TreeLinkNode root) {
         if (root == null)
             return;
@@ -39,6 +42,33 @@ public class LC_0116_PopulatingNextRightPointersinEachNode {
 
             for (int i = 0; i < count - 1; i++) {
                 layer.get(i).next = layer.get(i + 1);
+            }
+        }
+    }
+
+    /*
+    http://rainykat.blogspot.com/2017/02/leetcodef-117-populating-next-right.html
+    Do not use layer
+     */
+    public void connect_better(TreeLinkNode root) {
+        if (root == null)
+            return;
+
+        Queue<TreeLinkNode> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            int count = q.size();
+            for (int i = 0; i < count; i++) {
+                TreeLinkNode node = q.poll();
+                if (i < count - 1) {
+                    TreeLinkNode next = q.peek();
+                    node.next = next;
+                }
+                if (node.left != null)
+                    q.add(node.left);
+                if (node.right != null)
+                    q.add(node.right);
             }
         }
     }
