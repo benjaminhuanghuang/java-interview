@@ -17,33 +17,34 @@ public class LC_0133_CloneGraph {
             label = x;
             neighbors = new ArrayList<UndirectedGraphNode>();
         }
-
-        public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-            if (node == null)
-                return null;
-
-            UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
-            HashMap<UndirectedGraphNode, UndirectedGraphNode> maps = new HashMap<>();
-            Queue<UndirectedGraphNode> queue = new LinkedList<>();
-
-            maps.put(node, newNode);
-            queue.offer(node);
-
-            while (!queue.isEmpty()) {
-                UndirectedGraphNode originalNode = queue.poll();
-                List<UndirectedGraphNode> neighbors = originalNode.neighbors;
-
-                for (UndirectedGraphNode neighbour : neighbors) {
-                    if (!maps.containsKey(neighbour)) {
-                        UndirectedGraphNode newTmpNode = new UndirectedGraphNode(neighbour.label);
-                        maps.put(neighbour, newTmpNode);
-                        queue.offer(neighbour);
-                    }
-                    // add neighbor
-                    maps.get(originalNode).neighbors.add(maps.get(neighbour));
-                }
-            }
-            return newNode;
-        }
     }
+
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if (node == null)
+            return null;
+
+        UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
+        HashMap<UndirectedGraphNode, UndirectedGraphNode> visited = new HashMap<>();
+        Queue<UndirectedGraphNode> queue = new LinkedList<>();
+
+        visited.put(node, newNode);
+        queue.offer(node);
+
+        while (!queue.isEmpty()) {
+            UndirectedGraphNode originalNode = queue.poll();
+            List<UndirectedGraphNode> neighbors = originalNode.neighbors;
+
+            for (UndirectedGraphNode neighbour : neighbors) {
+                if (!visited.containsKey(neighbour)) {
+                    UndirectedGraphNode newTmpNode = new UndirectedGraphNode(neighbour.label);
+                    visited.put(neighbour, newTmpNode);
+                    queue.offer(neighbour);
+                }
+                // add neighbor
+                visited.get(originalNode).neighbors.add(visited.get(neighbour));
+            }
+        }
+        return newNode;
+    }
+
 }

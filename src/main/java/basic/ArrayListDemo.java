@@ -1,7 +1,9 @@
 package basic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class ArrayListDemo {
     public boolean ArrayListDemo() {
@@ -21,5 +23,7 @@ public class ArrayListDemo {
         for (int a : new int[]{1, 2, 3}) {
 
         }
+
+        List<String> words = Arrays.asList("hot", "dot", "dog", "lot", "log");
     }
 }

@@ -1,5 +1,8 @@
 package cn.huang.leetcode;
+/*
+144. Binary Tree Preorder Traversal
 
+ */
 import cn.huang.leetcode.common.TreeNode;
 
 import java.util.*;
@@ -21,14 +24,14 @@ public class LC_0144_BinaryTreePreorderTraversal {
         List<Integer> result = new ArrayList<>();
 
         if (root != null) {
-            Deque<TreeNode> stack = new ArrayDeque<>();
-            stack.add(root);
+            Stack<TreeNode> stack = new Stack<>();
+            stack.push(root);
 
             while (!stack.isEmpty()) {
-                TreeNode node = stack.removeLast();
+                TreeNode node = stack.pop();
                 result.add(node.val);
 
-                // push right node firstly
+                // push right node firstly, pop left before right
                 if (node.right != null) {
                     stack.add(node.right);
                 }
