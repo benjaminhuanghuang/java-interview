@@ -14,6 +14,10 @@ Given the total number of courses and a list of prerequisite pairs, is it possib
 
  */
 public class LC_0207_CourseSchedule {
+    /*
+    This problem can be converted to finding if a graph contains a cycle.
+    https://www.youtube.com/watch?v=zkTOIVUdW-I
+     */
     public boolean canFinish_BFS(int numCourses, int[][] prerequisites) {
         int[] indegree = new int[numCourses];
         int res = numCourses;
