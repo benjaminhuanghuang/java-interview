@@ -51,8 +51,5 @@ public class LC_0152_MaximumProductSubarray {
             res = Math.max(res, maxhere[i]);
         }
         return res;
-
     }
-}
-
 }
