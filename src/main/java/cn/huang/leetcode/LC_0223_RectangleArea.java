@@ -15,7 +15,7 @@ Example:
 Input: A = -3, B = 0, C = 3, D = 4, E = 0, F = -1, G = 9, H = 2
 Output: 45
  */
-public class PC_0223_RectangleArea {
+public class LC_0223_RectangleArea {
     public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
         int sum = (C - A) * (D - B) + (H - F) * (G - E);
         if (E >= C || F >= D || B >= H || A >= G)
