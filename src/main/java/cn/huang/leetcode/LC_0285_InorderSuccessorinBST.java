@@ -20,6 +20,7 @@ public class LC_0285_InorderSuccessorinBST {
         if (root == null)
             return null;
 
+        // Try to find the node
         TreeNode next = null;
         TreeNode curr = root;
         while (curr != null && curr.val != p.val) {
