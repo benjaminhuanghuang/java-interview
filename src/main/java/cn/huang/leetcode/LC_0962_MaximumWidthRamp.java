@@ -44,7 +44,6 @@ public class LC_0962_MaximumWidthRamp {
         }
         return maxWidth;
     }
-
     public int maxWidthRamp2(int[] A) {
         int maxWidth = 0;
         for (int r = A.length - 1; r > 0; r--) {
@@ -53,6 +52,22 @@ public class LC_0962_MaximumWidthRamp {
                     continue;
                 if (A[r] >= A[l]) {
                     maxWidth = Math.max(maxWidth, r - l);
+                }
+            }
+        }
+
+        return maxWidth;
+    }
+    public int maxWidthRamp_DP(int[] A) {
+        int maxWidth = 0;
+
+        int[][]dp = new int[A.length][A.length];
+
+        for (int i = 0; i < A.length - 1; i++) {
+            for (int j = i + 1; j < A.length; j++) {
+                if (A[j] >= A[i]) {
+                    int width = j - i;
+                    maxWidth = Math.max(maxWidth, width);
                 }
             }
         }
