@@ -17,7 +17,7 @@ return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)
  */
 public class LC_0325_MaximumSizeSubarraySumEqualsk {
     /*
-    https://www.youtube.com/watch?v=aYfwus5T3Bs
+    http://www.cnblogs.com/grandyang/p/5336668.html
      */
     public int maxSubArrayLen(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
@@ -37,12 +37,11 @@ public class LC_0325_MaximumSizeSubarraySumEqualsk {
             if (map.containsKey(diff)) {
                 max = Math.max(max, i - map.get(diff));
             }
-
+            //保存第一个出现该sum和的位置
             if (!map.containsKey(sum)) {
                 map.put(sum, i);
             }
         }
-
 
         return max;
     }
