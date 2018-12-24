@@ -90,12 +90,14 @@ public class LC_0355_DesignTwitter {
             timeline.get(userId).add(new Tweet(timestamp++, tweetId));
         }
 
-        /** Retrieve the 10 most recent tweet ids in the user's news feed. Each item in the news feed must be posted by users who the user followed or by the user herself. Tweets must be ordered from most recent to least recent. */
+        /** Retrieve the 10 most recent tweet ids in the user's news feed.
+         * Each item in the news feed must be posted by users who the user followed or by the user herself.
+         * Tweets must be ordered from most recent to least recent. */
         public List<Integer> getNewsFeed(int userId) {
             HashSet<Integer> followees = relationship.get(userId);
             List<Tweet> ownerTweets = timeline.get(userId);
             List<Tweet> tweetsList = new ArrayList<Tweet>();
-            // add owner's own laest 10 tweets to tweetsList
+            // add owner's own latest 10 tweets to tweetsList
             if (ownerTweets != null) {
                 for(int i = ownerTweets.size() - 1; i >= Math.max(0, ownerTweets.size() - 10); i--) { // if owner's tweets < 10, take 0
                     tweetsList.add(ownerTweets.get(i));
