@@ -66,7 +66,7 @@ import java.util.LinkedList;
 public class LC_0353_DesignSnakeGame {
     public class SnakeGame {
         int[][] food;
-        int index;
+        int index;   // food index
         int row, col;  // high and width
         int x, y;    // snake head
         int len;
