@@ -103,6 +103,10 @@ public class LC_0662_MaximumWidthofBinaryTree {
         return max;
     }
 
+    /*
+    对二叉树节点进行标号，根节点标号为0；若某节点标号为c，则其左右孩子标号分别为2c, 2c + 1
+    某层的宽度即为最右、最左节点标号之差+1
+     */
     public int widthOfBinaryTree(TreeNode root) {
         if (root == null) {
             return 0;
