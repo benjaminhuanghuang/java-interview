@@ -58,11 +58,8 @@ public class LC_0886_PossibleBipartition {
         int[] visited = new int[N + 1];
         // 0 : not visited, 1: red. 2 : black
 
-        //int[][] graph = new int[N + 1][N + 1];
         List<List<Integer>> graph = new ArrayList<>();
-        // for(int i = 0; i <= N; i++){
-        //     graph.get(i).add(new ArrayList<Integer>());
-        // }
+
         for(int i = 0; i <= N; i++){
             graph.add(new ArrayList<>());
         }
