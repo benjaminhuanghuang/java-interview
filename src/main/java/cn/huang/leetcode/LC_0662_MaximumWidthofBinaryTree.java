@@ -126,11 +126,11 @@ public class LC_0662_MaximumWidthofBinaryTree {
                     max = Math.max(max, index - left + 1);
                 }
                 if (curr.left != null) {
-                    map.put(curr.left, 2 * index + 1);
+                    map.put(curr.left, 2 * index);
                     queue.add(curr.left);
                 }
                 if (curr.right != null) {
-                    map.put(curr.right, 2 * index + 2);
+                    map.put(curr.right, 2 * index + 1);
                     queue.add(curr.right);
                 }
             }
