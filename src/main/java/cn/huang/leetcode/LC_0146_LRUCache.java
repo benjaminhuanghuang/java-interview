@@ -19,11 +19,12 @@ Could you do both operations in O(1) time complexity?
 
  */
 public class LC_0146_LRUCache {
-    class LRUCache {
-        class ListNode {
+    public class LRUCache {
+        public class ListNode {
             int key, val;
             ListNode prev, next;
-            ListNode(int k, int v) {
+
+            public ListNode(int k, int v) {
                 key = k;
                 val = v;
                 prev = null;
@@ -58,7 +59,7 @@ public class LC_0146_LRUCache {
             return target.val;
         }
 
-        public void set(int key, int value) {
+        public void put(int key, int value) {
             if (map.containsKey(key)) { // update old value of the key
                 ListNode target = map.get(key);
                 target.val = value;
