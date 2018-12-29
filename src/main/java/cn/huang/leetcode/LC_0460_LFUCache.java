@@ -55,7 +55,7 @@ public class LC_0460_LFUCache {
             if (Objects.nonNull(node.next)) node.next.prev = node.prev;
         }
 
-        public void set(int key, int value) {
+        public void put(int key, int value) {
             if (0 == this.capacity) return;
             if (valueMap.containsKey(key)) {
                 increase(key, value);
