@@ -56,7 +56,7 @@ return its vertical order traversal as:
  */
 
 
-public class LC_314_BinaryTreeVerticalOrderTraversal {
+public class LC_0314_BinaryTreeVerticalOrderTraversal {
     /*
     https://www.youtube.com/watch?v=KrT_qcGj4nA
 
