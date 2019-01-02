@@ -38,33 +38,24 @@ public class LC_0227_BasicCalculator_II {
         int left = 0;
         int right = 0;
         char op = '+';
-        for(int i=0; i < s.length(); i++)
-        {
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
             if (c == ' ')
                 continue;
-            if (Character.isDigit(c))
-            {
+            if (Character.isDigit(c)) {
                 num = num * 10 + c - '0';
             }
-            if (c == '+' || c == '-' || c == '*' || c == '/' || i== s.length() -1)
-            {
-                if ( op == '+')
-                {
+            if (c == '+' || c == '-' || c == '*' || c == '/' || i == s.length() - 1) {
+                if (op == '+') {
                     left = left + right;
                     right = num;
-                }
-                else if(op == '-')
-                {
+                } else if (op == '-') {
                     left = left + right;
                     right = -num;
-                }
-                else if(op == '*'){
+                } else if (op == '*') {
                     right *= num;
-                }
-                else
-                {
+                } else {
                     right = right / num;
                 }
                 num = 0;
@@ -75,37 +66,70 @@ public class LC_0227_BasicCalculator_II {
     }
 
     public int calculate_stack(String s) {
-        if (s == null || s.length() ==0)
+        if (s == null || s.length() == 0)
             return 0;
         Stack<Integer> stack = new Stack<>();
-        int res =0;
+        int res = 0;
         char sign = '+';
-        int num =0;
-        for(int i=0; i < s.length(); i++) {
-            if (Character.isDigit(s.charAt(i)))
-            {
+        int num = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
                 num = s.charAt(i) - '0';
-                while(i + 1 < s.length() &&Character.isDigit(s.charAt(i+1)))
-                {
-                    num = num * 10 + s.charAt(i+1) - '0';
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                    num = num * 10 + s.charAt(i + 1) - '0';
                     i++;
                 }
             }
-            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == s.length() -1) {
+            if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == s.length() - 1) {
                 // + - 直接放入stack
-                if(sign == '+') stack.push(num);
-                if(sign == '-') stack.push(-num);
+                if (sign == '+') stack.push(num);
+                if (sign == '-') stack.push(-num);
                 // * / 运算后压栈
-                if(sign == '*') stack.push(stack.pop() * num);
-                if(sign == '/') stack.push(stack.pop() / num);
+                if (sign == '*') stack.push(stack.pop() * num);
+                if (sign == '/') stack.push(stack.pop() / num);
                 sign = s.charAt(i);
-                num =0;
+                num = 0;
             }
         }
 
-        for(int i: stack)
+        for (int i : stack)
             res += i;
 
         return res;
+    }
+
+    /*
+    https://www.youtube.com/watch?v=ABMLLVzf4ZQ&t=394s
+     */
+    public int calculate_stack2(String s) {
+        s = s.trim();
+        Stack<Integer> stack = new Stack<>();
+
+        int ans = 0;
+        char sign = '+';
+        int num = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c)) {
+                num = c - '0';
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                    num = num * 10 + s.charAt(i + 1) - '0';
+                    i++;
+                }
+            }
+            if(!Character.isDigit(s.charAt(i)) && s.charAt(i) !=' ' || i == s.length()-1)
+            {
+                if(sign == '+') stack.push(num);
+                if(sign == '-') stack.push(-num);
+                if(sign == '*') stack.push(stack.pop() * num);
+                if(sign == '/') stack.push(stack.pop() / num);
+                sign = s.charAt(i);
+                num = 0;
+            }
+        }
+        for (int i : stack)
+            ans += i;
+
+        return ans;
     }
 }

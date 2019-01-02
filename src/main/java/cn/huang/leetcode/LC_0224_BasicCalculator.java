@@ -93,7 +93,7 @@ public class LC_0224_BasicCalculator {
                 ans = 0;
                 sign = 1;
             } else if (c == ')') {
-                ans *= stack.pop(); // sign
+                ans *= stack.pop(); // current ans = current ans * sign
                 ans += stack.pop(); // previous ans
             } else {
                 //(Character.isDigit(c))
