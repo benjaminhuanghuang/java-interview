@@ -24,6 +24,10 @@ Input: "(1+(4+5+2)-3)+(6+8)"
 Output: 23
 
  */
+
+/*
+
+ */
 public class LC_0224_BasicCalculator {
 
     public int calculate(String s) {
@@ -59,6 +63,46 @@ public class LC_0224_BasicCalculator {
                     sign = c == '+' ? 1 : -1;
                 }
                 num = 0;
+            }
+        }
+        return ans;
+    }
+
+    /*
+    https://www.youtube.com/watch?v=ijyUwyt5vkU
+     */
+    public int calculate2(String s) {
+        s = s.trim();
+        Stack<Integer> stack = new Stack<>();
+
+        int ans = 0;
+        int sign = 1; // "+"
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == ' ')
+                continue;
+
+            if (c == '+') {
+                sign = 1;
+            } else if (c == '-') {
+                sign = -1;
+            } else if (c == '(') {
+                stack.push(ans);
+                stack.push(sign);
+                ans = 0;
+                sign = 1;
+            } else if (c == ')') {
+                ans *= stack.pop(); // sign
+                ans += stack.pop(); // previous ans
+            } else {
+                //(Character.isDigit(c))
+                int num = c - '0';
+                while (i + 1 < s.length() && Character.isDigit(s.charAt(i + 1))) {
+                    num = num * 10 + s.charAt(i + 1) - '0';
+                    i++;
+                }
+                ans += num * sign;
             }
         }
         return ans;
