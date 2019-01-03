@@ -34,4 +34,23 @@ public class LC_0035_SearchInsertPosition {
         else
             return r + 1;
     }
+
+    /*
+    https://www.youtube.com/watch?v=suG-CGyV8Ss
+     */
+    public int searchInsert_better(int[] nums, int target) {
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r) {
+            int mid = (r - l) / 2 + l;
+            if (nums[mid] > target) {
+                r = mid - 1;
+            } else if (nums[mid] < target) {
+                l = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return l;
+    }
 }

@@ -31,36 +31,33 @@ public class LC_0394_DecodeString {
         Stack<Integer> countStack = new Stack<>();
         // 记录'['之前的运算结果
         Stack<String> resStack = new Stack<>();
-        int idx = 0;
+        int i = 0;
         int curNum = 0;
-        while (idx < s.length()) {
-            char ch = s.charAt(idx);
+        while (i < s.length()) {
+            char ch = s.charAt(i);
             if (Character.isDigit(ch)) {
-                while (Character.isDigit(s.charAt(idx)))
-                    curNum = 10 * curNum
-                            + (s.charAt(idx++) - '0');
+                while (Character.isDigit(s.charAt(i)))
+                    curNum = 10 * curNum + (s.charAt(i++) - '0');
             } else if (ch == '[') {
                 resStack.push(res);
                 res = "";// 注意
                 // 此push可以放在上面的while循环中
                 countStack.push(curNum);
                 curNum = 0;// 注意
-                idx++;
-                // 取出计算结果，和数字
+                i++;
             } else if (ch == ']') {
-                StringBuilder temp =
-                        new StringBuilder(resStack.pop());
+                // 取出计算结果，和数字
+                StringBuilder temp = new StringBuilder(resStack.pop());
 
                 int repeatTimes = countStack.pop();
-                for (int i = 0; i < repeatTimes; i++) {
+                for (int j = 0; j < repeatTimes; j++) {
                     temp.append(res);
                 }
                 res = temp.toString();
-                idx++;
-
-                // 字母
+                i++;
             } else {
-                res += s.charAt(idx++);
+                // 字母
+                res += s.charAt(i++);
             }
         }
         return res;
