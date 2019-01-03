@@ -29,9 +29,9 @@ public class LC_0076_MinimumWindowSubstring {
     https://www.youtube.com/watch?v=dzdtzymjM7A
      */
     public String minWindow(String s, String t) {
-        int[] count = new int[128];
+        int[] dict = new int[128];
         for (char c : t.toCharArray()) {
-            count[c]++;
+            dict[c]++;
         }
 
         int start = 0;
@@ -40,11 +40,11 @@ public class LC_0076_MinimumWindowSubstring {
         String res = "";
 
         for (int i = 0; i < s.length(); i++) {
-            if (count[s.charAt(i)] > 0) {
+            if (dict[s.charAt(i)] > 0) {
                 // if s[i] is char in t string
                 leftChartCount--;
             }
-            count[s.charAt(i)]--;   // 在s中且不在t中的的字符的count会变为负值
+            dict[s.charAt(i)]--;   // 在s中且不在t中的的字符的count会变为负值
 
             while (leftChartCount == 0) //When leftChartCount == 0, substring S[start : i] contains string T
             {
@@ -54,10 +54,12 @@ public class LC_0076_MinimumWindowSubstring {
                     res = s.substring(start, start + min);
                 }
 
-                if (++count[s.charAt(start++)] > 0) {
+                if (++dict[s.charAt(start)] > 0) {
+                    //++dict[s.charAt(start)] > 0 说明这是t中的字符，
                     //  remove first char from the sub string
                     leftChartCount++;
                 }
+                start++;
 
             }
         }
