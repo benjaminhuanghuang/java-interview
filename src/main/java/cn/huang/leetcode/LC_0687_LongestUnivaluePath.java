@@ -35,10 +35,9 @@ public class LC_0687_LongestUnivaluePath {
         if (root.left != null && root.left.val == root.val) {
             left = leftLength + 1;
         }
-        if (root.right != null && root.right.val == root.val)
-            if (root.right != null && root.right.val == root.val) {
-                right = rightLength + 1;
-            }
+        if (root.right != null && root.right.val == root.val) {
+            right = rightLength + 1;
+        }
         length = Math.max(length, left + right);
         return Math.max(left, right);
     }
