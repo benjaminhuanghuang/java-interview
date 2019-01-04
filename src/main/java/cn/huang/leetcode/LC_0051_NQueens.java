@@ -50,8 +50,8 @@ public class LC_0051_NQueens {
             ArrayList<String> list = new ArrayList<String>();
             for (int i = 0; i < n; i++) {
                 String str = "";
-                for (int col = 0; col < n; col++){
-                    if(queenList[i] == col) {
+                for (int col = 0; col < n; col++) {
+                    if (queenList[i] == col) {
                         str += "Q";
                     } else {
                         str += ".";
@@ -70,15 +70,15 @@ public class LC_0051_NQueens {
     }
 
     private boolean isValid(int[] queenList, int row, int col) {
-        for (int i = 0; i < row; i++) {
-            int pos = queenList[i];
-            if (pos == col) { //和新加入的Q处于同一列
+        for (int r = 0; r < row; r++) {
+            int c = queenList[r];
+            if (c == col) { //和新加入的Q处于同一列
                 return false;
             }
-            if (pos + row - i == col) { //在新加入的Q的右对角线上
+            if (c - r == col - row) { //在新加入的Q的右对角线上
                 return false;
             }
-            if (pos - row + i == col) { //在新加入的Q的左对角线上
+            if (c + r == col + row) { //在新加入的Q的左对角线上
                 return false;
             }
         }
