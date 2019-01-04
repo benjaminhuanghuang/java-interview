@@ -40,4 +40,15 @@ public class LC_0206_ReverseLinkedList {
         }
         return pre;
     }
+
+    public ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) return head;
+
+        ListNode rest = reverse(head.next);
+        //  head.next is the tail of the rest part after reverse
+        //  Make the tail connect to head node
+        head.next.next = head;
+        head.next = null;
+        return rest;
+    }
 }
