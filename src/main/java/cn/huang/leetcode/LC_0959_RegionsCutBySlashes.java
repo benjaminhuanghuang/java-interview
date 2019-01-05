@@ -1,4 +1,8 @@
 package cn.huang.leetcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 
 959. Regions Cut By Slashes
@@ -71,7 +75,86 @@ grid[i][j] is either '/', '\', or ' '.
 
  */
 public class LC_0959_RegionsCutBySlashes {
+    /*
+    https://lequ7.com/2018/12/30/richang/leetcode-jiang-jie-959-Regions-Cut-By-Slashes/
+     */
     public int regionsBySlashes(String[] grid) {
-        return 0;
+        int result = 0;
+        int index = -1;
+        List<DisJointSet> list = new ArrayList<>();
+        for (String s : grid) {
+            for (Character c : s.toCharArray()) {
+                for (int i = 0; i < 4; i++) {
+                    DisJointSet ds = new DisJointSet();
+                    list.add(ds);
+                }
+            }
+        }
+        for (int j = 0; j < grid.length; j++) {
+            for (int i = 0; i < grid[j].length(); i++) {
+                DisJointSet ds1 = list.get(++index);
+                DisJointSet ds2 = list.get(++index);
+                DisJointSet ds3 = list.get(++index);
+                DisJointSet ds4 = list.get(++index);
+                System.out.println(grid[j].charAt(i));
+                if (grid[j].charAt(i) ==' '){
+                    DisJointSet.union(ds1, ds2);
+                    DisJointSet.union(ds2, ds3);
+                    DisJointSet.union(ds3, ds4);
+                }
+                if (grid[j].charAt(i) =='/'){
+                    DisJointSet.union(ds1, ds4);
+                    DisJointSet.union(ds2, ds3);
+                }
+                if (grid[j].charAt(i) =='\\'){
+                    DisJointSet.union(ds1, ds2);
+                    DisJointSet.union(ds3, ds4);
+                }
+                if (i < grid[j].length() - 1) {
+                    DisJointSet.union(ds2, list.get(index + 4));
+                }
+                if (j < grid.length - 1) {
+                    DisJointSet.union(ds3, list.get(index + 4 * (grid[j].length() - 1) + 1));
+                }
+            }
+        }
+        for (DisJointSet ds : list) {
+            if (ds.find() == ds) {
+                result++;
+            }
+        }
+        return result;
+    }
+}
+
+class DisJointSet {
+    public DisJointSet parent;
+    public int rank;
+
+    public DisJointSet() {
+        rank = 0;
+        parent = this;
+    }
+
+    public DisJointSet find() {
+        if (parent != this) {
+            parent = parent.find();
+        }
+        return parent;
+    }
+
+    public static void union(DisJointSet ds1, DisJointSet ds2) {
+        DisJointSet ds1Root = ds1.find();
+        DisJointSet ds2Root = ds2.find();
+        if (ds1Root != ds2Root) {
+            if (ds1Root.rank > ds2Root.rank) {
+                ds2Root.parent = ds1Root;
+            } else if (ds1Root.rank < ds2Root.rank) {
+                ds1Root.parent = ds2Root;
+            } else if (ds1Root.rank == ds2Root.rank) {
+                ds1Root.parent = ds2Root;
+                ds2Root.rank++;
+            }
+        }
     }
 }
