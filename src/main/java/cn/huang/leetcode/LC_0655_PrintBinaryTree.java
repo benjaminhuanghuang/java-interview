@@ -40,7 +40,7 @@ Output:
 
 右子树根的位置为offset + (1 + width >> depth + 1)
  */
-public class LC_655_PrintBinaryTree {
+public class LC_0655_PrintBinaryTree {
     public List<List<String>> printTree(TreeNode root) {
         List<List<String>> res = new LinkedList<>();
         int height = root == null ? 1 : getHeight(root);

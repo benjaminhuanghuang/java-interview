@@ -57,7 +57,7 @@ The right boundary are node 1,3,6,10. (10 is the right-most node).
 So order them in anti-clockwise without duplicate nodes we have [1,2,4,7,8,9,10,6,3].
 
  */
-public class LC_545_BoundaryofBinaryTree
+public class LC_0545_BoundaryofBinaryTree
 {
     public List<Integer> boundaryOfBinaryTree(TreeNode root) {
         List<Integer> res = new ArrayList<>();
