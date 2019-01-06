@@ -34,7 +34,7 @@ Note:
     N is a positive integer and will not exceed 15.
 
  */
-public class LC_526_BeautifulArrangement {
+public class LC_0526_BeautifulArrangement {
     int res = 0;
 
     public int countArrangement(int N) {

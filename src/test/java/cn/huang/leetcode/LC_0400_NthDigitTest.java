@@ -2,7 +2,7 @@ package cn.huang.leetcode;
 
 import org.junit.Test;
 
-public class LC_400_NthDigitTest {
+public class LC_0400_NthDigitTest {
 
     @Test
     public void findNthDigit() {
