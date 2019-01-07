@@ -40,14 +40,28 @@ Output: "2314"
 public class LC_0060_PermutationSequence {
     /*
     https://www.youtube.com/watch?v=tfbU0h4w2wk
+    time O(n), space O(n)
     */
     public String getPermutation(int n, int k) {
-        List<List<Integer>> res = new ArrayList<>();
-        if (candidates == null || candidates.length == 0)
-            return res;
-        Arrays.sort(candidates);    // for removing duplicated
+        List<Integer> res = new ArrayList<>();
 
-        helper(res, new ArrayList<>(), candidates, target, 0);
-        return res;
+        for (int i = 1; i <= n; i++) {
+            res.add(i);
+        }
+        int[] fact = new int[n];
+        fact[0] = 1;
+        for (int i = 1; i < n; i++) {
+            fact[i] = i * fact[i - 1];
+        }
+
+        k = k - 1;
+        StringBuilder sb = new StringBuilder();
+        for (int i = n; i > 0; i--) {
+            int index = k / fact[i - 1];
+            k = k % fact[i - 1];
+            sb.append(res.get(index));
+            res.remove(index);
+        }
+        return sb.toString();
     }
 }
