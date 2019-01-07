@@ -1,5 +1,9 @@
 package cn.huang.leetcode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /*
 60. Permutation Sequence
 
@@ -34,7 +38,16 @@ Output: "2314"
 
  */
 public class LC_0060_PermutationSequence {
+    /*
+    https://www.youtube.com/watch?v=tfbU0h4w2wk
+    */
     public String getPermutation(int n, int k) {
-        return null;
+        List<List<Integer>> res = new ArrayList<>();
+        if (candidates == null || candidates.length == 0)
+            return res;
+        Arrays.sort(candidates);    // for removing duplicated
+
+        helper(res, new ArrayList<>(), candidates, target, 0);
+        return res;
     }
 }
