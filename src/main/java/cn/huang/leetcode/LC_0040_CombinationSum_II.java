@@ -42,6 +42,9 @@ A solution set is:
 public class LC_0040_CombinationSum_II {
     /*
     https://www.youtube.com/watch?v=5ybHmOt3-34
+
+    [10,1,2,7,6,1,5] sort and get [1,1,2,5,6,7,10]
+
      */
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 
