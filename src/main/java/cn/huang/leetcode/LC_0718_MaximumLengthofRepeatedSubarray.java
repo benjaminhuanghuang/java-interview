@@ -19,7 +19,7 @@ Note:
     0 <= A[i], B[i] < 100
 
  */
-public class LC_718_MaximumLengthofRepeatedSubarray {
+public class LC_0718_MaximumLengthofRepeatedSubarray {
     /*
     最长连续公共子序列
     dp[i][j] 来存储A[i]和B[j]之前的LCS（最长公共子序列）；
