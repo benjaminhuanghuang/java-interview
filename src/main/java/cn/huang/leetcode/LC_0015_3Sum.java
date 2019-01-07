@@ -26,10 +26,10 @@ A solution set is:
  */
 public class LC_0015_3Sum {
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> ret = new ArrayList<>();
+        List<List<Integer>> res = new ArrayList<>();
 
         if (nums == null || nums.length < 3)
-            return ret;
+            return res;
         int len = nums.length;
         Arrays.sort(nums);
         // 注意，对于 num[i]，寻找另外两个数时，只要从 i+1 开始找就可以了。
@@ -48,11 +48,7 @@ public class LC_0015_3Sum {
             while (begin < end) {
                 int sum = nums[i] + nums[begin] + nums[end];
                 if (sum == 0) {
-                    List<Integer> list = new ArrayList<>();
-                    list.add(nums[i]);
-                    list.add(nums[begin]);
-                    list.add(nums[end]);
-                    ret.add(list);
+                    res.add(Arrays.asList(nums[i], nums[begin], nums[end]));
                     begin++;
                     end--;
                     // 避免重复！！！！
@@ -66,6 +62,6 @@ public class LC_0015_3Sum {
                     begin++;
             }
         }
-        return ret;
+        return res;
     }
 }
