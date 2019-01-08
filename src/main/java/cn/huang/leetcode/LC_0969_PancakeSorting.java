@@ -59,21 +59,30 @@ import java.util.List;
  */
 
 public class LC_0969_PancakeSorting {
+    /*
+    Time complexity: O(n^2)
+    Space complexity: O(1)
+
+    Put the largest element to its position. Each element requires two flips
+    beginning [3, 2, 4, 1]
+    largest element: 4, index: 2
+    flip1: [4, 2, 3, 1]
+    flip2: [1, 3, 2, 4]
+    Repeat for [1, 3, 2]…
+     */
     public List<Integer> pancakeSort(int[] A) {
         List<Integer> res = new ArrayList<>();
-        int N = A.length;
-
-        int pos, i;
-        for (pos = N; pos > 0; pos--) {
+        int n = A.length;
+        int max = n;
+        for (int i = 0; i < n - 1; i++) {
             // pos is the biggest number
-            for (i = 0; A[i] != pos; i++) ;  // i is the position of the biggest number
-            if (i == pos - 1)
-                continue;
-            reverse(A, 0, i);
-            if (i != 0)
-                res.add(i);
-            reverse(A, 0, pos - 1);
-            res.add(pos);
+            int pos;
+            for (pos = 0; A[pos] != max; pos++) ;  //position of the biggest number
+            reverse(A, 0, pos);
+            res.add(pos+1);     // result use index + 1
+            reverse(A, 0, n - i - 1);
+            res.add(n - i -1 + 1);
+            max--;
         }
         return res;
     }

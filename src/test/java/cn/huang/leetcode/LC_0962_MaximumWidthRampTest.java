@@ -7,10 +7,10 @@ import static org.junit.Assert.*;
 public class LC_0962_MaximumWidthRampTest {
 
     @Test
-    public void maxWidthRamp2() {
+    public void maxWidthRamp() {
         LC_0962_MaximumWidthRamp s = new LC_0962_MaximumWidthRamp();
 
-        int res = s.maxWidthRamp2(new int[]{6, 0, 8, 2, 1, 5});
+        int res = s.maxWidthRamp(new int[]{6, 0, 8, 2, 1, 5});
         assertEquals(4, res);
     }
 

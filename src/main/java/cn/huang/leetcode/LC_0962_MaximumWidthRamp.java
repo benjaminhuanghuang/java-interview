@@ -1,5 +1,7 @@
 package cn.huang.leetcode;
 
+import java.util.Stack;
+
 /*
 962. Maximum Width Ramp
 
@@ -30,19 +32,32 @@ Note:
 
  */
 public class LC_0962_MaximumWidthRamp {
+    /*
+    Using a stack to store start candidates’ (decreasing order) index
+    Scan from right to left, compare the current number with the one on the top of the stack, pop if greater.
 
+    e.g.
+    A = [6,0,8,2,1,5]
+    stack = [0, 1] for the value [6, 0]
+    cur: A[5] = 5, stack.top = A[1] = 0, ramp = 5, stack.pop()
+    cur: A[4] = 1, stack.top = A[0] = 6
+    cur: A[3] = 2, stack.top = A[0] = 6
+    cur: A[2] = 8, stack.top = A[0] = 6, ramp = 2, stack.pop()
+            stack.isEmpty() => END
+    */
     public int maxWidthRamp(int[] A) {
-        int maxWidth = 0;
+        Stack<Integer> s = new Stack<>();   // contains the small values
+        for (int i = 0; i < A.length; ++i)
+            if (s.empty() || A[i] < A[s.peek()])
+                s.push(i);
 
-        for (int i = 0; i < A.length - 1; i++) {
-            for (int j = i + 1; j < A.length; j++) {
-                if (A[j] >= A[i]) {
-                    int width = j - i;
-                    maxWidth = Math.max(maxWidth, width);
-                }
+        int ans = 0;
+        for (int i = A.length- 1; i >= 0; --i)
+            while (!s.empty() && A[i] >= A[s.peek()]) {
+                ans = Math.max(ans, i - s.peek());
+                s.pop();
             }
-        }
-        return maxWidth;
+        return ans;
     }
     public int maxWidthRamp2(int[] A) {
         int maxWidth = 0;
