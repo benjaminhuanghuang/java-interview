@@ -1,4 +1,8 @@
 package cn.huang.leetcode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 
 77. Combinations
@@ -26,5 +30,23 @@ public class LC_0077_Combinations {
     time O(n^ min{k, n-k}) , space O(n)
 
      */
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> res = new ArrayList<>();
+        helper(res, new ArrayList<>(), n, k, 1);
+        return res;
+    }
 
+
+    private void helper(List<List<Integer>> res, List<Integer> combination, int n, int k, int start) {
+        if (k == 0) {
+            res.add(new ArrayList<>(combination));
+            return;
+        }
+
+        for (int i = start; i <= n; i++) {
+            combination.add(i);
+            helper(res, combination, n, k - 1, i + 1);
+            combination.remove(combination.size() - 1);
+        }
+    }
 }
