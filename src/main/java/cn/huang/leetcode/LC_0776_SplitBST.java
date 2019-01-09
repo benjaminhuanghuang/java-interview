@@ -1,4 +1,4 @@
-package cn.huang.leetcode.LC_0776;
+package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.TreeNode;
 
@@ -40,7 +40,7 @@ Note:
     The BST is always valid and each node's value is different.
 
  */
-public class SplitBST {
+public class LC_0776_SplitBST {
     public TreeNode[] splitBST(TreeNode root, int V) {
         if (root == null)
             return new TreeNode[]{null, null};

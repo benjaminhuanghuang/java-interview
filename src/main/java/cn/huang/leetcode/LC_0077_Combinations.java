@@ -36,7 +36,6 @@ public class LC_0077_Combinations {
         return res;
     }
 
-
     private void helper(List<List<Integer>> res, List<Integer> combination, int n, int k, int start) {
         if (k == 0) {
             res.add(new ArrayList<>(combination));
