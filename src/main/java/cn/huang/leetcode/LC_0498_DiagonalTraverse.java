@@ -26,6 +26,9 @@ Explanation:
 public class LC_0498_DiagonalTraverse {
     public int[] findDiagonalOrder(int[][] matrix) {
         int rows = matrix.length;
+        if(rows == 0)
+            return new int[0];
+
         int cols = matrix[0].length;
         int[] arr = new int[rows * cols];
 
