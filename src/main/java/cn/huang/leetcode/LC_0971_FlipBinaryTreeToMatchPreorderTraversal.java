@@ -1,5 +1,10 @@
 package cn.huang.leetcode;
 
+import cn.huang.leetcode.common.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 971. Flip Binary Tree To Match Preorder Traversal
 
@@ -44,5 +49,37 @@ Note:
 
 
  */
+
+
+/*
+https://blog.csdn.net/fuxuemingzhu/article/details/85939252
+ */
 public class LC_0971_FlipBinaryTreeToMatchPreorderTraversal {
+    int i = 0;
+    List<Integer> res = new ArrayList<>();
+
+    public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
+        if (dfs(root, voyage)) {
+            return res;
+        }
+
+        List<Integer> res2 = new ArrayList<Integer>();
+        res2.add(-1);
+        return res2;
+    }
+
+    // can we get v by flip root?
+    boolean dfs(TreeNode root, int[] v) {
+        if (root == null) return true;
+        if (root.val != v[i++])
+            return false;
+        if (root.left != null && root.left.val == v[i]) {
+            return dfs(root.left, v) && dfs(root.right, v);
+        } else if (root.right != null && root.right.val == v[i]) {
+            if (root.left != null)
+                res.add(root.val);
+            return dfs(root.right, v) && dfs(root.left, v);
+        }
+        return root.left == null && root.right == null;
+    }
 }
