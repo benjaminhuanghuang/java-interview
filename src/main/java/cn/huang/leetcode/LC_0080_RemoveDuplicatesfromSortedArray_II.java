@@ -23,7 +23,7 @@ Your function should return length = 7, with the first seven elements of nums be
 It doesn't matter what values are set beyond the returned length.
 
  */
-public class LC_080_RemoveDuplicatesfromSortedArray_II {
+public class LC_0080_RemoveDuplicatesfromSortedArray_II {
     /*
     https://www.youtube.com/watch?v=htE9zDU4-b0
      */

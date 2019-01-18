@@ -52,6 +52,13 @@ Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
     case 3: num_ways("011") = 0
 
  */
+
+
+/*
+Lai Offer
+https://www.youtube.com/watch?v=ZLwwc3-vVP4&t=74s
+
+ */
 public class LC_0091_DecodeWays {
     // To case "111111", h(6) = h(5) + h(4), h(5) = h(4) + h(3)... h(4) were calculated twice
     public int numDecodings_recursive(String data) {
