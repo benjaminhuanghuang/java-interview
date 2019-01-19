@@ -48,7 +48,7 @@ the array w. pickIndex has no arguments. Arguments are always wrapped with a lis
 随机到 4，5 则为第三个点，所以我们随机出一个数字x后，然后再累加和数组中查找第一个大于随机数x的数字，
 使用二分查找法可以找到第一个大于随机数x的数字的坐标，即为所求，
  */
-public interface LC_0528_RandomPickwithWeight {
+public class LC_0528_RandomPickwithWeight {
     class Solution {
         int[] sums;
         int max;
