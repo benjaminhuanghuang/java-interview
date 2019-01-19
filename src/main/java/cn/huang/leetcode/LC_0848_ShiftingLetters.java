@@ -57,6 +57,9 @@ public class LC_0848_ShiftingLetters {
         return String.valueOf(charArray);
     }
 
+    /*
+    https://www.youtube.com/watch?v=gOycoA8pOqg
+     */
     public String shiftingLetters_better(String S, int[] shifts) {
         if (shifts.length == 0 || S == "")
             return S;
