@@ -24,7 +24,7 @@ Initially, all next pointers are set to NULL.
 Note:
 
     You may only use constant extra space.
-    Recursive approach is fine, implicit stack space does not count as extra space for this problem.
+    Recursive approach is fine, implicit stack space does not moves as extra space for this problem.
 
 Example:
 

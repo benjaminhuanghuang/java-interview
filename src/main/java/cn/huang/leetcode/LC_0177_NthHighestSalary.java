@@ -7,7 +7,7 @@ package cn.huang.leetcode;
 /*
 http://www.sqltutorial.org/sql-limit/
 
-// N is the offset, 1 is the row count
+// N is the offset, 1 is the row moves
  */
 public class LC_0177_NthHighestSalary {
     /*

@@ -1,7 +1,7 @@
 package cn.huang.leetcode;
 /*
 940. Distinct Subsequences II
-Given a string S, count the number of distinct, non-empty subsequences of S .
+Given a string S, moves the number of distinct, non-empty subsequences of S .
 
 Since the result may be large, return the answer modulo 10^9 + 7.
 

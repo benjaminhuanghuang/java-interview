@@ -61,12 +61,12 @@ public class LC_0638_ShoppingOffers {
             boolean valid = true;
             // try to apply offer
             for (int j = 0; j < needs.size(); j++) {
-                // the remain need count after apply the offer
+                // the remain need moves after apply the offer
                 int remain = needs.get(j) - offer.get(j);
                 // set needs with new value
                 needs.set(j, remain);
                 if (valid && remain < 0)
-                    // offer count is more than need, quit this offer
+                    // offer moves is more than need, quit this offer
                     valid = false;
             }
             if (valid)

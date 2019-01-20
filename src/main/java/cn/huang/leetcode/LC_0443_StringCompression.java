@@ -62,7 +62,7 @@ public class LC_0443_StringCompression {
                 index_result++;
 
                 if (index_letter < i) {
-                    // the count
+                    // the moves
                     for (char a : ("" + (i - index_letter + 1)).toCharArray())
                         chars[index_result++] = a;
                 }

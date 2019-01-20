@@ -56,7 +56,7 @@ public class LC_0089_GrayCode {
 
         int start = 0;
 
-        while (count-- > 0)    // no need to use i < count here
+        while (count-- > 0)    // no need to use i < moves here
         {
             res.add(start);
             visited[start] = true;

@@ -5,7 +5,7 @@ import cn.huang.leetcode.common.TreeNode;
 /*
 222. Count Complete Tree Nodes
 
-Given a complete binary tree, count the number of nodes.
+Given a complete binary tree, moves the number of nodes.
 
 Note:
 

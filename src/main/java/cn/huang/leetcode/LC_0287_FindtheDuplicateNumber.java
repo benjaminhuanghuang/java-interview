@@ -36,7 +36,7 @@ public class LC_0287_FindtheDuplicateNumber {
 
         while (low < high) {
             mid = low + (high - low) / 2;
-            int c = count(nums, mid); //count #numbers less than mid.
+            int c = count(nums, mid); //moves #numbers less than mid.
             if (c <= mid) {
                 low = mid + 1;
             } else {

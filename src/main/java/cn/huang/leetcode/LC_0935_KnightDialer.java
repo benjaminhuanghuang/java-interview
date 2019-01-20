@@ -1,4 +1,5 @@
 package cn.huang.leetcode;
+
 /*
 935. Knight Dialer
 
@@ -41,6 +42,30 @@ Note:
  */
 public class LC_0935_KnightDialer {
     public int knightDialer(int N) {
+        int MOD = (int) (1e9 + 7);
+        int[][] map = new int[][]{{4, 6}, {6, 8}, {7, 9}, {4, 8}, {3, 9, 0}, {}, {1, 7, 0}, {2, 6}, {1, 3}, {2, 4}};
+        int[][] dp = new int[2][10];
 
+        for (int i = 0; i < 10; i++) {
+            dp[0][i] = 1;
+        }
+
+        int pre, now = 0;
+        for (int i = 2; i <= N; i++) {
+            pre = now;
+            now = 1 - now;
+            for (int j = 0; j < 10; j++) {
+                dp[now][j] = 0;
+                for (int x : map[j]) {
+                    dp[now][j] = (dp[now][j] + dp[pre][x]) % MOD;
+                }
+            }
+        }
+
+        int result = 0;
+        for (int num : dp[now]) {
+            result = (result + num) % MOD;
+        }
+        return result;
     }
 }

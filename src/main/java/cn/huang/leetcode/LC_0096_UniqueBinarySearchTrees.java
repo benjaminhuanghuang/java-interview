@@ -25,7 +25,7 @@ public class LC_0096_UniqueBinarySearchTrees {
     // set random x as root, then left side has x – 1 nodes, right side has n – x nodes.
     // that is f(x – 1) * f(n – x)
     // so n nodes have sum of cases x from 1 to n.
-    // dp[n] is the count of BST created by array [0 to n]
+    // dp[n] is the moves of BST created by array [0 to n]
     // dp[n] = dp[0]* dp[n-1] + dp[1]*dp[n-2] + ... + dp[i]*dp[n-1-i] +... + dp[n-1]*dp[0]
      */
 
@@ -39,7 +39,7 @@ public class LC_0096_UniqueBinarySearchTrees {
         int[] dp = new int[n + 1];
         dp[0] = 1; // array is []
         dp[1] = 1; // array has 1 element
-        for (int i = 2; i <= n; i++)     // total nodes count
+        for (int i = 2; i <= n; i++)     // total nodes moves
         {
             for (int j = 0; j < i; j++)   // j =  node of left sub tree
             {

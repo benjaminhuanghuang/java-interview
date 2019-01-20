@@ -9,7 +9,7 @@ Each turn, you and all ghosts simultaneously *may* move in one of 4 cardinal dir
 going from the previous point to a new point 1 unit of distance away.
 
 You escape if and only if you can reach the target before any ghost reaches you (for any given moves the ghosts may take.)
-If you reach any square (including the target) at the same time as a ghost, it doesn't count as an escape.
+If you reach any square (including the target) at the same time as a ghost, it doesn't moves as an escape.
 
 Return True if and only if it is possible to escape.
  */
