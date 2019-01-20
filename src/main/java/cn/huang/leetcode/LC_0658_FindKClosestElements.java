@@ -1,6 +1,7 @@
 package cn.huang.leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -28,28 +29,19 @@ Note:
  */
 public class LC_0658_FindKClosestElements {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        List<Integer> res = new ArrayList<>();
-
-        // arr.length - k indicats the max index the begin elemet's index can be
-        int begin = 0, end = arr.length - k;
-        while (begin <= end) {
-            int mid = begin + (end - begin) / 2;
-            if (x > arr[mid]) {
-                //check if x is left size of right size of interval arr[mid]
-                if (x - arr[mid] > arr[mid + k] - x) {
-                    begin = mid + 1;
-                } else {
-                    end = mid;
-                }
+        int low = 0;
+        int high = arr.length - 1;
+        while (high - low >= k) {
+            if (Math.abs(arr[low] - x) > Math.abs(arr[high] - x)) {
+                low++;
             } else {
-                end = mid;
+                high--;
             }
         }
-        int index = begin;
-        while (k != 0) {
-            res.add(arr[index++]);
-            k--;
+        List<Integer> result = new ArrayList<>(k);
+        for (int i = low; i <= high; i++) {
+            result.add(arr[i]);
         }
-        return res;
+        return result;
     }
 }

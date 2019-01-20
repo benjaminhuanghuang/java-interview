@@ -2,7 +2,8 @@ package cn.huang.leetcode;
 
 /*
 957. Prison Cells After N Days
-\There are 8 prison cells in a row, and each cell is either occupied or vacant.
+
+There are 8 prison cells in a row, and each cell is either occupied or vacant.
 
 Each day, whether the cell is occupied or vacant changes according to the following rules:
 
@@ -38,6 +39,24 @@ Output: [0,0,1,1,1,1,1,0]
  */
 public class LC_0957_PrisonCellsAfterNDays {
     public int[] prisonAfterNDays(int[] cells, int N) {
-        return null;
+        if (N <= 0) return cells;
+        if (N % 14 == 0) {
+            N = 14;
+        } else {
+            N = N % 14;
+        }
+        while (N > 0) {
+            int[] res = new int[8];
+            res[0] = 0;
+            res[7] = 0;
+            for (int i = 1; i < 7; i++) {
+                res[i] = (cells[i - 1] ^ cells[i + 1]) ^ 1;
+            }
+            cells = res;
+            N--;
+        }
+
+
+        return cells;
     }
 }
