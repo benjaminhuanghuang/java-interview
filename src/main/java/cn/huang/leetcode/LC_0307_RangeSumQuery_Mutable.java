@@ -24,6 +24,7 @@ Note:
 
 /*
 https://www.programcreek.com/2014/04/leetcode-range-sum-query-mutable-java/
+http://www.cnblogs.com/grandyang/p/4985506.html
  */
 public class LC_0307_RangeSumQuery_Mutable {
 
@@ -42,6 +43,7 @@ public class LC_0307_RangeSumQuery_Mutable {
         }
 
         void add(int i, int val) {
+            //最低位的计算方法有两种，一种是x&(x^(x–1))，另一种是利用补码特性x&-x。
             for (int j = i; j < btree.length; j = j + (j & (-j))) {
                 btree[j] += val;
             }
