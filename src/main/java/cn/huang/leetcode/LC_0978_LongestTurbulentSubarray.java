@@ -38,7 +38,7 @@ Note:
 
 
  */
-public class LC_978_LongestTurbulentSubarray {
+public class LC_0978_LongestTurbulentSubarray {
     public int maxTurbulenceSize(int[] A) {
         int inc = 1, dec = 1, result = 1;
         for (int i = 1; i < A.length; i++) {
