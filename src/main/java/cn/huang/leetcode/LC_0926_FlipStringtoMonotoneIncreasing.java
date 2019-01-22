@@ -3,63 +3,30 @@ package cn.huang.leetcode;
 /*
 926. Flip String to Monotone Increasing
 
-A string of '0's and '1's is monotone increasing if it consists of some number of '0's (possibly 0), followed by some number of '1's (also possibly 0.)
+A string of '0's and '1's is monotone increasing if it consists of some number of '0's (possibly 0), followed
+by some number of '1's (also possibly 0.)
 
 We are given a string S of '0's and '1's, and we may flip any '0' to a '1' or a '1' to a '0'.
 
 Return the minimum number of flips to make S monotone increasing.
  */
 public class LC_0926_FlipStringtoMonotoneIncreasing {
+    /*
+    https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-926-flip-string-to-monotone-increasing/
+     */
     public int minFlipsMonoIncr(String S) {
-        if (S == null || S.length() == 0) {
-            return 0;
-        }
+        int n = S.length();
+        int[][] dp = new int[n + 1][2];
 
-        int ones = 0;
-        int zeros = 0;
-
-        for (int i = S.length() - 1; i >= 0; i--) {
-            if(S.charAt(i) == '0')
-            {
-                zeros++;
-            }
-            else
-            {
-                if(zeros > 0)
-                    break;
-                ones ++;
+        for (int i = 1; i <= n; ++i) {
+            if (S.charAt(i - 1) == '0') {
+                dp[i][0] = dp[i - 1][0];
+                dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][1]) + 1;
+            } else {
+                dp[i][0] = dp[i - 1][0] + 1;
+                dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][1]);
             }
         }
-        if(ones == 0)
-            return zeros;
-        if(zeros ==0)
-            return ones;
-        return Math.min(zeros, ones);
-    }
-    public int minFlipsMonoIncr_2(String S) {
-        if (S == null || S.length() == 0) {
-            return 0;
-        }
-
-        int ones = 0;
-        int zeros = 0;
-
-        for (int i = S.length() - 1; i >= 0; i--) {
-            if(S.charAt(i) == '0')
-            {
-                zeros++;
-            }
-            else
-            {
-                if(zeros > 0)
-                    break;
-                ones ++;
-            }
-        }
-        if(ones == 0)
-            return zeros;
-        if(zeros ==0)
-            return ones;
-        return Math.min(zeros, ones);
+        return Math.min(dp[n][0], dp[n][1]);
     }
 }
