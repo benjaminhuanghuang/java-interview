@@ -74,7 +74,8 @@ public class LC_0911_OnlineElection {
             time = times;
             for (int i = 0; i < n; ++i) {
                 count.put(persons[i], count.getOrDefault(persons[i], 0) + 1);
-                if (i == 0 || count.get(persons[i]) >= count.get(lead)) lead = persons[i];
+                if (i == 0 || count.get(persons[i]) >= count.get(lead))
+                    lead = persons[i];
                 m.put(times[i], lead);
             }
         }
