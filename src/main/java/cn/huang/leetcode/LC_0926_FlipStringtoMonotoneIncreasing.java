@@ -29,4 +29,23 @@ public class LC_0926_FlipStringtoMonotoneIncreasing {
         }
         return Math.min(dp[n][0], dp[n][1]);
     }
+
+    public int minFlipsMonoIncr_v1(String S) {
+        int n = S.length();
+        int[] l = new int[n + 1]; // 1 -> 0
+        int[] r = new int[n + 1]; // 0 -> 1
+
+        l[0] = S.charAt(0) - '0';
+        r[n - 1] = '1' - S.charAt(n - 1);
+
+        for (int i = 1; i < n; ++i)
+            l[i] = l[i - 1] + S.charAt(i) - '0';
+        for (int i = n - 2; i >= 0; --i)
+            r[i] = r[i + 1] + '1' - S.charAt(i);
+
+        int ans = r[0]; // all 1s.
+        for (int i = 1; i <= n; ++i)
+            ans = Math.min(ans, l[i - 1] + r[i]);
+        return ans;
+    }
 }

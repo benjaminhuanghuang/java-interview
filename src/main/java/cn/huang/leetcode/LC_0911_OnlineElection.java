@@ -37,30 +37,26 @@ Note:
  */
 public class LC_0911_OnlineElection {
     class TopVotedCandidate {
-        Map<Integer, Integer> history = new HashMap<>();
-        int[] times;
+        private TreeMap<Integer, Integer> map = new TreeMap<>();
 
         public TopVotedCandidate(int[] persons, int[] times) {
-            this.times = times;
-            Map<Integer, Integer> votes = new HashMap<>();
-            int n = persons.length;
-            int winner = persons[0];
-            for (int i = 0; i < n; i++) {
-                votes.put(persons[i], votes.getOrDefault(persons[i], 0)+1);
-                if (votes.get(persons[i]) >= votes.get(winner))
-                    winner = persons[i];
-                history.put(times[i], winner);
+            //count each person's votes
+            HashMap<Integer, Integer> count = new HashMap<>();
+            int highestCount = 0, highestPerson = 0;
+            for (int i = 0; i < persons.length; i++) {
+                int person = persons[i];
+                count.put(person, count.getOrDefault(person, 0) + 1);
+                if (count.get(person) >= highestCount) {
+                    highestCount = count.get(person);
+                    highestPerson = person;
+                }
+                map.put(times[i], highestPerson);
             }
         }
 
         public int q(int t) {
-
-            int i = Arrays.binarySearch(times, t);
-            if (i < 0)
-                //The insertion point is defined as the point at which the key would be inserted into the array
-                //1.不存在时由1开始计数；
-                return history.get(times[-i-1]);
-            return history.get(times[i]);
+            // floorKey return the greatest key less than or equal to the given key, or null if there is no such key
+            return map.get(map.floorKey(t));
         }
     }
 }
