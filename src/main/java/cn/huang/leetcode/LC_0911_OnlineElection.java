@@ -43,6 +43,7 @@ public class LC_0911_OnlineElection {
             //count each person's votes
             HashMap<Integer, Integer> count = new HashMap<>();
             int highestCount = 0, highestPerson = 0;
+
             for (int i = 0; i < persons.length; i++) {
                 int person = persons[i];
                 count.put(person, count.getOrDefault(person, 0) + 1);
@@ -54,9 +55,33 @@ public class LC_0911_OnlineElection {
             }
         }
 
+        /*
+        return the number of the person that was leading the election at time t.
+         */
         public int q(int t) {
             // floorKey return the greatest key less than or equal to the given key, or null if there is no such key
             return map.get(map.floorKey(t));
+        }
+    }
+
+    class TopVotedCandidate2 {
+        Map<Integer, Integer> m = new HashMap<>();
+        int[] time;
+
+        public TopVotedCandidate2(int[] persons, int[] times) {
+            int n = persons.length, lead = -1;
+            Map<Integer, Integer> count = new HashMap<>();
+            time = times;
+            for (int i = 0; i < n; ++i) {
+                count.put(persons[i], count.getOrDefault(persons[i], 0) + 1);
+                if (i == 0 || count.get(persons[i]) >= count.get(lead)) lead = persons[i];
+                m.put(times[i], lead);
+            }
+        }
+
+        public int q(int t) {
+            int i = Arrays.binarySearch(time, t);
+            return i < 0 ? m.get(time[-i - 2]) : m.get(time[i]);
         }
     }
 }
