@@ -3,6 +3,7 @@ package cn.huang.leetcode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
 17. Letter Combinations of a Phone Number
@@ -22,35 +23,37 @@ Although the above answer is in lexicographical order, your answer could be in a
  */
 public class LC_0017_LetterCombinationsofaPhoneNumber {
     public List<String> letterCombinations(String digits) {
-        HashMap<Character, String> map = new HashMap<Character, String>();
-        map.put('2', "abc");
-        map.put('3', "def");
-        map.put('4', "ghi");
-        map.put('5', "jkl");
-        map.put('6', "mno");
-        map.put('7', "pqrs");
-        map.put('8', "tuv");
-        map.put('9', "wxyz");
-        map.put('0', "");
+        HashMap<Character, String> dict = new HashMap<Character, String>();
+        dict.put('2', "abc");
+        dict.put('3', "def");
+        dict.put('4', "ghi");
+        dict.put('5', "jkl");
+        dict.put('6', "mno");
+        dict.put('7', "pqrs");
+        dict.put('8', "tuv");
+        dict.put('9', "wxyz");
+        dict.put('0', "");
 
         ArrayList<String> result = new ArrayList<String>();
 
         if (digits == null || digits.length() == 0)
             return result;
 
-        dfs(digits, map, 0, "", result);
+        dfs(digits, dict, 0, "", result);
 
         return result;
     }
 
-    private void dfs(String digits, HashMap<Character, String> map, int index, String combination, ArrayList<String> ansList) {
+    private void dfs(String digits, Map<Character, String> dict, int index, String combination, List<String> result) {
         if (index == digits.length()) {
-            ansList.add(combination);
+            result.add(combination);
             return;
         }
+        char ch = digits.charAt(index);
+        String values = dict.get(ch);
 
-        for (Character c : map.get(digits.charAt(index)).toCharArray()) {
-            dfs(digits, map, index + 1, combination + c, ansList);
+        for (Character c : values.toCharArray()) {
+            dfs(digits, dict, index + 1, combination + c, result);
         }
     }
 }
