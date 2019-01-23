@@ -22,6 +22,11 @@ Although the above answer is in lexicographical order, your answer could be in a
 
  */
 public class LC_0017_LetterCombinationsofaPhoneNumber {
+
+    /*
+        According the recursion tree, Time Complexity is O(branch factor ^ depth) = O(4^n)
+        Space Complexity : sb is O(n), call stack is O(n)
+     */
     public List<String> letterCombinations(String digits) {
         HashMap<Character, String> dict = new HashMap<Character, String>();
         dict.put('2', "abc");
