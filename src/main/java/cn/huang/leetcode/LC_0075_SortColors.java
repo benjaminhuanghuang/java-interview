@@ -20,7 +20,7 @@ Could you come up with a one-pass algorithm using only constant space?
  */
 public class LC_0075_SortColors {
     /*
-
+https://www.youtube.com/watch?v=yTwW8WiGrKw
      */
     public void sortColors(int[] nums) {
         if (nums == null || nums.length == 0) {

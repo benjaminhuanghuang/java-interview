@@ -66,82 +66,58 @@ public class LC_0547_FriendCircles {
 
     /*
     Union find
-    http://www.voidcn.com/article/p-pbqgefyk-hh.html
 
+    http://www.voidcn.com/article/p-pbqgefyk-hh.html
     https://www.youtube.com/watch?v=C3ZK3RRNZtc
     http://www.goodtecher.com/union-find/
 
+    这里用了最简单的实现， https://blog.csdn.net/guo15331092/article/details/78702686,union时没有考虑rank
+    有关rank参考
+    huahua的教程 https://www.youtube.com/watch?v=VJnUwsE4fWA
      */
     class UnionFind {
         private int count = 0;
-        private int[] parent, rank;
+        private int[] parent;
 
         public UnionFind(int n) {
             count = n;
             parent = new int[n];
-            rank = new int[n];
             for (int i = 0; i < n; i++) {
                 parent[i] = i;
             }
         }
 
-        public int find(int p) {
-            int q = parent[p];
-            while (q != parent[q]) {
-                q = parent[q];
+        public int find(int i) {
+            int p = parent[i];
+            while (p != parent[p]) {
+                p = parent[p];
             }
-            parent[p] = q;
-            return q;
+            parent[i] = p;
+            return p;
         }
 
         public void union(int p, int q) {
             int rootP = find(p);
             int rootQ = find(q);
             if (rootP == rootQ) return;
-            if (rank[rootQ] > rank[rootP]) {
-                parent[rootP] = rootQ;
-            } else {
-                parent[rootQ] = rootP;
-                if (rank[rootP] == rank[rootQ]) {
-                    rank[rootP]++;
-                }
-            }
+
+            parent[rootP] = rootQ;
             count--;
         }
 
         public int count() {
             return count;
         }
-
-        public int getMaxUnion() {
-            Map<Integer, Integer> map = new HashMap<>();
-            int max = 1;
-            for (int i = 0; i < parent.length; i++) {
-                int p = find(i);
-                map.put(p, map.getOrDefault(p, 0) + 1);
-                max = Math.max(max, map.get(p));
-            }
-            return max;
-        }
-
-    }
-
-    int findParent(int[] parent, int index) {
-        while (parent[index] != index) {
-            index = parent[index];
-        }
-        return index;
     }
 
     public int findCircleNum2(int[][] M) {
         int n = M.length;
-        int heng = 0;
-        int shu = 0;
+
         UnionFind uf = new UnionFind(n);
-        for (shu = 0; shu < n; shu++) {
-            for (heng = shu; heng < n; heng++) {//因为是对角线对称的，所以只要看右上角部分
-                if (M[shu][heng] == 1) {
-                    uf.union(shu, heng);
+        for (int row = 0; row < n; row++) {
+            for (int col = row; col < n; col++) {//因为是对角线对称的，所以只要看右上角部分
+                if (M[row][col] == 1) {
+                    uf.union(row, col);
                 }
             }
         }

@@ -33,6 +33,8 @@ public class LC_0033_SearchinRotatedSortedArray
     // if mid is equal to low, just increase the low (we do not know where the target x would be)
     // if mid is equal to low, just increase the low (we do not know where the target x would be)
 
+    Time O(logN)
+    Space O(1)
      */
     public int search(int[] nums, int target) {
         if (nums == null || nums.length < 1)
