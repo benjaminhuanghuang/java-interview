@@ -39,21 +39,23 @@ public class LC_0017_LetterCombinationsofaPhoneNumber {
         if (digits == null || digits.length() == 0)
             return result;
 
-        dfs(digits, dict, 0, "", result);
+        dfs(digits, dict, 0, new StringBuilder(), result);
 
         return result;
     }
 
-    private void dfs(String digits, Map<Character, String> dict, int index, String combination, List<String> result) {
+    private void dfs(String digits, Map<Character, String> dict, int index, StringBuilder combination, List<String> result) {
         if (index == digits.length()) {
-            result.add(combination);
+            result.add(combination.toString());
             return;
         }
         char ch = digits.charAt(index);
         String values = dict.get(ch);
 
         for (Character c : values.toCharArray()) {
-            dfs(digits, dict, index + 1, combination + c, result);
+            combination.append(c);
+            dfs(digits, dict, index + 1, combination, result);
+            combination.deleteCharAt(combination.length() - 1);
         }
     }
 }
