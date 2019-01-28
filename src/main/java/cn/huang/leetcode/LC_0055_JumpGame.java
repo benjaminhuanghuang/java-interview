@@ -1,6 +1,7 @@
 package cn.huang.leetcode;
+
 /*
-55. Jump Game
+55. Jump Game [45]
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
 
 Each element in the array represents your maximum jump length at that position.
@@ -28,10 +29,8 @@ public class LC_0055_JumpGame {
      */
     public boolean canJump(int[] nums) {
         int index = nums.length - 1;
-        for (int i = nums.length - 2; i >= 0; i--)
-        {
-            if (nums[i] + i >= index)
-            {
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] + i >= index) {
                 index = i;
             }
         }
@@ -41,12 +40,28 @@ public class LC_0055_JumpGame {
 
 
     public boolean CanJump_2(int[] nums) {
-        int maxJump = nums[0];
-        for (int i =0 ; i <= maxJump; i++)
-        {
+        int maxReach = nums[0];
+        for (int i = 0; i <= maxReach; i++) {
             if (i >= nums.length - 1)
                 return true;
-            maxJump = Math.max(maxJump, nums[i] + i);
+            maxReach = Math.max(maxReach, nums[i] + i);
+        }
+
+        return false;
+    }
+
+    /*
+    https://www.youtube.com/watch?v=r3pZd9ghqxk
+     */
+    public boolean CanJump_3(int[] nums) {
+        if (nums == null || nums.length < 2)
+            return false;
+
+        int maxReach = 0;
+        for (int i = 0; i < nums.length && i <= maxReach; i++) {
+            maxReach = Math.max(maxReach, nums[i] + i);
+            if (maxReach >= nums.length - 1)
+                return true;
         }
 
         return false;
