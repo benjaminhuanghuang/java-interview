@@ -36,4 +36,9 @@ public class LC_0496_NextGreaterElement_I {
         return result;
 
     }
+
+    /*
+        Monotone Stack
+     */
+
 }
