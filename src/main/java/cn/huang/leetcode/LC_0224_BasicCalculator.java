@@ -70,6 +70,7 @@ public class LC_0224_BasicCalculator {
 
     /*
     https://www.youtube.com/watch?v=ijyUwyt5vkU
+    认为只有加法， 遇到"+， -"赋值给sign， 遇到数字和sign， 遇到"("压栈
      */
     public int calculate2(String s) {
         s = s.trim();
@@ -77,6 +78,8 @@ public class LC_0224_BasicCalculator {
 
         int ans = 0;
         int sign = 1; // "+"
+
+
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
