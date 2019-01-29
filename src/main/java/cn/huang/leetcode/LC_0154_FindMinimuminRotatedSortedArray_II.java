@@ -30,7 +30,7 @@ Note:
  */
 public class LC_0154_FindMinimuminRotatedSortedArray_II {
     /*
-        https://www.youtube.com/watch?v=oVk1UGQcMzo
+        https://www.youtube.com/watch?v=aCb1zKMimDQ
      */
     public int findMin(int[] nums) {
         int low = 0;
