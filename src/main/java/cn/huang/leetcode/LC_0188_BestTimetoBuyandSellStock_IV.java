@@ -25,6 +25,9 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 
  */
 public class LC_0188_BestTimetoBuyandSellStock_IV {
+    /*
+    https://www.youtube.com/watch?v=t92vU3NvZ8k
+     */
     public int maxProfit(int k, int[] prices) {
         if (k >= prices.length / 2) {
             return helper(prices);
