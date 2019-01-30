@@ -34,6 +34,12 @@ Could you solve it in linear time?
 public class LC_0239_SlidingWindowMaximum {
     /*
     https://www.programcreek.com/2014/05/leetcode-sliding-window-maximum-java/
+    使用双向队列，时间复杂度O(n)。
+
+    在队列中维持一个k长度窗口内的递减元素下标，为什么呢？因为当元素递增时，前面的元素就不需要了，因为最大值肯定不会是它们了。
+
+    顺序扫描每一个元素，当队头的元素超出窗口视野的时候，将对头元素出队；然后检查队尾，如果队尾元素小于或等于当前元素，则队尾元素出队，重复检查队尾直至队列为空或者队尾元素大于当前元素。然后当前元素入队。
+
      */
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums == null || nums.length == 0)
@@ -59,4 +65,9 @@ public class LC_0239_SlidingWindowMaximum {
 
         return result;
     }
+    /*
+    https://www.youtube.com/watch?v=2SXqBsTR6a8
+    Monotonic queue
+     */
+
 }
