@@ -73,15 +73,15 @@ public class LC_0420_StrongPasswordChecker {
 
     /*
     https://yuncoong.gitbooks.io/leetcode/content/420.html
-    Length problem:
+    1. Length problem:
 
         len < 6: insert
         len > 20: delete
 
-    Missing case: replace / insert
-    repeat: replace / delete / insert
-    First, solve len < 6 together with missing case problem with insert
-    Then solve the over length problem with repeat problem
+    2. Missing case: replace / insert
+    3. repeat: replace / delete / insert
+    4. First, solve len < 6 together with missing case problem with insert
+    5. Then solve the over length problem with repeat problem
 
         how to decide when to use replace or delete?
             to ensure the minimum change, not delete number repeat elements to <= 2, but to first reduce the number to the closest 3m + 2 value, where m will be the number of replace we need to do.
