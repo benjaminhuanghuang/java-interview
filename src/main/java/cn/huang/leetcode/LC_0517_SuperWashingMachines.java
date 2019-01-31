@@ -49,6 +49,8 @@ Note:
  */
 
 /*
+https://blog.csdn.net/TstsUgeg/article/details/62427718
+
 给定一个长度为n的整数数组nums，每一次选择m个数(1 ≤ m ≤ n)进行移动：将这m个数-1，同时令其相邻元素+1（这m个数同时可以是被加元素）
 
 求最少需要多少次移动，使得nums的所有元素均相等。如果不能，则返回-1。
@@ -85,3 +87,4 @@ public class LC_0517_SuperWashingMachines {
 
         return minMv;
     }
+}
