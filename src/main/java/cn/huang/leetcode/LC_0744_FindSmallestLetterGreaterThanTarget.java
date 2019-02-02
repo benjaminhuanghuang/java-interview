@@ -25,4 +25,7 @@ public class LC_0744_FindSmallestLetterGreaterThanTarget {
 
         return letters[ left % letters.length];
     }
+    /*
+    https://www.youtube.com/watch?v=nxJXnQ7wLhM&list=PLLuMmzMTgVK74vqU7Ukaf70a382dzF3Uo
+     */
 }
