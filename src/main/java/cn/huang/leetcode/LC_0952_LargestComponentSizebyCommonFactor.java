@@ -1,4 +1,8 @@
 package cn.huang.leetcode;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 
 952. Largest Component Size by Common Factor
@@ -32,7 +36,52 @@ Note:
 1 <= A[i] <= 100000
  */
 public class LC_0952_LargestComponentSizebyCommonFactor {
+    /*
+    https://zxi.mytechroad.com/blog/graph/leetcode-952-largest-component-size-by-common-factor/
+     */
     public int largestComponentSize(int[] A) {
-        return 0;
+        int n = Integer.MIN_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] > n) {
+                n = A[i];
+            }
+        }
+        UnionFind dsu = new UnionFind(n + 1);
+        for (int a : A) {
+            int t = (int) (Math.sqrt(a));
+            for (int k = 2; k <= t; ++k)
+                if (a % k == 0) {
+                    dsu.union(a, k);
+                    dsu.union(a, a / k);
+                }
+        }
+        Map<Integer, Integer> c = new HashMap<>();
+        int ans = 1;
+        for (int a : A) {
+            c.put(dsu.find(a), c.getOrDefault(dsu.find(a), 0) + 1);
+            ans = Math.max(ans, c.get(dsu.find(a)));
+        }
+        return ans;
+    }
+
+     class UnionFind {
+        private int[] root;
+
+        public UnionFind(int n) {
+            this.root = new int[n];
+            for (int i = 0; i < n; ++i) {
+                this.root[i] = i;
+            }
+        }
+
+        public void union(int i, int j) {
+            root[find(i)] = root[find(j)];
+        }
+
+        public int find(int x) {
+            if (root[x] != x)
+                root[x] = find(root[x]);
+            return root[x];
+        }
     }
 }
