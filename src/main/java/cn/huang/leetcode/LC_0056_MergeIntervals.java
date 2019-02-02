@@ -6,6 +6,7 @@ import java.util.List;
 
 /*
 56. Merge Intervals
+
 Given a collection of intervals, merge all overlapping intervals.
 
 Example 1:
