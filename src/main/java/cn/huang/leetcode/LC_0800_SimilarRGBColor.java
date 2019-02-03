@@ -46,7 +46,7 @@ public class LC_0800_SimilarRGBColor {
 
         int[] rgb = new int[3];
         for (int i = 0; i < 3; ++i)
-            rgb[i] = hex.indexOf(color.charAt(2 * i + 1) * 16 + hex.indexOf(color.charAt(2 * i + 2));
+            rgb[i] = hex.indexOf(color.charAt(2 * i + 1) * 16 + hex.indexOf(color.charAt(2 * i + 2)));
 
         char[] ans = new char[7];
         Arrays.fill(ans, '#');
