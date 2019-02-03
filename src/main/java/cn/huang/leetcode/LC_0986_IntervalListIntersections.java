@@ -57,14 +57,39 @@ public class LC_0986_IntervalListIntersections {
             }
         });
         int ib = 0;
-         for (int i = 0; i < A.length; i++) {
-            if(B[ib].start > A[i].end ) {
-               continue;  // move A
+        for (int i = 0; i < A.length; i++) {
+            if (B[ib].start > A[i].end) {
+                continue;  // move A
             }
-            while(B[ib].end < A[i].start && ib<B.length) {
+            while (B[ib].end < A[i].start && ib < B.length) {
                 ib++;
             }
             //
+        }
+        return res.toArray(new Interval[res.size()]);
+    }
+
+    /*
+    Hua Hua
+    https://zxi.mytechroad.com/blog/2019/02/
+    Time complexity: O(m + n)
+    Space complexity: O(1)
+     */
+    public Interval[] intervalIntersection2(Interval[] A, Interval[] B) {
+        List<Interval> res = new ArrayList<>();
+
+        int i = 0;
+        int j = 0;
+
+        while (i < A.length && j < B.length) {
+            int s = Math.max(A[i].start, B[j].start);
+            int e = Math.min(A[i].end, B[j].end);
+            if (s <= e)
+                res.add(new Interval(s, e));
+            if (A[i].end < B[j].end)
+                ++i;
+            else
+                ++j;
         }
         return res.toArray(new Interval[res.size()]);
     }

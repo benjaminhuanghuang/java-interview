@@ -52,7 +52,7 @@ public class LC_0987_VerticalOrderTraversalofaBinaryTree {
     private int max = 0;
 
     /*
-
+        https://zxi.mytechroad.com/blog/2019/02/
      */
     List<int[]> ret = new ArrayList<>();
 
