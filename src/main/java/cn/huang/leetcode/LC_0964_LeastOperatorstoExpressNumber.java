@@ -1,7 +1,9 @@
 package cn.huang.leetcode;
+
 /*
 
 964. Least Operators to Express Number
+
 Given a single positive integer x, we will write an expression of the form x (op1) x (op2) x (op3) x ... where each
 operator op1, op2, etc. is either addition, subtraction, multiplication, or division (+, -, *, or /).
 For example, with x = 3, we might write 3 * 3 / 3 + 3 - 3 which is a value of 3.
@@ -43,8 +45,27 @@ Note:
 
  */
 public class LC_0964_LeastOperatorstoExpressNumber {
+    /*
+    https://github.com/cherryljr/LeetCode/blob/master/Least%20Operators%20to%20Express%20Number.java
+    http://tashi711.xyz/programming/reports/leetcode/leetcode-964/
+     */
     public int leastOpsExpressTarget(int x, int target) {
-        return 0;
+        int pos = 0, neg = 0, k = 0;
+        while (target > 0) {
+            int remainder = target % x;
+            target /= x;
 
+            if (k > 0) {
+                int pos2 = Math.min(remainder * k + pos, (remainder + 1) * k + neg);
+                int neg2 = Math.min((x - remainder) * k + pos, (x - remainder - 1) * k + neg);
+                pos = pos2;
+                neg = neg2;
+            } else {
+                pos = 2 * remainder;
+                neg = 2 * (x - remainder);
+            }
+            k++;
+        }
+        return Math.min(pos, neg + k) - 1;
     }
 }

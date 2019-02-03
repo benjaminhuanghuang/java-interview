@@ -70,4 +70,23 @@ public class LC_0988_SmallestStringStartingFromLeaf {
         if (node.right != null)
             addWords(node.right, newStr, words);
     }
+
+    /*
+    https://zxi.mytechroad.com/blog/2019/02/
+    Time complexity: O(n^2)
+    Space complexity: O(n^2)
+     */
+    public String smallestFromLeaf_hua(TreeNode root) {
+        List<String> words = new ArrayList<>();
+        if (root == null)
+            return "";
+        char v = (char) ('a' + root.val);
+
+        String l = smallestFromLeaf(root.left);
+        String r = smallestFromLeaf(root.right);
+        if (l.length() == 0) return r + v;
+        if (r.length() == 0) return l + v;
+        return (l.compareTo(r) > 0 ? r : l) + v;
+    }
+
 }
