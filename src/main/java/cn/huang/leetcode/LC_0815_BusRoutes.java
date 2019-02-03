@@ -27,6 +27,9 @@ Note:
 
  */
 public class LC_0815_BusRoutes {
+    /*
+    https://www.youtube.com/watch?v=vEcm5farBls
+     */
     public int numBusesToDestination(int[][] routes, int S, int T) {
         if (S == T) return 0;
 
