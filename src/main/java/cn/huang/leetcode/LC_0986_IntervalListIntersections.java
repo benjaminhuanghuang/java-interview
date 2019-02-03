@@ -2,6 +2,11 @@ package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.Interval;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
 /*
 986. Interval List Intersections
 
@@ -19,7 +24,8 @@ Example 1:
 
 
 
-Input: A = [[0,2],[5,10],[13,23],[24,25]], B = [[1,5],[8,12],[15,24],[25,26]]
+Input: A = [[0,2],[5,10],[13,23],[24,25]],
+       B = [[1,5],[8,12],[15,24],[25,26]]
 Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]
 Reminder: The inputs and the desired output are lists of Interval objects, and not arrays or lists.
 
@@ -32,6 +38,34 @@ Note:
  */
 public class LC_0986_IntervalListIntersections {
     public Interval[] intervalIntersection(Interval[] A, Interval[] B) {
+        List<Interval> res = new ArrayList<>();
 
+        if (A == null || A.length == 0 || B == null || B.length == 0)
+            return new Interval[0];
+
+        Arrays.sort(A, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
+            }
+        });
+
+        Arrays.sort(B, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
+            }
+        });
+        int ib = 0;
+         for (int i = 0; i < A.length; i++) {
+            if(B[ib].start > A[i].end ) {
+               continue;  // move A
+            }
+            while(B[ib].end < A[i].start && ib<B.length) {
+                ib++;
+            }
+            //
+        }
+        return res.toArray(new Interval[res.size()]);
     }
 }

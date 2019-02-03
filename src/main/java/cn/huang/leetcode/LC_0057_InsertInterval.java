@@ -1,5 +1,7 @@
 package cn.huang.leetcode;
 
+import cn.huang.leetcode.common.Interval;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,20 +26,6 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 
  */
 public class LC_0057_InsertInterval {
-    public class Interval {
-        int start;
-        int end;
-
-        Interval() {
-            start = 0;
-            end = 0;
-        }
-
-        Interval(int s, int e) {
-            start = s;
-            end = e;
-        }
-    }
 
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         if (newInterval == null) {

@@ -2,7 +2,7 @@ package cn.huang.leetcode;
 
 import cn.huang.leetcode.common.TreeNode;
 
-import java.util.List;
+import java.util.*;
 
 /*
 987. Vertical Order Traversal of a Binary Tree
@@ -48,7 +48,57 @@ The tree will have between 1 and 1000 nodes.
 Each node's value will be between 0 and 1000.
  */
 public class LC_0987_VerticalOrderTraversalofaBinaryTree {
+    private int min = 0;
+    private int max = 0;
+
+    /*
+
+     */
     public List<List<Integer>> verticalTraversal(TreeNode root) {
 
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (root == null)
+            return result;
+        // find rang of x (min to max)
+        helper(root, 0);
+
+        for (int i = min; i <= max; i++) {
+            result.add(new ArrayList<>());
+        }
+
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<Integer> indexes = new LinkedList<Integer>();
+
+        queue.offer(root);
+        indexes.offer(-min);  // root所在的index
+
+        while (!queue.isEmpty()) {
+            TreeNode curr = queue.poll();
+            int index = indexes.poll();
+
+            result.get(index).add(curr.val);
+            if (curr.left != null) {
+                queue.offer(curr.left);
+                indexes.offer(index - 1);
+            }
+            if (curr.right != null) {
+                queue.offer(curr.right);
+                indexes.offer(index + 1);
+            }
+        }
+
+        return result;
     }
+
+    private void helper(TreeNode root, int index) {
+        if (root == null)
+            return;
+
+        min = Math.min(min, index);
+        max = Math.max(max, index);
+
+        helper(root.left, index - 1);
+        helper(root.right, index + 1);
+    }
+
 }

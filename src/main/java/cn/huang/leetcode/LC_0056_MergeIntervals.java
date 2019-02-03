@@ -1,5 +1,7 @@
 package cn.huang.leetcode;
 
+import cn.huang.leetcode.common.Interval;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -24,20 +26,6 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
  */
 public class LC_0056_MergeIntervals {
-    public class Interval {
-        int start;
-        int end;
-
-        Interval() {
-            start = 0;
-            end = 0;
-        }
-
-        Interval(int s, int e) {
-            start = s;
-            end = e;
-        }
-    }
 
     public List<Interval> merge(List<Interval> intervals) {
         List<Interval> res = new ArrayList<>();

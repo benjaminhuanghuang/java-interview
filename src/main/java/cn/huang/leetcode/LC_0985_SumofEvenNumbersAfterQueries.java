@@ -1,4 +1,5 @@
 package cn.huang.leetcode;
+
 /*
 985. Sum of Even Numbers After Queries
 
@@ -36,6 +37,23 @@ Note:
  */
 public class LC_0985_SumofEvenNumbersAfterQueries {
     public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
+        int count = queries.length;
 
+        int[] ans = new int[count];
+
+        for (int i = 0; i < count; i++) {
+            A[queries[i][1]] = A[queries[i][1]] + queries[i][0];
+            ans[i] = getEvenSum(A);
+        }
+        return ans;
+    }
+
+    private int getEvenSum(int[] A) {
+        int sum = 0;
+        for (int n : A) {
+            if (n % 2 == 0)
+                sum += n;
+        }
+        return sum;
     }
 }
