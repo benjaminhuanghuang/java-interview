@@ -33,27 +33,41 @@ public class LC_0805_SplitArrayWithSameAverage {
 
      */
     public boolean splitArraySameAverage(int[] A) {
-        int sum = 0, len = A.length;
-        for (int n : A) sum += n;
+        int length = A.length;
+        int sum = 0;
+        for (int i = 0; i < length; i++) {
+            sum = sum + A[i];
+        }
         Arrays.sort(A);
-        for (int i = 1; i <= len / 2; i++) {
-            if ((sum * i % len) == 0 && check(A, 0, i, sum * i / len)) {
-                return true;
+        // sigle array max length is length/2
+        for (int i = 1; i <= length / 2; i++) {
+            if (sum * i % length == 0) {
+                if (checkNSum(A, i, i * sum / length, 0)) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    private boolean check(int[] A, int pos, int remain, int target) {
-        if (target == 0 && remain == 0) return true;
-        boolean ret = false;
-        if (target != 0 && remain != 0) {
-            for (int i = pos; i < A.length; i++) {
-                if (target < A[i]) break;
-                ret |= check(A, i + 1, remain - 1, target - A[i]);
+    private boolean checkNSum(int[] nums, int n, int target, int startIndex) {
+        if (target == 0 && n == 0) {
+            return true;
+        }
+        if (n != 0) {
+            for (int i = startIndex; i < nums.length + 1 - n; i++) {
+                if (i > startIndex && nums[i] == nums[i - 1]) {
+                    continue;
+                }
+                if (target < nums[i] * n || target > nums[nums.length - 1] * n) {
+                    break;
+                }
+                if (checkNSum(nums, n - 1, target - nums[i], i + 1)) {
+                    return true;
+                }
             }
         }
-        return ret;
+        return false;
     }
 
 }

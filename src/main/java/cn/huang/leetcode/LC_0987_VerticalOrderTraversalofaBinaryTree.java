@@ -54,51 +54,29 @@ public class LC_0987_VerticalOrderTraversalofaBinaryTree {
     /*
 
      */
+    List<int[]> ret = new ArrayList<>();
+
     public List<List<Integer>> verticalTraversal(TreeNode root) {
-
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if (root == null)
-            return result;
-        // find rang of x (min to max)
-        helper(root, 0);
-
-        for (int i = min; i <= max; i++) {
-            result.add(new ArrayList<>());
-        }
-
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        Queue<Integer> indexes = new LinkedList<Integer>();
-
-        queue.offer(root);
-        indexes.offer(-min);  // root所在的index
-
-        while (!queue.isEmpty()) {
-            TreeNode curr = queue.poll();
-            int index = indexes.poll();
-
-            result.get(index).add(curr.val);
-            if (curr.left != null) {
-                queue.offer(curr.left);
-                indexes.offer(index - 1);
+        check(root, 0, 0);
+        Collections.sort(ret, (a, b) -> (a[0] != b[0] ? a[0] - b[0] : a[1] != b[1] ? a[1] - b[1] : a[2] - b[2]));
+        List<List<Integer>> ans = new ArrayList<>();
+        int preX = -1000000;
+        List<Integer> list = null;
+        for (int[] x : ret) {
+            if (x[0] != preX) {
+                preX = x[0];
+                list = new ArrayList<>();
+                ans.add(list);
             }
-            if (curr.right != null) {
-                queue.offer(curr.right);
-                indexes.offer(index + 1);
-            }
+            list.add(x[2]);
         }
-
-        return result;
+        return ans;
     }
 
-    private void helper(TreeNode root, int index) {
-        if (root == null)
-            return;
-
-        min = Math.min(min, index);
-        max = Math.max(max, index);
-
-        helper(root.left, index - 1);
-        helper(root.right, index + 1);
+    private void check(TreeNode node, int x, int y) {
+        if (node == null) return;
+        ret.add(new int[]{x, y, node.val});
+        check(node.left, x - 1, y + 1); // y+1, not y-1 here
+        check(node.right, x + 1, y + 1);
     }
-
 }

@@ -21,15 +21,13 @@ Output: -1->0->3->4->5
  */
 public class LC_0148_SortList {
     public ListNode sortList(ListNode head) {
-        if (head == null || head.next == null)
-        {
+        if (head == null || head.next == null) {
             return head;
         }
         // Divide linked list to two parts
         ListNode slow = head;
         ListNode fast = head.next;
-        while (fast!= null && fast.next != null)
-        {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -41,20 +39,16 @@ public class LC_0148_SortList {
 
         return mergeLinkedList(firstPart, secondPart);
     }
-    public ListNode mergeLinkedList(ListNode l1, ListNode l2)
-    {
+
+    public ListNode mergeLinkedList(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
         ListNode start = head;
 
-        while (l1 != null && l2 != null)
-        {
-            if (l1.val <= l2.val)
-            {
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
                 start.next = l1;
                 l1 = l1.next;
-            }
-            else
-            {
+            } else {
                 start.next = l2;
                 l2 = l2.next;
             }
@@ -62,16 +56,20 @@ public class LC_0148_SortList {
             start = start.next;
         }
 
-        if (l1 != null)
-        {
+        if (l1 != null) {
             start.next = l1;
         }
 
-        if (l2 != null)
-        {
+        if (l2 != null) {
             start.next = l2;
         }
 
         return head.next;
     }
+
+    /*
+    https://www.youtube.com/watch?v=M1TwY0nsTZA
+     */
+
+
 }
