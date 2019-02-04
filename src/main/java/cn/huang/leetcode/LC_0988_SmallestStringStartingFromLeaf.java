@@ -84,9 +84,10 @@ public class LC_0988_SmallestStringStartingFromLeaf {
 
         String l = smallestFromLeaf(root.left);
         String r = smallestFromLeaf(root.right);
-        if (l.length() == 0) return r + v;
-        if (r.length() == 0) return l + v;
+        if (l.length() == 0)
+            return r + v;
+        if (r.length() == 0)
+            return l + v;
         return (l.compareTo(r) > 0 ? r : l) + v;
     }
-
 }
