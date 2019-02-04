@@ -11,7 +11,8 @@ Step 3: sort two sections
  */
 
 public class QuickSort {
-    public static void quicksort(int[] array) {
+    public static void sort(int[] array) {
+
         quicksort(array, 0, array.length - 1);
     }
 
