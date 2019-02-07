@@ -25,12 +25,15 @@ Output:
 ]
  */
 public class LC_0078_Subsets {
+    /*
+    Time: O(2^n)
+    Space O(n)
+     */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
 
         helper(nums, res, 0, new ArrayList<>());
         return res;
-
     }
 
     private void helper(int[] nums, List<List<Integer>> res, int start, List<Integer> combination) {

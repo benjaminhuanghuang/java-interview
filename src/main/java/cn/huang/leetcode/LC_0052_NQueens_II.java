@@ -30,14 +30,14 @@ public class LC_0052_NQueens_II {
             if (isValid(queenList, row, col)) {//判断合法
                 queenList[row] = col;//将皇后放在第row行，第i列
                 putQueen(queenList, n, row + 1);//寻找下一行
-                // queenList[row] = 0;//回溯
+                // queenList[row] = 0;// 由于queenList[row]只有一个值，此处无需回溯
             }
         }
     }
 
     boolean isValid(int[] queenList, int row, int col) {
         for (int i = 0; i < row; i++) {
-            if (queenList[i] == col    //same column
+            if (queenList[i] == col    //same column, queenList[i] is the col of the Queen at row[i]
                     || queenList[i] + i == col + row  // anti-diagonal
                     || queenList[i] - i == col - row) // diagonal
                 return false;

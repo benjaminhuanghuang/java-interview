@@ -5,13 +5,14 @@ import cn.huang.leetcode.common.TreeNode;
 import java.util.*;
 
 /*
-987. Vertical Order Traversal of a Binary Tree
+987. Vertical Order Traversal of a Binary Tree [314]
 
 Given a binary tree, return the vertical order traversal of its nodes values.
 
 For each node at position (X, Y), its left and right children respectively will be at positions (X-1, Y-1) and (X+1, Y-1).
 
-Running a vertical line from X = -infinity to X = +infinity, whenever the vertical line touches some nodes, we report the values of the nodes in order from top to bottom (decreasing Y coordinates).
+Running a vertical line from X = -infinity to X = +infinity, whenever the vertical line touches some nodes,
+we report the values of the nodes in order from top to bottom (decreasing Y coordinates).
 
 If two nodes have the same position, then the value of the node that is reported first is the value that is smaller.
 
@@ -48,16 +49,15 @@ The tree will have between 1 and 1000 nodes.
 Each node's value will be between 0 and 1000.
  */
 public class LC_0987_VerticalOrderTraversalofaBinaryTree {
-    private int min = 0;
-    private int max = 0;
-
     /*
         https://zxi.mytechroad.com/blog/2019/02/
      */
     List<int[]> ret = new ArrayList<>();
 
     public List<List<Integer>> verticalTraversal(TreeNode root) {
+        // root node is at position (0, 0):
         check(root, 0, 0);
+        // sort by x, y , val
         Collections.sort(ret, (a, b) -> (a[0] != b[0] ? a[0] - b[0] : a[1] != b[1] ? a[1] - b[1] : a[2] - b[2]));
         List<List<Integer>> ans = new ArrayList<>();
         int preX = -1000000;
@@ -74,7 +74,8 @@ public class LC_0987_VerticalOrderTraversalofaBinaryTree {
     }
 
     private void check(TreeNode node, int x, int y) {
-        if (node == null) return;
+        if (node == null)
+            return;
         ret.add(new int[]{x, y, node.val});
         check(node.left, x - 1, y + 1); // y+1, not y-1 here
         check(node.right, x + 1, y + 1);
