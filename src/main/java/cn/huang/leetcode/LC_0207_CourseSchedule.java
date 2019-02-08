@@ -21,12 +21,13 @@ public class LC_0207_CourseSchedule {
     public boolean canFinish_BFS(int numCourses, int[][] prerequisites) {
         int[] indegree = new int[numCourses];
         int res = numCourses;
-        // find node has indegree 0
+
         for (int[] pair : prerequisites) {
             indegree[pair[0]]++;
         }
 
         Queue<Integer> queue = new LinkedList<>();
+        // find node has indegree 0
         for (int i = 0; i < indegree.length; i++) {
             if (indegree[i] == 0) {
                 queue.offer(i);
