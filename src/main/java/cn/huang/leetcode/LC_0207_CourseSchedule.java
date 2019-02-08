@@ -21,18 +21,20 @@ public class LC_0207_CourseSchedule {
     public boolean canFinish_BFS(int numCourses, int[][] prerequisites) {
         int[] indegree = new int[numCourses];
         int res = numCourses;
-
+        // step1: calculate in-degree
         for (int[] pair : prerequisites) {
             indegree[pair[0]]++;
         }
 
         Queue<Integer> queue = new LinkedList<>();
-        // find node has indegree 0
+        // step2: find nodes has 0 in-degree
         for (int i = 0; i < indegree.length; i++) {
             if (indegree[i] == 0) {
                 queue.offer(i);
             }
         }
+
+        // step3: bfs, delete node has 0 in-degree
         while (!queue.isEmpty()) {
             int pre = queue.poll();
             res--;

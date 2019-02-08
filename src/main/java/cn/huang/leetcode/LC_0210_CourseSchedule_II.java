@@ -22,11 +22,12 @@ public class LC_0210_CourseSchedule_II {
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int[] indegree = new int[numCourses];
-
+        // Step1: calculate in-degree
         for (int i = 0; i < prerequisites.length; i++) {
             indegree[prerequisites[i][0]]++;
         }
 
+        // Step2: find nodes have 0 in-degree
         Queue<Integer> queue = new LinkedList<>();
 
         for (int i = 0; i < indegree.length; i++) {
@@ -34,6 +35,8 @@ public class LC_0210_CourseSchedule_II {
                 queue.offer(i);
             }
         }
+
+        // Step3: bfs
         List<Integer> res = new ArrayList<>();
 
         while (!queue.isEmpty()) {
