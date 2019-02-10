@@ -1,4 +1,5 @@
 package cn.huang.leetcode;
+
 /*
 80. Remove Duplicates from Sorted Array II
 
@@ -33,13 +34,27 @@ public class LC_0080_RemoveDuplicatesfromSortedArray_II {
 
         int count = 2;
 
-        for(int i = 2; i < nums.length; i++)
-        {
-            if(nums[i] != nums[count -2])
-            {
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[i] != nums[count - 2]) {
                 nums[count++] = nums[i];
             }
         }
         return count;
+    }
+
+    // Using solution for 26
+    public int removeDuplicates_my(int[] nums) {
+        if (nums.length < 3)
+            return nums.length;
+
+        int end = 1;
+        int i = 2;
+        while (i < nums.length) {
+            if (nums[i] != nums[end - 1]) {
+                nums[++end] = nums[i];
+            }
+            i++;
+        }
+        return end + 1;
     }
 }

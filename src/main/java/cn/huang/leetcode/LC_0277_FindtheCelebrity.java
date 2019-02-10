@@ -18,34 +18,35 @@ Note: There will be exactly one celebrity if he/she is in the party. Return the 
 celebrity in the party. If there is no celebrity, return -
  */
 
+/*
+    https://www.youtube.com/watch?v=QDehNYXlCAg
+
+*/
 public class LC_0277_FindtheCelebrity {
-    private boolean knows(int a, int b)
-    {
+    private boolean knows(int a, int b) {
         return false;
     }
 
-     public int findCelebrity(int n) {
+    public int findCelebrity(int n) {
         int candidate = 0;
         // find a candidate
-        for(int i= 1; i< n ; i++)
-        {
-            if(knows(candidate,i ))
-            {
-                candidate =i;
+        for (int i = 1; i < n; i++) {
+            // if candidate knows i, this candidate is not celebrity
+            if (knows(candidate, i)) {
+                candidate = i;
             }
+            // else i is not candidate
         }
         // Make sure if the candidate is a celebrity by on pass
-         for(int i= 0; i< n ; i++)
-         {
-             if(candidate == i)
-             {
+        // 无法确认candidate之前的人都认识candidate
+        for (int i = 0; i < n; i++) {
+            if (candidate == i) {
                 continue;
-             }
-             if(!knows(i,candidate )|| knows(candidate, i))
-             {
-                 return -1;
-             }
-         }
-         return candidate;
+            }
+            if (!knows(i, candidate) || knows(candidate, i)) {
+                return -1;
+            }
+        }
+        return candidate;
     }
 }

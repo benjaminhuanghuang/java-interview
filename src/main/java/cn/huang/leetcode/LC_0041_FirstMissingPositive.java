@@ -29,6 +29,7 @@ Your algorithm should run in O(n) time and uses constant extra space.
 
 /*
 https://www.youtube.com/watch?v=jfb72FfxWKU
+
  */
 public class LC_0041_FirstMissingPositive {
     public int firstMissingPositive(int[] nums) {
@@ -36,7 +37,7 @@ public class LC_0041_FirstMissingPositive {
             return 1;
         for (int i = 0; i < nums.length; i++) {
             while (nums[i] > 0 && nums[i] < nums.length && nums[nums[i] - 1] != nums[i]) {
-                // Put num to the right position
+                // Put num[i] to the right position num[nuims[i]-1] (nums[i] != i + 1)
                 int temp = nums[nums[i] - 1];
                 nums[nums[i] - 1] = nums[i];
                 nums[i] = temp;

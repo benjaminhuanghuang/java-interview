@@ -19,13 +19,10 @@ public class LC_0026_RemoveDuplicatesfromSortedArray {
         int i = 1;
 
         while (i < nums.length) {
-            if (nums[i] == nums[end]) {
-                i++;
-            } else {
-                end++;
-                nums[end] = nums[i];
-                i++;
+            if (nums[i] != nums[end]) {
+                nums[++end] = nums[i];
             }
+            i++;
         }
 
         return end + 1;
