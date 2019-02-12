@@ -18,12 +18,12 @@ public class LC_0243_ShortestWordDistance {
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < words.length; i++) {
-            String s = words[i];
-            if (word1.equals(s)) {
+            String word = words[i];
+            if (word1.equals(word)) {
                 index1 = i;
                 if (index2 != -1)
                     min = Math.min(min, index1 - index2);
-            } else if (word2.equals(s)) {
+            } else if (word2.equals(word)) {
                 index2 = i;
                 if (index1 != -1)
                     min = Math.min(min, index2 - index1);

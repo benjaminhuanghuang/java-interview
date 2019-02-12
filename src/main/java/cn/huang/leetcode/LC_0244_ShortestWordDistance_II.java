@@ -3,9 +3,11 @@ package cn.huang.leetcode;
 /*
 244	 Shortest Word Distance II
 
-This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you optimize it?
+This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your
+method will be called repeatedly many times with different parameters. How would you optimize it?
 
-Design a class which receives a list of words in the constructor, and implements a method that takes two words word1 and word2 and return the shortest distance between these two words in the list.
+Design a class which receives a list of words in the constructor, and implements a method that takes two words word1
+and word2 and return the shortest distance between these two words in the list.
 
 For example,
 Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
@@ -24,12 +26,12 @@ public class LC_0244_ShortestWordDistance_II {
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < words.length; i++) {
-            String s = words[i];
-            if (word1.equals(s)) {
+            String word = words[i];
+            if (word1.equals(word)) {
                 index1 = i;
                 if (index2 != -1)
                     min = Math.min(min, index1 - index2);
-            } else if (word2.equals(s)) {
+            } else if (word2.equals(word)) {
                 index2 = i;
                 if (index1 != -1)
                     min = Math.min(min, index2 - index1);

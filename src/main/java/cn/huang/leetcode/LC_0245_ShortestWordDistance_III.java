@@ -26,15 +26,20 @@ public class LC_0245_ShortestWordDistance_III {
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < words.length; i++) {
-            String s = words[i];
-            if (word1.equals(s)) {
+            String word = words[i];
+
+            if (word.equals(word1)) {
                 index1 = i;
-                if (index2 != -1)
-                    min = Math.min(min, index1 - index2);
-            } else if (word2.equals(s)) {
+            } else if (word.equals(word2)) {
                 index2 = i;
-                if (index1 != -1)
-                    min = Math.min(min, index2 - index1);
+            }
+
+            if (index1 != -1 && index2 != -1 && index1 != index2) {
+                min = Math.min(min, Math.abs(index1 - index2));
+            }
+
+            if (word1.equals(word2)) {
+                index2 = index1;
             }
         }
 

@@ -55,7 +55,7 @@ public class LC_0220_ContainsDuplicate_III {
         TreeSet<Long> set = new TreeSet<>();
         for (int i = 0; i < nums.length; i++) {
             Long floor = set.floor((long) nums[i] + t);
-            Long ceil = set.ceiling((long) nums[i] - t);
+            Long ceil = set.ceiling((long) nums[i] - t);  // smallest number larger than
 
             if (floor != null && floor > nums[i] || ceil != null && ceil <= nums[i])
                 return true;

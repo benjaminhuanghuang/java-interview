@@ -56,4 +56,25 @@ public class LC_0985_SumofEvenNumbersAfterQueries {
         }
         return sum;
     }
+
+    /*
+        https://www.youtube.com/watch?v=5xL_N2S3-QU
+     */
+    public int[] sumEvenAfterQueries_huahua(int[] A, int[][] queries) {
+        int sum = 0;
+        for (int i = 0; i < A.length; ++i)
+            if (A[i] % 2 == 0)
+                sum += A[i];
+        int[] ans = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int a = A[queries[i][1]];
+            if (a % 2 == 0)
+                sum -= a;
+            a += queries[i][0];
+            if (a % 2 == 0)
+                sum += a;
+            ans[i] = sum;
+        }
+        return ans;
+    }
 }
