@@ -36,40 +36,41 @@ public class LC_0123_BestTimetoBuyandSellStock_III {
     https://www.programcreek.com/2014/02/leetcode-best-time-to-buy-and-sell-stock-iii-java/
     Comparing to I and II, III limits the number of transactions to 2. This can be solve by "devide and conquer".
     We use left[i] to track the maximum profit for transactions before i, and use right[i] to track the maximum profit
-    for transactions after i. You can use the following example to understand the Java solution:
+    for transactions after i.
 
-
+    https://www.youtube.com/watch?v=LX8i5PxRVCg
      */
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length < 2) {
             return 0;
         }
 
-        //highest profit in 0 ... i
+        //max profit in 0 ... i
         int[] left = new int[prices.length];
+        //max profit from  i ... price.length -1
         int[] right = new int[prices.length];
 
         // DP from left to right
-        left[0] = 0;
-        int min = prices[0];
+        //left[0] = 0;
+        int minPrice = prices[0];
         for (int i = 1; i < prices.length; i++) {
-            min = Math.min(min, prices[i]);
-            left[i] = Math.max(left[i - 1], prices[i] - min);
+            minPrice = Math.min(minPrice, prices[i]);
+            left[i] = Math.max(left[i - 1], prices[i] - minPrice);
         }
 
         // DP from right to left
-        right[prices.length - 1] = 0;
-        int max = prices[prices.length - 1];
+        //right[prices.length - 1] = 0;
+        int maxPrice = prices[prices.length - 1];
         for (int i = prices.length - 2; i >= 0; i--) {
-            max = Math.max(max, prices[i]);
-            right[i] = Math.max(right[i + 1], max - prices[i]);
+            maxPrice = Math.max(maxPrice, prices[i]);
+            right[i] = Math.max(right[i + 1], maxPrice - prices[i]);
         }
 
-        int profit = 0;
+        int maxProfit = 0;
         for (int i = 0; i < prices.length; i++) {
-            profit = Math.max(profit, left[i] + right[i]);
+            maxProfit = Math.max(maxProfit, left[i] + right[i]);
         }
 
-        return profit;
+        return maxProfit;
     }
 }
