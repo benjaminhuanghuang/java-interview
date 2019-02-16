@@ -18,7 +18,6 @@ public class LC_0104_MaximumDepthofBinaryTree {
             return 0;
         }
 
-
         if (root.left == null && root.right == null)
             return 1;
 

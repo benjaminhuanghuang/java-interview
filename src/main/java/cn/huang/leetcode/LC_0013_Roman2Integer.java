@@ -54,7 +54,8 @@ import java.util.HashMap;
  */
 public class LC_0013_Roman2Integer {
     /*
-    如果前一个字符代表的数字比后一个小，则sum减去它代表的数字；如果比后一个大，则加上它代表的数字。用hashmap来做，因此每次查找的时间为O(1)，时间复杂度为O(n)，空间复杂度为O(1)
+    如果前一个字符代表的数字比后一个小，则sum减去它代表的数字；如果比后一个大，则加上它代表的数字。用hashmap来做，
+    因此每次查找的时间为O(1)，时间复杂度为O(n)，空间复杂度为O(1)
     */
     public int romanToInt(String s) {
         if (s == null || s.length() == 0)

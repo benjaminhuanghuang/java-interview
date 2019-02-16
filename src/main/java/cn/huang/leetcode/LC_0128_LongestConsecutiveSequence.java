@@ -20,6 +20,8 @@ Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefor
  */
 public class LC_0128_LongestConsecutiveSequence {
     /*
+    https://www.programcreek.com/2013/01/leetcode-longest-consecutive-sequence-java/
+
     Because it requires O(n) complexity, we can not solve the problem by sorting the array first.
     Sorting takes at least O(nlogn) time.
 
@@ -35,7 +37,7 @@ public class LC_0128_LongestConsecutiveSequence {
         }
 
         Set<Integer> set = new HashSet<Integer>();
-        int max = 1;
+        int maxLen = 1;
 
         for (int n : nums)
             set.add(n);
@@ -57,9 +59,9 @@ public class LC_0128_LongestConsecutiveSequence {
                 right++;
             }
 
-            max = Math.max(count, max);
+            maxLen = Math.max(count, maxLen);
         }
 
-        return max;
+        return maxLen;
     }
 }

@@ -28,7 +28,7 @@ public class LC_0011_ContainerWithMostWater {
         while (l < r)
         {
             int area = (r - l) * Math.min(height[l] , height[r]);
-            ans = Math.min(area, ans);
+            ans = Math.max(area, ans);
             // 当height[l] < height[r]时，moving r can not create more volume.
             if (height[l] < height[r])
                 l++;

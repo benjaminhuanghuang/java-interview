@@ -18,8 +18,13 @@ Output: 6
  */
 public class LC_0042_TrappingRainWater {
     /*
+
+    https://www.youtube.com/watch?v=8BHqSdwyODs
+    每个位置所能存的水由 左边的最高值 和 右边的最高值 决定
+
     https://www.youtube.com/watch?v=2LjNzbK2cmA
     当前单元能装多少水是取决于左右两边挡板最小值与当前值之差。之后就用双指针更新左右挡板就好了。﻿
+
      */
     public int trap(int[] height) {
         int left = 0;
