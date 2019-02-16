@@ -1,6 +1,7 @@
 package cn.huang.leetcode;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 /*
 225. Implement Stack using Queues
@@ -10,8 +11,8 @@ public class LC_0225_ImplementStackusingQueues {
     //https://www.youtube.com/watch?v=grAYBHmn4Cs
     class MyStack {
 
-        LinkedList<Integer> data = new LinkedList<Integer>();
-        LinkedList<Integer> helper = new LinkedList<Integer>();
+        Queue<Integer> data = new LinkedList<Integer>();
+        Queue<Integer> helper = new LinkedList<Integer>();
 
 
         // Push element x onto stack.
@@ -26,7 +27,8 @@ public class LC_0225_ImplementStackusingQueues {
                 helper.offer(data.poll());
             }
             int element = data.poll();
-            LinkedList<Integer> tmp = data;
+            // switch data and helper
+            Queue<Integer> tmp = data;
             data = helper;
             helper = tmp;
             return element;
@@ -39,8 +41,9 @@ public class LC_0225_ImplementStackusingQueues {
                 helper.offer(data.poll());
             }
             int element = data.peek();
+            // switch data and helper
             helper.offer(data.poll());
-            LinkedList<Integer> tmp = data;
+            Queue<Integer> tmp = data;
             data = helper;
             helper = tmp;
             return element;
