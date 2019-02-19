@@ -1,5 +1,9 @@
 package cn.huang.leetcode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 /*
 244	 Shortest Word Distance II
 
@@ -19,25 +23,33 @@ Note:
 You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
  */
 public class LC_0244_ShortestWordDistance_II {
-    public int shortestDistance(String[] words, String word1, String word2) {
-        int index1 = -1;
-        int index2 = -1;
+    HashMap<String, ArrayList<Integer>> map;
 
-        int min = Integer.MAX_VALUE;
+    public LC_0244_ShortestWordDistance_II(String[] words) {
+        map = new HashMap<String, ArrayList<Integer>>();
 
         for (int i = 0; i < words.length; i++) {
-            String word = words[i];
-            if (word1.equals(word)) {
-                index1 = i;
-                if (index2 != -1)
-                    min = Math.min(min, index1 - index2);
-            } else if (word2.equals(word)) {
-                index2 = i;
-                if (index1 != -1)
-                    min = Math.min(min, index2 - index1);
+            if (map.containsKey(words[i])) {
+                map.get(words[i]).add(i);
+            } else {
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                list.add(i);
+                map.put(words[i], list);
             }
         }
+    }
 
-        return min;
+    public int shortest(String word1, String word2) {
+
+        ArrayList<Integer> l1 = map.get(word1);
+        ArrayList<Integer> l2 = map.get(word2);
+
+        int result = Integer.MAX_VALUE;
+        for (int i1 : l1) {
+            for (int i2 : l2) {
+                result = Math.min(result, Math.abs(i1 - i2));
+            }
+        }
+        return result;
     }
 }

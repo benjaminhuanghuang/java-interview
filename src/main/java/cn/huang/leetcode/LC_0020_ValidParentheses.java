@@ -3,7 +3,7 @@ package cn.huang.leetcode;
 import java.util.Stack;
 
 /*
-    20	Valid Parentheses
+    20. Valid Parentheses
  */
 public class LC_0020_ValidParentheses {
     public boolean isValid(String s) {

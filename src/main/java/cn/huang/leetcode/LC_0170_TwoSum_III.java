@@ -20,7 +20,7 @@ find(7) -> false
 [分析]
 HASH table O(N)存, O(1) 取
  */
-public class LC_170_TwoSum_III {
+public class LC_0170_TwoSum_III {
     Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
     public void add(int number) {

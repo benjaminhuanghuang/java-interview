@@ -23,9 +23,30 @@ public class LC_0367_ValidPerfectSquare {
         while (left <= right) {
             long mid = left + (right - left) / 2;
             long t = mid * mid;
-            if (t == num) return true;
-            else if (t < num) left = mid + 1;
-            else right = mid - 1;
+            if (t == num)
+                return true;
+            else if (t < num)
+                left = mid + 1;
+            else
+                right = mid - 1;
+        }
+        return false;
+    }
+
+    // Hua hua
+    // https://www.youtube.com/watch?v=v57lNF2mb_s
+    public boolean isPerfectSquare2(int num) {
+        // 左闭右开， 所以right = num +1
+        long left = 0, right = num + 1;
+        while (left < right) {
+            long mid = left + (right - left) / 2;
+            long t = mid * mid;
+            if (t == num)
+                return true;
+            else if (t < num)
+                left = mid + 1;
+            else
+                right = mid;
         }
         return false;
     }

@@ -35,9 +35,11 @@ Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
 
  */
 public class LC_0098_ValidateBinarySearchTree {
+
     public boolean isValidBST(TreeNode root) {
         return checkBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
+
     // handle [2147483647]
     private boolean checkBST(TreeNode n, long min, long max) {
         if (n == null)

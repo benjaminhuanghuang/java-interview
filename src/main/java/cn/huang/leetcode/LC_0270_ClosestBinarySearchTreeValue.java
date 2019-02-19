@@ -7,6 +7,19 @@ import cn.huang.leetcode.common.TreeNode;
 	Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
  */
 public class LC_0270_ClosestBinarySearchTreeValue {
+    //https://www.youtube.com/watch?v=s7QcJi1qGEM
+    public int closestValue_prefect(TreeNode root, double target) {
+        int res = root.val;
+
+        while (root != null) {
+            if (Math.abs(target - root.val) < Math.abs(target - res)) {
+                res = root.val;
+            }
+            root = root.val > target ? root.left : root.right;
+        }
+        return res;
+    }
+
     int goal;
     double min = Double.MAX_VALUE;
 
@@ -71,4 +84,6 @@ public class LC_0270_ClosestBinarySearchTreeValue {
         // 返回根节点和子树最近节点中，更近的那个节点
         return Math.abs(root.val - target) < Math.abs(closest - target) ? root.val : closest;
     }
+
+
 }

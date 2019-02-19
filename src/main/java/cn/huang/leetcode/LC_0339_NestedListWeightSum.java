@@ -24,7 +24,7 @@ import java.util.List;
 但是嵌套的层数需要有个记录, 所以我们只需要另外写一个函数, 记录当前是第几层即可.
 
  */
-public class LC_339_NestedListWeightSum {
+public class LC_0339_NestedListWeightSum {
     public int depthSum(List<NestedInteger> nestedList) {
         return helper(nestedList, 1);
     }

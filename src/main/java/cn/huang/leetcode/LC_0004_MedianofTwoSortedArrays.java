@@ -27,13 +27,18 @@ public class LC_0004_MedianofTwoSortedArrays {
 
 
     int findKth(int[] nums1, int i, int[] nums2, int j, int k) {
-        if (i >= nums1.length) return nums2[j + k - 1];    // all of nums in nums1 were removed
-        if (j >= nums2.length) return nums1[i + k - 1];
+        // Case 1: overstep
+        if (i >= nums1.length)
+            return nums2[j + k - 1];    // all of nums in nums1 were removed
+        if (j >= nums2.length)
+            return nums1[i + k - 1];
+        // case 2: k =1
         if (k == 1) return Math.min(nums1[i], nums2[j]);
 
+        // case 3: 每次砍掉 k／2个数字
         int midVal1 = (i + k / 2 - 1 < nums1.length) ? nums1[i + k / 2 - 1] : Integer.MAX_VALUE;
         int midVal2 = (j + k / 2 - 1 < nums2.length) ? nums2[j + k / 2 - 1] : Integer.MAX_VALUE;
-        // 每次砍掉 k／2个数字
+        // cut number for nums1 or nums2
         if (midVal1 < midVal2) {
             return findKth(nums1, i + k / 2, nums2, j, k - k / 2);
         } else {

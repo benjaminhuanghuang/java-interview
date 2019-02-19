@@ -38,13 +38,19 @@ public class LC_0152_MaximumProductSubarray {
         list[i].Max = Math.Max(A[i], list[i – 1].Min * A[i]);
     */
     public int maxProduct(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0];
+        if (nums == null || nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
+        // 负数 * 负数
         int[] maxhere = new int[nums.length];
         int[] minhere = new int[nums.length];
+
+        // init
         maxhere[0] = nums[0];
         minhere[0] = nums[0];
         int res = nums[0];
+
         for (int i = 1; i < nums.length; i++) {
             maxhere[i] = Math.max(Math.max(maxhere[i - 1] * nums[i], nums[i]), minhere[i - 1] * nums[i]);
             minhere[i] = Math.min(Math.min(minhere[i - 1] * nums[i], nums[i]), maxhere[i - 1] * nums[i]);
