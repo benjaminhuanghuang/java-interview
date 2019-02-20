@@ -30,7 +30,7 @@ Note:
     1 <= sentence words length <= 1000
 
  */
-public class LC_648_ReplaceWords {
+public class LC_0648_ReplaceWords {
     /*
     已知sentence和缩写list，把sentence中的word按照一定规则转换成其缩写，并返回sentence。
     用一个hashset存储缩写list中的元素，把sentence通过split(” “)分割成单词array，逐个单词对应查找其缩写并转换成其缩写，

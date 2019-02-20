@@ -35,18 +35,18 @@ public class LC_0076_MinimumWindowSubstring {
         }
 
         int start = 0;
-        int leftChartCount = t.length();
+        int restChartCount = t.length();
         int min = Integer.MAX_VALUE;
         String res = "";
 
         for (int i = 0; i < s.length(); i++) {
             if (dict[s.charAt(i)] > 0) {
                 // if s[i] is char in t string
-                leftChartCount--;
+                restChartCount--;
             }
             dict[s.charAt(i)]--;   // 在s中且不在t中的的字符的count会变为负值
 
-            while (leftChartCount == 0) //When leftChartCount == 0, substring S[start : i] contains string T
+            while (restChartCount == 0) //When restChartCount == 0, substring S[start : i] contains string T
             {
                 if (min > i - start + 1)   // find res shorter than last res or find res firstly
                 {
@@ -57,7 +57,7 @@ public class LC_0076_MinimumWindowSubstring {
                 if (++dict[s.charAt(start)] > 0) {
                     //++dict[s.charAt(start)] > 0 说明这是t中的字符，
                     //  remove first char from the sub string
-                    leftChartCount++;
+                    restChartCount++;
                 }
                 start++;
 

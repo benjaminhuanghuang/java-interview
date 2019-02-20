@@ -23,11 +23,12 @@ public class LC_0133_CloneGraph {
         if (node == null)
             return null;
 
+        // Clone the start node
         UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
         HashMap<UndirectedGraphNode, UndirectedGraphNode> visited = new HashMap<>();
-        Queue<UndirectedGraphNode> queue = new LinkedList<>();
-
         visited.put(node, newNode);
+
+        Queue<UndirectedGraphNode> queue = new LinkedList<>();
         queue.offer(node);
 
         while (!queue.isEmpty()) {
@@ -40,7 +41,7 @@ public class LC_0133_CloneGraph {
                     visited.put(neighbour, newTmpNode);
                     queue.offer(neighbour);
                 }
-                // add neighbor
+                // add neighbor, visited.get(originalNode) is cloned node of originalNode,
                 visited.get(originalNode).neighbors.add(visited.get(neighbour));
             }
         }

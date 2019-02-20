@@ -51,8 +51,6 @@ public class LC_0023_MergekSortedLists {
             return null;
 
         return mergeKLists(lists, 0, lists.length - 1);
-
-
     }
 
     public ListNode mergeKLists(ListNode[] lists, int low, int high) {
