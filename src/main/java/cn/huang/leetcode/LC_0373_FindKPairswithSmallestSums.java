@@ -37,22 +37,23 @@ public class LC_0373_FindKPairswithSmallestSums {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         ArrayList<int[]> result = new ArrayList<int[]>();
 
-        if(nums1==null || nums2==null || nums1.length==0||nums2.length==0){
+        if (nums1 == null || nums2 == null || nums1.length == 0 || nums2.length == 0) {
             return result;
         }
 
+        // Important!
         // k's max value is all possible pair, if arrays are too short
-        k = Math.min(k, nums1.length*nums2.length);
+        k = Math.min(k, nums1.length * nums2.length);
 
         // array to track index in nums2
         int[] idx = new int[nums1.length];
 
-        while(result.size()<k){
+        while (result.size() < k) {
             int min = Integer.MAX_VALUE;
             int j = -1;
-            for(int i=0; i<nums1.length; i++){
-                if(idx[i]<nums2.length && nums1[i]+nums2[idx[i]]<min){
-                    min = nums1[i]+nums2[idx[i]];
+            for (int i = 0; i < nums1.length; i++) {
+                if (idx[i] < nums2.length && nums1[i] + nums2[idx[i]] < min) {
+                    min = nums1[i] + nums2[idx[i]];
                     j = i;
                 }
             }

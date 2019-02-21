@@ -15,7 +15,7 @@ public class LC_0215_KthLargestElementinanArray {
     /*
     https://www.youtube.com/watch?v=ow04KXJ0kG4
     Quick sort
-
+    Time:
      */
     public int findKthLargest(int[] nums, int k) {
         if (nums == null || nums.length == 0)
@@ -34,9 +34,11 @@ public class LC_0215_KthLargestElementinanArray {
                 left = pos + 1;
             }
         }
-
     }
 
+    /*
+
+     */
     private int partition(int[] nums, int left, int right) {
         int pivot = nums[left];
         int l = left + 1;
@@ -60,6 +62,4 @@ public class LC_0215_KthLargestElementinanArray {
         nums[i] = nums[j];
         nums[j] = tmp;
     }
-
-
 }

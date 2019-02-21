@@ -107,7 +107,7 @@ public class LC_0033_SearchinRotatedSortedArray {
         return -1;
     }
 
-    //
+    // Wrong
     public int search3(int[] nums, int target) {
         if (nums == null || nums.length < 1)
             return -1;

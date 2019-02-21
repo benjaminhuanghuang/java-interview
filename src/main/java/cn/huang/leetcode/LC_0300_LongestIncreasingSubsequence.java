@@ -58,5 +58,4 @@ public class LC_0300_LongestIncreasingSubsequence {
         }
         return size;
     }
-
 }

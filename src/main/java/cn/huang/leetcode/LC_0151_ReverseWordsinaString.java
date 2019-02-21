@@ -6,10 +6,31 @@ import java.util.Collections;
 /*
 151. Reverse Words in a String
 
+Given an input string, reverse the string word by word.
+
+Example:
+
+Input: "the sky is blue",
+Output: "blue is sky the".
+
+
+Note:
+
+    A word is defined as a sequence of non-space characters.
+    Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
+    You need to reduce multiple spaces between two words to a single space in the reversed string.
+
+Follow up: For C programmers, try to solve it in-place in O(1) space.
  */
 public class LC_0151_ReverseWordsinaString {
-    // 多空格的情况，不能直接用
+    /*
+    Can not pass the test:
+    Input "   a   b "
+    Output "b   a"
+    Expected "b a"
+     */
     public String reverseWords(String s) {
+        s = s.trim(); //your reversed string should not contain leading or trailing spaces.
         if (s == null || s.length() == 0) {
             return s;
         }

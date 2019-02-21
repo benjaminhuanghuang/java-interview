@@ -28,7 +28,7 @@ Note:
  */
 public class LC_0347_TopKFrequentElements {
     public List<Integer> topKFrequent(int[] nums, int k) {
-        HashMap<Integer, Integer> dic = new HashMap<>();
+        HashMap<Integer, Integer> dic = new HashMap<>();   // number: times
 
         for (int i = 0; i < nums.length; i++) {
             if (dic.containsKey(nums[i]))
