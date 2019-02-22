@@ -15,7 +15,15 @@ it should invalidate the least recently used item before inserting a new item.
 Follow up:
 Could you do both operations in O(1) time complexity?
 
+*/
 
+/*
+https://www.youtube.com/watch?v=q1Njd3NWvlY
+
+requirement
+    Access to a random key in O(1) -> should use hashtable
+    Remove the last entry in O(1)  -> need list
+    Add/Remove an entry to the front in O(1) -> need list
 
  */
 public class LC_0146_LRUCache {
@@ -34,7 +42,7 @@ public class LC_0146_LRUCache {
 
         private int capacity, size;
         private ListNode dummyHead, dummyTail;
-        private Map<Integer, ListNode> map;
+        private Map<Integer, ListNode> map;   // key: value
 
         public LRUCache(int capacity) {
             if (capacity <= 0) {
@@ -54,6 +62,7 @@ public class LC_0146_LRUCache {
                 return -1;
             }
             ListNode target = map.get(key);
+            // update
             remove(target);
             addToLast(target);
             return target.val;
@@ -63,6 +72,7 @@ public class LC_0146_LRUCache {
             if (map.containsKey(key)) { // update old value of the key
                 ListNode target = map.get(key);
                 target.val = value;
+                // update
                 remove(target);
                 addToLast(target);
             } else { // insert new key value pair, need to check current size

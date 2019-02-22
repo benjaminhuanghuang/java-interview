@@ -8,8 +8,83 @@ import java.util.Stack;
 /*
 297. Serialize and Deserialize Binary Tree
 
+Serialization is the process of converting a data structure or object into a sequence of bits so that it can
+be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later
+in the same or another computer environment.
+
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your
+serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized
+to a string and this string can be deserialized to the original tree structure.
+
+Example:
+
+You may serialize the following tree:
+
+    1
+   / \
+  2   3
+     / \
+    4   5
+
+as "[1,2,3,null,null,4,5]"
+Clarification: The above format is the same as how LeetCode serializes a binary tree. You do not necessarily need to
+follow this format, so please be creative and come up with different approaches yourself.
+
+Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
+
+
  */
 public class LC_0297_SerializeandDeserializeBinaryTree {
+    /*
+    https://www.youtube.com/watch?v=JL4OjKV_pGE
+    https://zxi.mytechroad.com/blog/tree/leetcode-297-serialize-and-deserialize-binary-tree/
+     */
+    public String serialize1(TreeNode root) {
+        if (root == null) {
+            return "#";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        write(root, sb);
+        return sb.toString().substring(0, sb.length() - 1);
+    }
+
+    private int index = 0;
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize1(String data) {
+        if (data == null || data.length() == 0)
+            return null;
+
+        return read(data.split(" "));
+    }
+
+    private void write(TreeNode node, StringBuilder sb) {
+        if (node == null) {
+            sb.append("# ");
+            return;
+        }
+        sb.append(node.val + " ");
+
+        write(node.left, sb);
+        write(node.right, sb);
+    }
+
+    private TreeNode read(String[] values) {
+        String value = values[index];
+        if (value.equals("#")) {
+            index++;
+            return null;
+        }
+
+        TreeNode root = new TreeNode(Integer.parseInt(value));
+        index++;
+        root.left = read(values);
+        root.right = read(values);
+        return root;
+    }
+
+
     /*
      Level Order Traveral
      */
