@@ -21,7 +21,7 @@ public class LC_0005_LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0)
             return "";
-        // dp[i][j] means string[i to j] is palin or not
+        // dp[i][j] means string[i to j] is palindromic or not
         boolean[][] dp = new boolean[s.length()][s.length()];
         String res = "";
         int maxLen = 0;

@@ -24,6 +24,13 @@ You would need two stacks to track the path in finding predecessor and successor
  */
 
 
+import cn.huang.leetcode.common.TreeNode;
+
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 /*
 思路: 利用二叉搜索树的中序遍历, 如果结果集合中元素还不到k个, 就把当前元素加到集合中去, 如果集合中的元素个数多于k了, 那么有二种情况:
 
@@ -42,5 +49,36 @@ You would need two stacks to track the path in finding predecessor and successor
 直到我们无法再找到能够替换的元素, 就可以返回结果了.
  */
 public class LC_0272_ClosestBinarySearchTreeValue_II {
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        List<Integer> res = new ArrayList<Integer>();
 
+        Deque<Integer> pre = new LinkedList<Integer>();
+        Deque<Integer> suc = new LinkedList<Integer>();
+
+        inorder(root, target, false, pre);
+        inorder(root, target, true, suc);
+
+        while (k-- > 0) {
+            if (pre.isEmpty())
+                res.add(suc.pop());
+            else if (suc.isEmpty())
+                res.add(pre.pop());
+            else if (Math.abs(suc.peek() - target) < Math.abs(pre.peek() - target))
+                res.add(suc.pop());
+            else
+                res.add(pre.pop());
+        }
+
+        return res;
+
+    }
+
+    private void inorder(TreeNode node, double target, boolean reverse, Deque<Integer> stack) {
+        if (node == null) return;
+
+        inorder(reverse ? node.right : node.left, target, reverse, stack);
+        if ((reverse && node.val <= target) || (!reverse && node.val > target)) return;
+        stack.push(node.val);
+        inorder(reverse ? node.left : node.right, target, reverse, stack);
+    }
 }

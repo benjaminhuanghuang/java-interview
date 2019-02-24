@@ -6,11 +6,15 @@ import java.util.Map;
 import java.util.Objects;
 
 /*
-460. LFU Cache
-Design and implement a data structure for Least Frequently Used (LFU) cache. It should support the following operations: get and put.
+460. LFU Cache [146]
+
+Design and implement a data structure for Least Frequently Used (LFU) cache. It should support the following
+operations: get and put.
 
 get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
-put(key, value) - Set or insert the value if the key is not already present. When the cache reaches its capacity, it should invalidate the least frequently used item before inserting a new item. For the purpose of this problem, when there is a tie (i.e., two or more keys that have the same frequency), the least recently used key would be evicted.
+put(key, value) - Set or insert the value if the key is not already present. When the cache reaches its capacity, it
+should invalidate the least frequently used item before inserting a new item. For the purpose of this problem, when
+there is a tie (i.e., two or more keys that have the same frequency), the least recently used key would be evicted.
 
 Follow up:
 Could you do both operations in O(1) time complexity?
@@ -34,16 +38,20 @@ public class LC_0460_LFUCache {
         }
 
         public int get(int key) {
-            if (valueMap.containsKey(key)) increase(key, valueMap.get(key));
+            if (valueMap.containsKey(key))
+                increase(key, valueMap.get(key));
             return valueMap.getOrDefault(key, -1);
         }
 
         private void increase(int key, int value) {
             Node node = nodeMap.get(key);
             node.keys.remove(key);
-            if (Objects.isNull(node.next)) node.next = new Node(node, null, 1 + node.count, key);
-            else if (node.next.count == node.count + 1) node.next.keys.add(key);
-            else node.next = node.next.prev = new Node(node, node.next, node.count + 1, key);
+            if (Objects.isNull(node.next))
+                node.next = new Node(node, null, 1 + node.count, key);
+            else if (node.next.count == node.count + 1)
+                node.next.keys.add(key);
+            else
+                node.next = node.next.prev = new Node(node, node.next, node.count + 1, key);
             nodeMap.put(key, node.next);
             valueMap.put(key, value);
             if (node.keys.isEmpty()) remove(node);
@@ -56,11 +64,14 @@ public class LC_0460_LFUCache {
         }
 
         public void put(int key, int value) {
-            if (0 == this.capacity) return;
+            if (0 == this.capacity)
+                return;
+
             if (valueMap.containsKey(key)) {
                 increase(key, value);
             } else {
-                if (valueMap.size() == this.capacity) remove();
+                if (valueMap.size() == this.capacity)
+                    remove();
                 valueMap.put(key, value);
                 add(key);
             }
