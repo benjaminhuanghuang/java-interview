@@ -3,7 +3,7 @@ package cn.huang.leetcode;
 import java.util.*;
 
 /*
-133. Clone Graph
+133. Clone Graph  [138]
 
  */
 public class LC_0133_CloneGraph {
@@ -37,6 +37,7 @@ public class LC_0133_CloneGraph {
 
             for (UndirectedGraphNode neighbour : neighbors) {
                 if (!visited.containsKey(neighbour)) {
+                    // this neighbour is not copied/processed yet
                     UndirectedGraphNode newTmpNode = new UndirectedGraphNode(neighbour.label);
                     visited.put(neighbour, newTmpNode);
                     queue.offer(neighbour);

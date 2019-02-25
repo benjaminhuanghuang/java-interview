@@ -7,7 +7,8 @@ import java.util.PriorityQueue;
 /*
 632. Smallest Range
 
-You have k lists of sorted integers in ascending order. Find the smallest range that includes at least one number from each of the k lists.
+You have k lists of sorted integers in ascending order. Find the smallest range that includes at least one number
+from each of the k lists.
 
 We define the range [a,b] is smaller than range [c,d] if b-a < d-c or a < c if b-a == d-c.
 
@@ -25,7 +26,8 @@ Note:
     The given list may contain duplicates, so ascending order means >= here.
     1 <= k <= 3500
     -105 <= value of elements <= 105.
-    For Java users, please note that the input type has been changed to List<List<Integer>>. And after you reset the code template, you'll see this point.
+    For Java users, please note that the input type has been changed to List<List<Integer>>. And after you reset the
+    code template, you'll see this point.
 
  */
 
@@ -56,6 +58,36 @@ public class LC_0632_SmallestRange {
     public int[] smallestRange_binarysearch(List<List<Integer>> nums) {
         return null;
     }
+
+
+    /*
+        Time O(n*m*m)
+        Space O(m)
+     */
+    public int[] smallestRange_points(List<List<Integer>> nums) {
+        int minx = 0;
+        int miny = Integer.MAX_VALUE;
+
+        int[] next = new int[nums.size()];
+        boolean flag = true;   // 是否一个list已经走到末尾
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = 0; j < nums.get(i).size() && flag; j++) {
+                int min_i = 0;
+                int max_i = 0;
+//
+//                for (int k = 0; k < nums.size(); k++) {
+//                    if(nums.get(min_i).get(next[min_i]))
+//                }
+            }
+        }
+
+        return new int[]{minx, miny};
+    }
+
+    /*
+
+     */
     public int[] smallestRange(List<List<Integer>> nums) {
         int start = -1;
         int end = -1;
@@ -90,6 +122,7 @@ public class LC_0632_SmallestRange {
         }
         return new int[]{start, end};
     }
+
     class Element {
         int index;
         int row;
