@@ -22,6 +22,13 @@ Given word = "ABCB", return false.
 
 
  */
+
+/*
+https://www.youtube.com/watch?v=Hcj1qVBD3YM
+https://www.youtube.com/watch?v=oUeGFKZvoo4
+Time O(m*n*4^l)
+Space(m*n + l)
+ */
 public class LC_0079_WordSearch {
     public boolean exist(char[][] board, String word) {
         int rows = board.length;

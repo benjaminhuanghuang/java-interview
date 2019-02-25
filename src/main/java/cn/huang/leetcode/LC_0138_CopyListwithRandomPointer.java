@@ -29,7 +29,7 @@ public class LC_0138_CopyListwithRandomPointer {
         Map<RandomListNode, RandomListNode> visited = new HashMap<RandomListNode, RandomListNode>();
         RandomListNode currNode = head;
 
-
+        // copy all nodes without connect
         // put <original, copied> pair into dict
         while (currNode != null)
         {
@@ -43,6 +43,7 @@ public class LC_0138_CopyListwithRandomPointer {
         while (currNode != null)
         {
             RandomListNode copiedNode = visited.get(currNode);
+
             copiedNode.next = currNode.next != null ? visited.get(currNode.next) : null;
             copiedNode.random = currNode.random != null ? visited.get(currNode.random) : null;
 

@@ -7,6 +7,7 @@ import java.util.Queue;
 
 /*
 127. Word Ladder
+
 Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation
 sequence from beginWord to endWord, such that:
 
@@ -50,6 +51,7 @@ public class LC_0127_WordLadder {
     https://www.youtube.com/watch?v=Sove6q_f-8I
      */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        //set for fast query
         HashSet<String> set = new HashSet<>(wordList);
         if (set.contains(beginWord)) {
             set.remove(beginWord);
@@ -85,6 +87,7 @@ public class LC_0127_WordLadder {
         }
         return 0;
     }
+
     /*
     // http://rainykat.blogspot.com/2017/01/leetcode-127-word-ladderbfs.html
      Use BFS to traverse dictionary. The level is composed of the words that are 1 char diff from curWord. If find such newWord, first check if is end word so we return min length, else check if in dict & remove it to avoid repeat.

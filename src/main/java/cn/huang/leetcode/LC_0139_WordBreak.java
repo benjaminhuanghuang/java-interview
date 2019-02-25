@@ -1,6 +1,9 @@
 package cn.huang.leetcode;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 /*
 139. Word Break
@@ -33,6 +36,8 @@ Output: false
 
 
  */
+
+
 public class LC_0139_WordBreak {
     /*
     // Use dp[i] as the sub string s[0:i] can be segmented into a space-separated sequence of one or more dictionary words.
@@ -61,4 +66,39 @@ public class LC_0139_WordBreak {
 
         return dp[count];
     }
+
+    /*
+    https://www.youtube.com/watch?v=ptlwluzeC1I
+    */
+    public boolean wordBreak_recursion(String s, List<String> wordDict) {
+        // Hashset for fast query
+        HashSet<String> set = new HashSet<>(wordDict);
+
+        return wordBreakHelper(s, set);
+    }
+
+    private boolean wordBreakHelper(String s, HashSet<String> wordDict) {
+        if (mem.containsKey(s))
+            return mem.get(s);
+
+        if (wordDict.contains(s)) {
+            mem.put(s, true);
+            return true;
+        }
+
+        for (int j = 1; j < s.length(); j++) {
+            String left = s.substring(0, j);  // exclude j
+            String right = s.substring(j);
+
+            if (wordDict.contains(right) && wordBreakHelper(left, wordDict)) {
+                mem.put(s, true);
+                return true;
+            }
+        }
+
+        mem.put(s, false);
+        return false;
+    }
+
+    private Map<String, Boolean> mem = new HashMap<>();
 }
