@@ -68,7 +68,7 @@ public class LC_0149_MaxPointsonaLine {
         int max = 1;  //the final max value, at least one
 
         for (int i = 0; i < points.length; i++) {
-            HashMap<Double, Integer> hm = new HashMap<Double, Integer>();
+            HashMap<Double, Integer> map = new HashMap<>();   // slop: points
             int same = 0;
             int localmax = 1; //the max value of current slope, at least one
             for (int j = 0; j < points.length; j++) {
@@ -82,13 +82,13 @@ public class LC_0149_MaxPointsonaLine {
                 //https://leetcode.com/problems/max-points-on-a-line/discuss/111270/a-work-around-for-0094911151949111509491115294911151
                 double slope = ((double) (points[i].y - points[j].y)) * 100.0/ (points[i].x - points[j].x);
 
-                if (hm.containsKey(slope))
-                    hm.put(slope, hm.get(slope) + 1);
+                if (map.containsKey(slope))
+                    map.put(slope, map.get(slope) + 1);
                 else
-                    hm.put(slope, 2);  //two points form a line
+                    map.put(slope, 2);  //two points form a line
             }
 
-            for (Integer value : hm.values())
+            for (Integer value : map.values())
                 localmax = Math.max(localmax, value);
 
             localmax += same;

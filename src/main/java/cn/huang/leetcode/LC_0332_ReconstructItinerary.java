@@ -4,6 +4,7 @@ import java.util.*;
 
 /*
 332. Reconstruct Itinerary
+
 Given a list of airline tickets represented by pairs of departure and arrival airports [from, to],
 reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK.
 Thus, the itinerary must begin with JFK.
@@ -17,17 +18,18 @@ You may assume all tickets form at least one valid itinerary.
  */
 public class LC_0332_ReconstructItinerary {
     //为了保证字母顺序，用了PriorityQueue.
-    HashMap<String, PriorityQueue<String>> map = new HashMap<String, PriorityQueue<String>>();
+    HashMap<String, PriorityQueue<String>> graph = new HashMap<String, PriorityQueue<String>>();
     LinkedList<String> result = new LinkedList<String>();
 
 
     public List<String> findItinerary(String[][] tickets) {
+        // add ticket into graph
         for (String[] ticket : tickets) {
-            if (!map.containsKey(ticket[0])) {
+            if (!graph.containsKey(ticket[0])) {
                 PriorityQueue<String> q = new PriorityQueue<String>();
-                map.put(ticket[0], q);
+                graph.put(ticket[0], q);
             }
-            map.get(ticket[0]).offer(ticket[1]);
+            graph.get(ticket[0]).offer(ticket[1]);
         }
 
         dfs("JFK");
@@ -36,7 +38,7 @@ public class LC_0332_ReconstructItinerary {
     }
 
     public void dfs(String s) {
-        PriorityQueue<String> q = map.get(s);
+        PriorityQueue<String> q = graph.get(s);
 
         while (q != null && !q.isEmpty()) {
             dfs(q.poll());

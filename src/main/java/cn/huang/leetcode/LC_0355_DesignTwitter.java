@@ -71,8 +71,8 @@ public class LC_0355_DesignTwitter {
             }
         }
 
-        private HashMap<Integer, HashSet<Integer>> relationship;
-        private HashMap<Integer, List<Tweet>> timeline;
+        private HashMap<Integer, HashSet<Integer>> relationship;   //  user: users
+        private HashMap<Integer, List<Tweet>> timeline;            //  user: tweets
         private int timestamp;
 
 
