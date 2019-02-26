@@ -65,4 +65,11 @@ public class LC_0076_MinimumWindowSubstring {
         }
         return res;
     }
+
+    /*
+            https://www.youtube.com/watch?v=9qFR2WQGqkU&t=1195s
+     */
+    public String minWindow2(String s, String t) {
+        return null;
+    }
 }

@@ -11,11 +11,24 @@ Given a binary search tree and a node in it, find the in-order successor of that
 
 Note: If the given node has no in-order successor in the tree, return null.
 
+For example, the inorder successor of 22 is 30.
 
+   10
+  /  \
+ 5    30
+     /  \
+   22    35
  */
 public class LC_0285_InorderSuccessorinBST {
+    /*
+     Time is O(log(n)) and space is O(1).
 
-    // Time is O(log(n)) and space is O(1).
+     思路：找到node p
+        如果 node p不存在，return null
+        如果 node p的没有右子树，inorder successor 是p的父节点
+        如果 node p的有右子树，inorder successor 是p的右节点的左左左左....子节点
+
+     */
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         if (root == null)
             return null;
