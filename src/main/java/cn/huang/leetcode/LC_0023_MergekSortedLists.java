@@ -19,7 +19,7 @@ public class LC_0023_MergekSortedLists {
 
     PQ can return the min/max number in O(logN) time
 
-    O(nlogK)
+    O(nlogK)  K is the numbers of the lists
     */
     public ListNode mergeKLists_pq(ListNode[] lists) {
         if (lists == null || lists.length == 0)

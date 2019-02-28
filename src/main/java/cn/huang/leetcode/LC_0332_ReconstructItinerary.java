@@ -16,6 +16,10 @@ order when read as a single string. For example, the itinerary ["JFK", "LGA"] ha
 All airports are represented by three capital letters (IATA code).
 You may assume all tickets form at least one valid itinerary.
  */
+
+/*
+ 用光所有的票，
+ */
 public class LC_0332_ReconstructItinerary {
     //为了保证字母顺序，用了PriorityQueue.
     HashMap<String, PriorityQueue<String>> graph = new HashMap<String, PriorityQueue<String>>();
@@ -37,13 +41,13 @@ public class LC_0332_ReconstructItinerary {
 
     }
 
-    public void dfs(String s) {
-        PriorityQueue<String> q = graph.get(s);
+    public void dfs(String start) {
+        PriorityQueue<String> ends = graph.get(start);
 
-        while (q != null && !q.isEmpty()) {
-            dfs(q.poll());
+        while (ends != null && !ends.isEmpty()) {
+            dfs(ends.poll());
         }
 
-        result.addFirst(s);
+        result.addFirst(start);
     }
 }

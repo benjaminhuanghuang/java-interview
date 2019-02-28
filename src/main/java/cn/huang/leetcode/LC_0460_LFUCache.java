@@ -24,6 +24,47 @@ public class LC_0460_LFUCache {
     /*
     http://bookshadow.com/weblog/2016/11/22/leetcode-lfu-cache/
 
+    head --- FreqNode1 ---- FreqNode2 ---- ... ---- FreqNodeN
+              |               |                       |
+            first           first                   first
+              |               |                       |
+           KeyNodeA        KeyNodeE                KeyNodeG
+              |               |                       |
+           KeyNodeB        KeyNodeF                KeyNodeH
+              |               |                       |
+           KeyNodeC         last                   KeyNodeI
+              |                                       |
+           KeyNodeD                                 last
+              |
+            last
+
+
+    set(key, value)：
+
+        如果capacity为0，忽略当前操作，结束
+
+        如果keyDict中包含key，则替换其value，更新节点频度，结束
+
+        否则，如果当前keyDict的长度 == capcity，移除head.last（频度最低且最老的KeyNode）
+
+        新增KeyNode(key, value)，加入keyDict，并更新freqDict
+    get(key)：
+
+        若keyDict中包含key，则更新节点频度，返回对应的value
+
+        否则，返回-1
+        节点频度的更新：
+
+        从keyDict中找到对应的KeyNode，然后通过KeyNode的freq值，从freqDict找到对应的FreqNode
+
+        如果FreqNode的next节点不等于freq + 1，则在其右侧插入一个值为freq + 1的新FreqNode节点
+
+        将KeyNode的freq值+1后，从当前KeyNode链表转移到新的FreqNode对应的KeyNode链表
+
+        如果KeyNode移动之后，原来的FreqNode对应的KeyNode链表为空，则删除原来的FreqNode
+
+        在操作完毕后如果涉及到head的变更，则更新head
+
      */
     public class LFUCache {
         Node head = null;

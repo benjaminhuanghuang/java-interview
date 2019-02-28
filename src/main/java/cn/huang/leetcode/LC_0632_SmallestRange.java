@@ -61,6 +61,7 @@ public class LC_0632_SmallestRange {
 
 
     /*
+        Lai offer
         Time O(n*m*m)
         Space O(m)
      */
@@ -86,8 +87,46 @@ public class LC_0632_SmallestRange {
     }
 
     /*
-
+        https://www.youtube.com/watch?v=csJXQZFYklE
+        O(n*m*logm)
+        O(m)
      */
+    public int[] smallestRange_laioffer(List<List<Integer>> nums) {
+        int minx = 0;
+        int miny = Integer.MAX_VALUE;
+
+        int max = Integer.MIN_VALUE;   // 每一轮遇到最大的数字
+        int[] next = new int[nums.size()];
+        boolean flag = true;
+
+        PriorityQueue<Integer> min_queue = new PriorityQueue<Integer>(
+                (i, j) -> nums.get(i).get(next[i]) - nums.get(j).get(next[j]));
+
+        for (int i = 0; i < nums.size(); i++) {
+            min_queue.offer(i);
+            max = Math.max(max, nums.get(i).get(0));
+        }
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = 0; j < nums.get(i).size() && flag; j++) {
+                int min_i = min_queue.poll(); // 每一轮遇到最小的数字
+                if (miny - minx > max - nums.get(min_i).get(next[min_i])) {
+                    minx = nums.get(min_i).get(next[min_i]);
+                    miny = max;
+                }
+                next[min_i]++;
+                if (next[min_i] == nums.get(min_i).size()) {
+                    flag = false;
+                    break;
+                }
+                min_queue.offer(min_i);
+                max = Math.max(max, nums.get(min_i).get(next[min_i]));
+            }
+        }
+
+        return new int[]{minx, miny};
+    }
+
     public int[] smallestRange(List<List<Integer>> nums) {
         int start = -1;
         int end = -1;

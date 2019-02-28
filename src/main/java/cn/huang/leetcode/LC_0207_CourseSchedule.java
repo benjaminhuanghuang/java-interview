@@ -21,7 +21,7 @@ public class LC_0207_CourseSchedule {
     public boolean canFinish_BFS(int numCourses, int[][] prerequisites) {
         int[] indegree = new int[numCourses];
         int res = numCourses;
-        // step1: calculate in-degree
+        // step1: calculate in-degree [0 依赖 1]
         for (int[] pair : prerequisites) {
             indegree[pair[0]]++;
         }
