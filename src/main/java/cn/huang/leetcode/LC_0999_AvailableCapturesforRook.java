@@ -3,7 +3,10 @@ package cn.huang.leetcode;
 /*
 999. Available Captures for Rook
 
-On an 8 x 8 chessboard, there is one white rook.  There also may be empty squares, white bishops, and black pawns.  These are given as characters 'R', '.', 'B', and 'p' respectively. Uppercase characters represent white pieces, and lowercase characters represent black pieces.
+On an 8 x 8 chessboard, there is one white rook.  There also may be empty squares, white bishops, and black pawns.
+These are given as characters 'R', '.', 'B', and 'p' respectively.
+
+Uppercase characters represent white pieces, and lowercase characters represent black pieces.
 
 The rook moves as in the rules of Chess: it chooses one of four cardinal directions (north, east, west, and south), then moves in that direction until it chooses to stop, reaches the edge of the board, or captures an opposite colored pawn by moving to the same square it occupies.  Also, rooks cannot move into the same square as other friendly bishops.
 
@@ -44,7 +47,45 @@ board[i][j] is either 'R', '.', 'B', or 'p'
 There is exactly one cell with board[i][j] == 'R'
  */
 public class LC_0999_AvailableCapturesforRook {
-    public int numRookCaptures(char[][] board) {
+    public int numRookCaptures_huahua(char[][] board) {
+        if (board == null || board.length == 0)
+            return 0;
+
+        int row = -1;
+        int col = -1;
+        int N = board.length;
+
+        int ans = 0;
+        int[] dirs = new int[]{1, 0, -1, 0, 1};
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (board[i][j] == 'R') {
+                    for (int d = 0; d < 4; ++d) {
+                        ans += check(board, N, j, i, dirs[d], dirs[d + 1]);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+    private int check(char[][] board, int N, int x, int y, int dx, int dy) {
+        x += dx;
+        y += dy;
+        while (x >= 0 && x < N && y >= 0 && y < N) {
+            if(board[y][x] == 'p')
+                return 1;
+            if(board[y][x] != '.')
+                break;
+            x += dx;
+            y += dy;
+        }
+        return 0;
+    }
+    /*
+        题意理解有误！
+     */
+    public int numRookCaptures_my(char[][] board) {
         if (board == null || board.length == 0)
             return 0;
 

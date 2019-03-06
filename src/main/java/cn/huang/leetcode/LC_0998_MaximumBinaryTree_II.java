@@ -47,21 +47,21 @@ Note:
 1 <= B.length <= 100
  */
 public class LC_0998_MaximumBinaryTree_II {
+
+    /*
+    https://www.youtube.com/watch?time_continue=126&v=ACBdojAxPSc
+
+     */
     public TreeNode insertIntoMaxTree(TreeNode root, int val) {
-
-
-        if(root == null)
-            return new TreeNode(val);
-
-        if(root.val < val)
-        {
-            TreeNode newRoot = new TreeNode(val);
-            newRoot.left = root;
-            return newRoot;
+        if (root != null && root.val > val) {  // if root.val > val, val belongs to right sub tree
+            root.right = insertIntoMaxTree(root.right, val);
+            return root;
         }
 
-        root.right = insertIntoMaxTree(root.left, val);
+        TreeNode node = new TreeNode(val);
 
-        return root;
+        node.left = root;
+
+        return node;
     }
 }

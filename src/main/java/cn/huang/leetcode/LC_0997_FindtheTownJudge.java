@@ -53,7 +53,30 @@ trust[i][0] != trust[i][1]
 1 <= trust[i][0], trust[i][1] <= N
  */
 public class LC_0997_FindtheTownJudge {
-    public int findJudge(int N, int[][] trust) {
+    /*
+       https://zxi.mytechroad.com/blog/2019/02/
+       Graph, Count the degree, trust is edge
+       Time O(N), Space O(N)
+    */
+    public int findJudge_huahua(int N, int[][] trust) {
+        //if (trust == null || trust.length == 0)  NO Need
+        //     return 1;
+
+        int[] degrees = new int[N+1];   // index from 1
+        for(int[] t: trust)
+        {
+            --degrees[t[0]];
+            ++degrees[t[1]];
+        }
+        for(int i =1 ;i <=N ; i++)
+        {
+            if(degrees[i] == N-1)
+                return i;
+        }
+        return -1;
+    }
+
+    public int findJudge_my(int N, int[][] trust) {
         if (trust == null || trust.length == 0)
             return 1;
 

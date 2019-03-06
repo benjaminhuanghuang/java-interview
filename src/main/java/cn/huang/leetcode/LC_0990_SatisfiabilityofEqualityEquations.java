@@ -46,7 +46,7 @@ equations[i][1] is either '=' or '!'
 equations[i][2] is '='
  */
 public class LC_0990_SatisfiabilityofEqualityEquations {
-    public boolean equationsPossible(String[] equations) {
+    public boolean equationsPossible_my(String[] equations) {
         if (equations.length == 1) {
             return true;
         }
