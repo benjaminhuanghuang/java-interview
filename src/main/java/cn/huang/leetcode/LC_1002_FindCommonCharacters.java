@@ -37,7 +37,7 @@ Note:
 public class LC_1002_FindCommonCharacters {
     public List<String> commonChars(String[] A) {
         int n = A.length;
-        //每个字符串一个统计表
+        //每个字符串一个统计表, 记录每个字符串中 26个字符各出现几次
         int[][] cc = new int[n][26];
 
         for (int i = 0; i < n; i++) {
@@ -48,9 +48,9 @@ public class LC_1002_FindCommonCharacters {
 
         List<String> result = new ArrayList<>();
         for (int i = 0; i < 26; i++) {
-            int minCount = Integer.MAX_VALUE;
+            int minCount = Integer.MAX_VALUE;    // 重要！每个字符在每个String中出现的最小次数
             for (int j = 0; j < n; j++) {
-                minCount = Math.min(minCount, cc[j][i]);
+                minCount = Math.min(minCount, cc[j][i]);   // 有一个出现次数为0， minCount就会被清0
             }
 
             for (int j = 0; j < minCount; j++) {

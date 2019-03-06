@@ -59,7 +59,7 @@ public class LC_0997_FindtheTownJudge {
        Time O(N), Space O(N)
     */
     public int findJudge_huahua(int N, int[][] trust) {
-        //if (trust == null || trust.length == 0)  NO Need
+        //if (trust == null || trust.length == 0)  NO Need !!
         //     return 1;
 
         int[] degrees = new int[N+1];   // index from 1
