@@ -4,6 +4,7 @@ import java.util.*;
 
 /*
 990. Satisfiability of Equality Equations
+
 Given an array equations of strings that represent relationships between variables, each string equations[i] has
 length 4 and takes one of two different forms: "a==b" or "a!=b".  Here, a and b are lowercase letters
 (not necessarily different) that represent one-letter variable names.
@@ -46,6 +47,49 @@ equations[i][1] is either '=' or '!'
 equations[i][2] is '='
  */
 public class LC_0990_SatisfiabilityofEqualityEquations {
+    /*
+    Solution: Union Find
+
+    Time complexity: O(n)
+    Space complexity: O(1)
+
+    https://zxi.mytechroad.com/blog/graph/leetcode-990-satisfiability-of-equality-equations/
+
+    First pass: x==y, merge(x,y)
+    Second pass: x!=y, assert(find(x)!=find(y)
+     */
+
+    private int[] parents = new int[128];   //
+
+    public boolean equationsPossible(String[] equations) {
+        if (equations.length == 1) {
+            return true;
+        }
+        for (int i = 0; i < 128; i++) {
+            parents[i] = i;
+        }
+        for (String eq : equations) {
+            if (eq.charAt(1) == '=') {
+                parents[find(eq.charAt(0))] = find(eq.charAt(3));
+            }
+        }
+
+        for (String eq : equations) {
+            if (eq.charAt(1) == '!' && (find(eq.charAt(0)) == find(eq.charAt(3)))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    int find(int x) {
+        if (x != parents[x]) {
+            parents[x] = find(parents[x]);
+        }
+        return parents[x];
+    }
+
     public boolean equationsPossible_my(String[] equations) {
         if (equations.length == 1) {
             return true;
