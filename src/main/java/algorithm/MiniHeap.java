@@ -1,4 +1,5 @@
 package algorithm;
+
 /*
 https://www.youtube.com/watch?v=t0Cq6tVNRBA
 In a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times.
@@ -28,14 +29,10 @@ public class MiniHeap {
     private int maxsize;
 
 
-
     private static final int FRONT = 1;
 
 
-
-    public MiniHeap(int maxsize)
-
-    {
+    public MiniHeap(int maxsize) {
 
         this.maxsize = maxsize;
 
@@ -48,44 +45,30 @@ public class MiniHeap {
     }
 
 
-
-    private int parent(int pos)
-
-    {
+    private int parent(int pos) {
 
         return pos / 2;
 
     }
 
 
-
-    private int leftChild(int pos)
-
-    {
+    private int leftChild(int pos) {
 
         return (2 * pos);
 
     }
 
 
-
-    private int rightChild(int pos)
-
-    {
+    private int rightChild(int pos) {
 
         return (2 * pos) + 1;
 
     }
 
 
+    private boolean isLeaf(int pos) {
 
-    private boolean isLeaf(int pos)
-
-    {
-
-        if (pos >=  (size / 2)  &&  pos <= size)
-
-        {
+        if (pos >= (size / 2) && pos <= size) {
 
             return true;
 
@@ -96,10 +79,7 @@ public class MiniHeap {
     }
 
 
-
-    private void swap(int fpos, int spos)
-
-    {
+    private void swap(int fpos, int spos) {
 
         int tmp;
 
@@ -112,30 +92,19 @@ public class MiniHeap {
     }
 
 
+    private void minHeapify(int pos) {
 
-    private void minHeapify(int pos)
+        if (!isLeaf(pos)) {
 
-    {
+            if (Heap[pos] > Heap[leftChild(pos)] || Heap[pos] > Heap[rightChild(pos)]) {
 
-        if (!isLeaf(pos))
-
-        {
-
-            if ( Heap[pos] > Heap[leftChild(pos)]  || Heap[pos] > Heap[rightChild(pos)])
-
-            {
-
-                if (Heap[leftChild(pos)] < Heap[rightChild(pos)])
-
-                {
+                if (Heap[leftChild(pos)] < Heap[rightChild(pos)]) {
 
                     swap(pos, leftChild(pos));
 
                     minHeapify(leftChild(pos));
 
-                }else
-
-                {
+                } else {
 
                     swap(pos, rightChild(pos));
 
@@ -150,22 +119,16 @@ public class MiniHeap {
     }
 
 
-
-    public void insert(int element)
-
-    {
+    public void insert(int element) {
 
         Heap[++size] = element;
 
         int current = size;
 
 
+        while (Heap[current] < Heap[parent(current)]) {
 
-        while (Heap[current] < Heap[parent(current)])
-
-        {
-
-            swap(current,parent(current));
+            swap(current, parent(current));
 
             current = parent(current);
 
@@ -174,18 +137,13 @@ public class MiniHeap {
     }
 
 
+    public void print() {
 
-    public void print()
+        for (int i = 1; i <= size / 2; i++) {
 
-    {
+            System.out.print(" PARENT : " + Heap[i] + " LEFT CHILD : " + Heap[2 * i]
 
-        for (int i = 1; i <= size / 2; i++ )
-
-        {
-
-            System.out.print(" PARENT : " + Heap[i] + " LEFT CHILD : " + Heap[2*i]
-
-                    + " RIGHT CHILD :" + Heap[2 * i  + 1]);
+                + " RIGHT CHILD :" + Heap[2 * i + 1]);
 
             System.out.println();
 
@@ -194,14 +152,9 @@ public class MiniHeap {
     }
 
 
+    public void minHeap() {
 
-    public void minHeap()
-
-    {
-
-        for (int pos = (size / 2); pos >= 1 ; pos--)
-
-        {
+        for (int pos = (size / 2); pos >= 1; pos--) {
 
             minHeapify(pos);
 
@@ -210,10 +163,7 @@ public class MiniHeap {
     }
 
 
-
-    public int remove()
-
-    {
+    public int remove() {
 
         int popped = Heap[FRONT];
 
@@ -226,10 +176,7 @@ public class MiniHeap {
     }
 
 
-
-    public static void main(String...arg)
-
-    {
+    public static void main(String... arg) {
 
         System.out.println("The Min Heap is ");
 
@@ -254,7 +201,6 @@ public class MiniHeap {
         minHeap.insert(9);
 
         minHeap.minHeap();
-
 
 
         minHeap.print();

@@ -33,19 +33,17 @@ https://www.youtube.com/watch?v=fH3XUXdinCs
  */
 public class LC_0255_VerifyPreorderSerializationInBinarySearchTree {
     public boolean verifyPreorder(int[] preorder) {
-        Stack<Integer> stack= new Stack<>();
+        Stack<Integer> stack = new Stack<>();
         int min = Integer.MIN_VALUE;
 
-        for(int  num : preorder)
-        {
+        for (int num : preorder) {
             // num is on right side but smaller than root.
-            if(num < min)
-            {
+            if (num < min) {
                 return false;
             }
             // if num is in right subtree of stack top,
             // keep removing items smaller than num and make the last removed item as new root
-            while(!stack.isEmpty() && num > stack.peek()){
+            while (!stack.isEmpty() && num > stack.peek()) {
                 min = stack.pop();
             }
             stack.push(num);
@@ -58,16 +56,15 @@ public class LC_0255_VerifyPreorderSerializationInBinarySearchTree {
         return helper(preorder, 0, preorder.length - 1, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    private boolean helper(int[] preorder, int start, int end, int min, int max)
-    {
+    private boolean helper(int[] preorder, int start, int end, int min, int max) {
         if (start > end)
             return true;
-        int val = preorder[start], i = 0;
-        if (val <= min || val >= max)
+        int rootVal = preorder[start], i = 0;
+        if (rootVal <= min || rootVal >= max)
             return false;
         for (i = start + 1; i <= end; ++i) {
-            if (preorder[i] >= val) break;
+            if (preorder[i] >= rootVal) break;
         }
-        return helper(preorder, start + 1, i - 1, min, val) && helper(preorder, i, end, val, max);
+        return helper(preorder, start + 1, i - 1, min, rootVal) && helper(preorder, i, end, rootVal, max);
     }
 }
