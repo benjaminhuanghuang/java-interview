@@ -58,7 +58,7 @@ public class LC_0997_FindtheTownJudge {
        Graph, Count the degree, trust is edge
        Time O(N), Space O(N)
     */
-    public int findJudge_huahua(int N, int[][] trust) {
+    public int findJudge(int N, int[][] trust) {
         //if (trust == null || trust.length == 0)  NO Need !!
         //     return 1;
 
