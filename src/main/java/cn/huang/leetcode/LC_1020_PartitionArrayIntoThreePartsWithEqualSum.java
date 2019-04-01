@@ -6,6 +6,7 @@ import java.util.Hashtable;
 
 /*
  1020. Partition Array Into Three Parts With Equal Sum
+
     Given an array A of integers, return true if and only if we can partition the array into three non-empty
     parts with equal sums.
 

@@ -65,15 +65,18 @@ public class LC_0990_SatisfiabilityofEqualityEquations {
         if (equations.length == 1) {
             return true;
         }
+        // init
         for (int i = 0; i < 128; i++) {
             parents[i] = i;
         }
+
+        // Pass 1
         for (String eq : equations) {
             if (eq.charAt(1) == '=') {
                 parents[find(eq.charAt(0))] = find(eq.charAt(3));
             }
         }
-
+        // Pass 2
         for (String eq : equations) {
             if (eq.charAt(1) == '!' && (find(eq.charAt(0)) == find(eq.charAt(3)))) {
                 return false;

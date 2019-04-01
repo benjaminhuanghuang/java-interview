@@ -1,7 +1,7 @@
 package cn.huang.leetcode;
 
 /*
-991. Broken Calculator
+991. Broken Calculator [M]
 
 On a broken calculator that has a number showing on its display, we can perform two operations:
 
@@ -10,8 +10,6 @@ Decrement: Subtract 1 from the number on the display.
 Initially, the calculator is displaying the number X.
 
 Return the minimum number of operations needed to display the number Y.
-
-
 
 Example 1:
 
@@ -42,7 +40,13 @@ Note:
 
  */
 public class LC_0991_BrokenCalculator {
+    /*
+     Time O(log(Y-X))
+     Space O(1) to O(log(Y-X))
+     */
     public int brokenCalc(int X, int Y) {
-        return 0;
+        if (X >= Y)
+            return X - Y;
+        return 1 + brokenCalc(X, Y % 2 != 0 ? Y + 1 : Y / 2);
     }
 }
