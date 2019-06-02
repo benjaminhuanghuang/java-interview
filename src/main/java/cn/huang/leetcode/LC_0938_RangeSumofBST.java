@@ -25,7 +25,7 @@ public class LC_0938_RangeSumofBST {
         }
         else
         {
-            return root.val + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L , R);
+            return root.val;
         }
     }
 }

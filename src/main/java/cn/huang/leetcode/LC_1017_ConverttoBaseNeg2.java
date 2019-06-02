@@ -27,8 +27,9 @@ package cn.huang.leetcode;
     Explantion: (-2) ^ 2 = 4
 
  */
-public class LC_1017_ConverttoBase2 {
+public class LC_1017_ConverttoBaseNeg2 {
     public String baseNeg2(int N) {
+        int i =0;
 
     }
 }
