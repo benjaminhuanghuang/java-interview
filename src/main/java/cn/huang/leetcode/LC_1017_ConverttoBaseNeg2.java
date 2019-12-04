@@ -30,6 +30,6 @@ package cn.huang.leetcode;
 public class LC_1017_ConverttoBaseNeg2 {
     public String baseNeg2(int N) {
         int i =0;
-
+        return null;
     }
 }
