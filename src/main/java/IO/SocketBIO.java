@@ -16,9 +16,11 @@ import java.net.Socket;
 
     clone()      // create a thread
 
-    receive(5)   // read the stream
+    receive(5)   // block read the stream
 
     man 2 socket        // 系统调用的文档
+
+    弊端： 线程太多，调度消耗资源
  */
 public class SocketBIO {
     public static void main(String[] args) throws Exception {
@@ -60,6 +62,7 @@ public class SocketBIO {
 
 /*
     Usage:
+    用 jdk1.4 来演示 BIO系统调用。 jdk1.8 使用的是多路复用 poll()
     /usr/java.j2sdk1.4.2_19/bin/javac SocketBIO.java
 
     strace -ff -o out /usr/java.j2sdk1.4.2_19/bin/java SocketBIO.class
@@ -91,7 +94,7 @@ public class SocketBIO {
 
 /*
     分析trace 文件
-    strace 会生成一系列 out.xxxx 文件，xxxx为线程号， 第一个线程为主线程
+    strace 会生成一系列 out.xxxx 文件，xxxx为线程号， 第一个线程为主线程, 对于jdk1.8，第二个线程为主线程
 
     vi out.xxxx
 
